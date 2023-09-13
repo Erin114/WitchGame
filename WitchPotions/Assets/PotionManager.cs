@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class PotionManager : MonoBehaviour
 {
-    // int array PotionQualities {rage/terror, grief/joy,
-    // vigilance/amazement, loathing/admiration}
-    // goes from -25 to 25 on each
 
-    // int money
+    // GameManager gamemanager;
+    // int array PotionQualities {rage/terror, grief/joy,
+    // vigilance/amazement, loathing/admiration};
+    // goes from -25 to 25 on each;
+    float poison;
+    float[] topBar = { 0f, 0f, 0f, 0f }; //rage,grief,vigilance,loathing
+    float[] bottomBar = { 0f, 0f, 0f, 0f }; //terror,joy,amazement,admiration
+    int money = 0;
+    int moneySpent;
+    // int money;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +36,7 @@ public class PotionManager : MonoBehaviour
     /// <param name="qualityIndex"></param>
     void AddQuality(int qualityValue, int qualityIndex)
     {
-
+        
     }
 
     /// <summary>
@@ -39,18 +45,22 @@ public class PotionManager : MonoBehaviour
     /// </summary>
     void FinishPotion()
     {
-
+        moneySpent = 0;
     }
 
     /// <summary>
     /// Resets the currently brewed potion
-    /// (and all money that was spent on it)
+    /// 
     /// </summary>
     void ResetPotion()
     {
-
+        moneySpent = 0;
     }
 
+    void ResetMoney()
+    {
+        money += moneySpent;
+    }
     
 
 }
