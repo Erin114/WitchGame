@@ -10,11 +10,11 @@ public class PotionManager : MonoBehaviour
     // vigilance/amazement, loathing/admiration};
     // goes from -25 to 25 on each;
     float poison;
-    float[] topBar = { 0f, 0f, 0f, 0f }; //rage,grief,vigilance,loathing
-    float[] bottomBar = { 0f, 0f, 0f, 0f }; //terror,joy,amazement,admiration
+    float[] bars = new float[8] { 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f }; 
+    //rage (0) terror(1), grief(2), joy (3),vigilance(4), amazement(5),loathing(6), admiration (7)
     int money = 0;
     int moneySpent;
-    // int money;
+    List<Potion> pots;
 
     // Start is called before the first frame update
     void Start()
@@ -34,9 +34,10 @@ public class PotionManager : MonoBehaviour
     /// </summary>
     /// <param name="qualityValue"></param>
     /// <param name="qualityIndex"></param>
-    void AddQuality(int qualityValue, int qualityIndex)
+    public void AddQuality(int qualityValue, int qualityIndex)
     {
         
+        bars[qualityIndex] += qualityValue;
     }
 
     /// <summary>
@@ -45,6 +46,10 @@ public class PotionManager : MonoBehaviour
     /// </summary>
     void FinishPotion()
     {
+        Potion pot = new Potion(bars);
+        pots.Add(pot);
+        Debug.Log(pot.GetStats());
+        ResetPotion();
         moneySpent = 0;
     }
 
@@ -54,7 +59,7 @@ public class PotionManager : MonoBehaviour
     /// </summary>
     void ResetPotion()
     {
-        moneySpent = 0;
+        bars = new float[8] { 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f };
     }
 
     void ResetMoney()
