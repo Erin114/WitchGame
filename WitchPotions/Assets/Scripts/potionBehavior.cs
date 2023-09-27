@@ -29,9 +29,10 @@ public class potionBehavior : MonoBehaviour
 
     void moveTowardsFixed(string ingredientIndex)
     {
-        (Vector3 node, float distance) h = ingredientIndex switch
+        (Vector3, float) h = ingredientIndex switch
         {
             "hi" => (new Vector3(60, 0, 0), 14f),
+            _ => (new Vector3(60, 0, 0), 14f)
         };
         moveToward(h);
         
