@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97681d1b423341742836e18ab76d2459, type: 3}
+  m_Name: Admiration 3 Amazement  3
+  m_EditorClassIdentifier: 
+  ingredients_Name: Cursed Ivy
+  ingredients_Price: 0
+  ingredients_Poison: 3
+  ingredients_Sprite: {fileID: 0}
+  ingredients_Emotion:
+  - Admiration
+  - Amazement
+  ingredients_Value: 0300000003000000
