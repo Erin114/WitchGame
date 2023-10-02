@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryManager : MonoBehaviour
+public class PotionObject : MonoBehaviour
 {
-
     
     // Start is called before the first frame update
+    public PotionObject()
+    {
+        
+    }
     void Start()
     {
         

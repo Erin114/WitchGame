@@ -2,33 +2,64 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class potionBehavior : MonoBehaviour
+public class PotionBehavior : MonoBehaviour
 {
     Vector3 center;
     List<Vector3> nodes = new List<Vector3>();
+    //one grid unit
     float unit;
+
+    //types of nodes that need to be handled by SpecialNodeUpdate
+    enum NodeTypes
+    {
+        voidNode,
+        bipolar,
+        charger
+    }
+
+    //positions of each emotional extreme
+    Dictionary<string, Vector3> emotionValues = new Dictionary<string, Vector3>()
+    {
+        {"rage", new Vector3(-60, 0) },
+        {"fear", new Vector3(60,0) },
+        {"joy", new Vector3(0,60) },
+        {"grief", new Vector3(0,-60)},
+         {"loathing", new Vector3(-30 * Mathf.Sqrt(2),-30 * Mathf.Sqrt(2)) },
+          {"amazement", new Vector3(30 * Mathf.Sqrt(2),-30 * Mathf.Sqrt(2)) },
+           {"vigilance",new Vector3(-30 * Mathf.Sqrt(2),30 * Mathf.Sqrt(2)) },
+            {"admiration", new Vector3(30 * Mathf.Sqrt(2),30 * Mathf.Sqrt(2)) },
+    };
+
+    //relevant potion statistics
+    int poison = 0;
+    int cost = 0;
+    
     private void Start()
     {
         center = gameObject.transform.localPosition;
 
         //potion position init, resolve how many rings will be in use and what the base ring units will be
-        int rings = 8;
+        int rings = 10;
+        int slices = 16;
+        float theta = 360f / slices;
         Vector3[] nodetemplate = new Vector3[rings];
         unit = 60f / rings;
         for (int i = 0; i < rings; i++)
         {
             nodetemplate[i] = center + new Vector3(i * unit, 0, 0);
         }
+
+        // 0 center, 1-10 fear, 11-20 fear/amazement, 21-30 amazement, etc. 
         
         nodes.Add(center);
         //nodes.AddRange(nodetemplate);
         //populate node graph
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < slices; i++)
         {
             for (int j = 0; j < rings; j++)
             {
                 Vector3 newNode;
-                newNode = Quaternion.Euler(0, 0, (i * 45)) * nodetemplate[j];
+                newNode = Quaternion.Euler(0, 0, (i * theta)) * nodetemplate[j];
                 nodes.Add(newNode);
             }
         }
@@ -37,24 +68,42 @@ public class potionBehavior : MonoBehaviour
 
 
     //intakes an ingredient name and calls the moveToward function with the appropriate values
-   public void moveTowardsFixed(string ingredientIndex)
+   public void MoveTowardsFixed(string ingredientIndex)
     {
         //ingredient switch case
         (Vector3, float) h = ingredientIndex switch
         {
-            "reggie" => (new Vector3(60, 0, 0), unit * 2),
-            "joy" => (new Vector3(0, 60, 0), unit * 2),
-            "rage" => (new Vector3(-60, 0, 0), unit * 2),
-            "grief" => (new Vector3(0,-60,0), unit * 2),
-            _ => (new Vector3(60, 0, 0), 14f)
+            "reggie" => (emotionValues["fear"], unit * 2),
+            "joy" => (emotionValues["joy"], unit * 2),
+            "rage" => (emotionValues["rage"], unit * 2),
+            "grief" => (emotionValues["grief"], unit * 2),
+            "vigilance" => (emotionValues["vigilance"], unit * 2),
+            _ => (new Vector3(0, 0, 0), 14f)
         };
-        moveToward(h);
+        MoveToward(h);
         
     }
     
+    //ingredients 2.0
+    //TODO takes IngredientObject
+    /*
+     * IngredientObject Properties:
+     * (String, int)[] emoProp
+     * int price
+     * int poison
+     * String name
+     */
+    void AddIngredient() 
+    {
+
+    }
+
     // moves toward a given endpoint by a certain distance
-    void moveToward((Vector3, float) inputs) {
+    void MoveToward((Vector3, float) inputs) {
+
         (Vector3 node, float distance) = inputs;
+
+        if (node == transform.localPosition) return;
         Vector3 v = (node - transform.localPosition).normalized * distance;
         Vector3 vSpace = v + transform.localPosition;
         //set final as destination node with distance 
@@ -79,5 +128,16 @@ public class potionBehavior : MonoBehaviour
 
         return vSpace;
     }
+
+
+    //called at the end of movetoward to see if we landed on any special nodes
+    void SpecialNodeUpdate()
+    {
+
+    }
+
+    //finish brewing, probably to be called by InventoryManager or another GameManager
+    //TODO by Elad
+    PotionObject FinishBrew() { return new PotionObject(); }
 }
 
