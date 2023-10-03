@@ -18,7 +18,7 @@ public class PotionBehavior : MonoBehaviour
     //one grid unit
     float unit;
 
-    (Vector3, NodeTypes)[] specials;
+    (int, NodeTypes)[] specials;
     //types of nodes that need to be handled by SpecialNodeUpdate
     enum NodeTypes
     {
@@ -141,7 +141,7 @@ public class PotionBehavior : MonoBehaviour
     {
         for (int i = 0; i < specials.Length; i++)
         {
-            if (specials[i].Item1 == transform.localPosition)
+            if (nodes[specials[i].Item1] == transform.localPosition)
             {
                 switch(specials[i].Item2)
                 {
@@ -155,7 +155,7 @@ public class PotionBehavior : MonoBehaviour
                         {
                             if (i != j && specials[j].Item2 == NodeTypes.bipolar)
                             {
-                                transform.localPosition = specials[j].Item1;
+                                transform.localPosition = nodes[specials[j].Item1];
                             }
                         }
                         break;
