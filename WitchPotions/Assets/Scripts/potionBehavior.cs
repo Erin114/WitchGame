@@ -67,23 +67,7 @@ public class PotionBehavior : MonoBehaviour
 
 
 
-    //intakes an ingredient name and calls the moveToward function with the appropriate values
-   public void MoveTowardsFixed(string ingredientIndex)
-    {
-        //ingredient switch case
-        (Vector3, float) h = ingredientIndex switch
-        {
-            "reggie" => (emotionValues["fear"], unit * 2),
-            "joy" => (emotionValues["joy"], unit * 2),
-            "rage" => (emotionValues["rage"], unit * 2),
-            "grief" => (emotionValues["grief"], unit * 2),
-            "vigilance" => (emotionValues["vigilance"], unit * 2),
-            _ => (new Vector3(0, 0, 0), 14f)
-        };
-        MoveToward(h);
-        
-    }
-    
+   
     //ingredients 2.0
     //TODO takes IngredientObject
     /*
