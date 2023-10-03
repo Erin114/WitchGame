@@ -93,9 +93,20 @@ public class PotionBehavior : MonoBehaviour
      * int poison
      * String name
      */
-    void AddIngredient() 
+    void AddIngredient(Ingredients_SO ingredient) 
     {
+        Vector3 move1 = emotionValues[ingredient.Ingredients_Vector.emotion[0]];
+        float move1Amount = ingredient.Ingredients_Vector.value[0];
+        MoveToward((move1, move1Amount));
+        if (ingredient.Ingredients_Vector.emotion.Length > 1)
+        {
+            Vector3 move2 = emotionValues[ingredient.Ingredients_Vector.emotion[1]];
+            float move2Amount = ingredient.Ingredients_Vector.value[1];
 
+            MoveToward((move2, move2Amount));
+        }
+        cost += ingredient.ingredients_Price;
+        poison += ingredient.ingredients_Poison;
     }
 
     // moves toward a given endpoint by a certain distance
