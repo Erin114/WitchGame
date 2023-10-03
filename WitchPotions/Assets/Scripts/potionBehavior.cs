@@ -18,6 +18,7 @@ public class PotionBehavior : MonoBehaviour
     //one grid unit
     float unit;
 
+    (Vector3, NodeTypes)[] specials;
     //types of nodes that need to be handled by SpecialNodeUpdate
     enum NodeTypes
     {
@@ -42,6 +43,7 @@ public class PotionBehavior : MonoBehaviour
     //relevant potion statistics
     int poison = 0;
     int cost = 0;
+    int chargersHit = 0;
     
     private void Start()
     {
@@ -137,6 +139,32 @@ public class PotionBehavior : MonoBehaviour
     //called at the end of movetoward to see if we landed on any special nodes
     void SpecialNodeUpdate()
     {
+        for (int i = 0; i < specials.Length; i++)
+        {
+            if (specials[i].Item1 == transform.localPosition)
+            {
+                switch(specials[i].Item2)
+                {
+                    case NodeTypes.voidNode:
+                        break;
+                    case NodeTypes.charger:
+                        chargersHit++;
+                        break;
+                    case NodeTypes.bipolar:
+                        for (int j = 0; j < specials.Length; j++)
+                        {
+                            if (i != j && specials[j].Item2 == NodeTypes.bipolar)
+                            {
+                                transform.localPosition = specials[j].Item1;
+                            }
+                        }
+                        break;
+                    default:
+                        break;
+                }
+                return;
+            }
+        }
 
     }
 
