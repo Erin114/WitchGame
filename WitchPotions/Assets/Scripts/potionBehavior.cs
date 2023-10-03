@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class PotionBehavior : MonoBehaviour
 {
+    /*
+     * OVERALL ARCHITECTURE:
+     * Start() creates a radial grid of nodes, which are each points around the emotional spectrum.
+     * MoveToward((Vector3, float)) moves the parent gameobject of PotionBehavior so many nodes across the 
+     * grid towards a target node. AddIngredient(Ingredients_SO) interfaces with MoveToward by taking an object that 
+     * provides the necessary args to call MoveTowards(), and calculate the total cost and poison value of the potion.
+     * Each call of AddIngredient also calls SpecialNodeUpdate to see if the end point of your ingredient has hit
+     * any special nodes such as voids (instant fail of potion), bipolar(teleports gameobject), or charger (extra value of potion).
+     */
     Vector3 center;
     List<Vector3> nodes = new List<Vector3>();
     //one grid unit
@@ -24,10 +33,10 @@ public class PotionBehavior : MonoBehaviour
         {"fear", new Vector3(60,0) },
         {"joy", new Vector3(0,60) },
         {"grief", new Vector3(0,-60)},
-         {"loathing", new Vector3(-30 * Mathf.Sqrt(2),-30 * Mathf.Sqrt(2)) },
-          {"amazement", new Vector3(30 * Mathf.Sqrt(2),-30 * Mathf.Sqrt(2)) },
-           {"vigilance",new Vector3(-30 * Mathf.Sqrt(2),30 * Mathf.Sqrt(2)) },
-            {"admiration", new Vector3(30 * Mathf.Sqrt(2),30 * Mathf.Sqrt(2)) },
+        {"loathing", new Vector3(-30 * Mathf.Sqrt(2),-30 * Mathf.Sqrt(2)) },
+        {"amazement", new Vector3(30 * Mathf.Sqrt(2),-30 * Mathf.Sqrt(2)) },
+        {"vigilance",new Vector3(-30 * Mathf.Sqrt(2),30 * Mathf.Sqrt(2)) },
+        {"admiration", new Vector3(30 * Mathf.Sqrt(2),30 * Mathf.Sqrt(2)) },
     };
 
     //relevant potion statistics
