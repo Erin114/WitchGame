@@ -3,26 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum QuestionPhases
+public class QuestionManager : MonoBehaviour
 {
-    Intro,
-    Questioning
-}
 
-public class TestCharacterInteraction : MonoBehaviour
-{
-    QuestionPhases phase = QuestionPhases.Intro;
+    public GameObject questionScrollBar;
+    public GameObject characterText;
+
     public Text t;
     public Text name;
     public Text patience;
-    Button introButton;
-    Button questionOne;
-    Button questionTwo;
-    Button questionThree;
-    Button nextButton;
+    public Button introButton;
+    public Button nextButton;
+
+    public List<Button> genericQuestions;
+    public List<Button> emotionQuestions;
 
     public List<GameObject> characterPrefabs;
     CharacterList list;
+
+    //index for the current character in the list
     public int currentChar = 0;
 
     public NPC startingCharacter;
@@ -35,29 +34,11 @@ public class TestCharacterInteraction : MonoBehaviour
         list = GameObject.Find("TempManager").GetComponent<JSONManager>().list;
         characters = new List<NPC>();
 
-        introButton = GameObject.Find("IntroButton").GetComponent<Button>();
-        questionOne = GameObject.Find("QuestionOne").GetComponent<Button>();
-        questionTwo = GameObject.Find("QuestionTwo").GetComponent<Button>();
-        questionThree = GameObject.Find("QuestionThree").GetComponent<Button>();
-        nextButton = GameObject.Find("NextButton").GetComponent<Button>();
-        //introButton = GameObject.Find("QuestionThree").GetComponent<Button>();
-
-        introButton.onClick.AddListener(ShowIntroText);
-        questionOne.onClick.AddListener(AnswerOne);
-        questionTwo.onClick.AddListener(AnswerTwo);
-        questionThree.onClick.AddListener(AnswerThree);
-        nextButton.onClick.AddListener(NextCustomer);
-
-        questionOne.gameObject.SetActive(false);
-        questionTwo.gameObject.SetActive(false);
-        nextButton.gameObject.SetActive(false);
-        questionThree.gameObject.SetActive(false);
-
         //spawn in all characters, enable only the first one
-        for(int i = 0; i < characterPrefabs.Count; i++)
+        for (int i = 0; i < characterPrefabs.Count; i++)
         {
             GameObject temp = Instantiate(characterPrefabs[i]);
-            temp.transform.position = new Vector3(-6.75f, -2.5f);
+            temp.transform.position = new Vector3(0.0f, 0.0f);
             characters.Add(temp.GetComponent<NPC>());
             temp.GetComponent<NPC>().LoadCharacterInfo();
 
@@ -78,12 +59,6 @@ public class TestCharacterInteraction : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void ChangeCharacter(NPC character)
     {
         //NextCustomer();
@@ -94,46 +69,77 @@ public class TestCharacterInteraction : MonoBehaviour
 
     }
 
-    void ShowIntroText()
+    public void ShowIntroText()
     {
         list = GameObject.Find("TempManager").GetComponent<JSONManager>().list;
         t.text = list.characters[currentChar].intro;
         introButton.gameObject.SetActive(false);
-        questionOne.gameObject.SetActive(true);
-        questionTwo.gameObject.SetActive(true);
+
+        //show all generic questions and emotion specific questions
+        for(int i = 0; i < genericQuestions.Count; i++)
+        {
+            genericQuestions[i].interactable = true;
+        }
+
+        for(int i = 0; i < emotionQuestions.Count; i++)
+        {
+            emotionQuestions[i].interactable = true;
+        }
+
     }
 
-    void AnswerOne()
+    //called by buttons to ask generic questions
+    public void AskGenericQuestion(int index)
+    {
+        t.text = currentCharacter.GenericResponse(index);
+
+        genericQuestions[index].gameObject.SetActive(false);
+
+        UpdatePatience();
+    }
+
+    //called by buttons to ask emotion-specific questions
+    public void AskEmotionQuestion(int index)
+    {
+        t.text = currentCharacter.SpecificResponse(index);
+
+        emotionQuestions[index].gameObject.SetActive(false);
+
+        UpdatePatience();
+    }
+
+    /*public void AnswerOne()
     {
         t.text = currentCharacter.GenericResponse(0);
         questionOne.gameObject.SetActive(false);
 
-        if(!questionOne.gameObject.activeSelf && !questionTwo.gameObject.activeSelf)
+        if (!questionOne.gameObject.activeSelf && !questionTwo.gameObject.activeSelf)
         {
             nextButton.gameObject.SetActive(true);
         }
 
         UpdatePatience();
 
-    }
+    } 
 
-    void AnswerTwo()
+    public void AnswerTwo()
     {
         t.text = currentCharacter.GenericResponse(1);
         questionTwo.gameObject.SetActive(false);
 
-        /*if (!questionOne.gameObject.activeSelf && !questionTwo.gameObject.activeSelf)
+        if (!questionOne.gameObject.activeSelf && !questionTwo.gameObject.activeSelf)
         {
             nextButton.gameObject.SetActive(true);
-        }*/
+        }
 
         questionThree.gameObject.SetActive(true);
+        questionThree.interactable = true;
 
         UpdatePatience();
 
     }
 
-    void AnswerThree()
+    public void AnswerThree()
     {
         t.text = currentCharacter.SpecificResponse(0);
 
@@ -145,19 +151,22 @@ public class TestCharacterInteraction : MonoBehaviour
         }
 
         UpdatePatience();
-    }
+    }*/
 
-    void NextCustomer()
+    //prepares the scene for the next customer
+    public void NextCustomer()
     {
         t.text = "Hi, I need help";
 
+        //update current character index
         currentChar++;
 
         //disable the old character
         currentCharacter.Reset();
         currentCharacter.gameObject.SetActive(false);
 
-        if(currentChar == list.characters.Count)
+        //go back to the start of the character list when its ran out ~~~ temp code
+        if (currentChar == list.characters.Count)
         {
             currentChar = 0;
         }
@@ -171,7 +180,20 @@ public class TestCharacterInteraction : MonoBehaviour
         Debug.Log(currentCharacter.charName);
 
         introButton.gameObject.SetActive(true);
-        nextButton.gameObject.SetActive(false);
+        //nextButton.gameObject.SetActive(false);
+
+        //show all generic questions and emotion specific questions
+        for (int i = 0; i < genericQuestions.Count; i++)
+        {
+            genericQuestions[i].interactable = false;
+            genericQuestions[i].gameObject.SetActive(true);
+        }
+
+        for (int i = 0; i < emotionQuestions.Count; i++)
+        {
+            emotionQuestions[i].interactable = false;
+            emotionQuestions[i].gameObject.SetActive(true);
+        }
 
         UpdatePatience();
 
@@ -181,5 +203,33 @@ public class TestCharacterInteraction : MonoBehaviour
     {
         patience.text = "Patience: " + currentCharacter.Patience.ToString();
     }
+
+    public void ShowScrollBar()
+    {
+        StartCoroutine(DisableCharacterText());
+    }
+
+    public void ShowCharacterText()
+    {
+        StartCoroutine(DisableScroll());
+    }
+
+    IEnumerator DisableScroll()
+    {
+        yield return new WaitForSeconds(0f);
+
+        questionScrollBar.SetActive(false);
+        characterText.SetActive(true);
+
+    }
+
+    IEnumerator DisableCharacterText()
+    {
+        yield return new WaitForSeconds(0f);
+
+        questionScrollBar.SetActive(true);
+        characterText.SetActive(false);
+    }
+
 
 }

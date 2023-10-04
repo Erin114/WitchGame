@@ -1,0 +1,7 @@
+{
+ "characters": 
+[
+{"ID": "0","name": "Tubby","emotion":"Angry","intro":"Im not feeling well, Im about to give my neighbor the mike tyson combo. I need a strength potion.","responses":["I got into an arguement with him earlier.","He trampled my roses last weekend, thats the last straw.","lala","levasdafas"],"specificResponses":["Obviously! Im out of here.","no","nah","sure","never ever","who knows","test","rah"]},
+{"ID": "1","name": "Bartholomew Jr.","emotion":"Happy","intro":"Im feeling great, but I need a love potion.","responses":["I got my crush some flowers but I dont know if she will like them.","Once shes in love with me, I know the flowers will win her over!","lala","levasdafas"],"specificResponses":["No not at all, I'm a little bit scared. Anyways, im leaving now.","yeah","who knows bro","i dont wanna tell you","lalala","test","no doubts","of course"]}
+] 
+}
