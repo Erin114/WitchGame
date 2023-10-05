@@ -15,18 +15,18 @@ public class PotionBehavior : MonoBehaviour
      */
     Vector3 center;
     List<Vector3> nodes = new List<Vector3>();
-
-    // adds ingredient added and starting point before ingredient was added at beginning of AddIngredient() 
-    Stack<Vector3> nodeStartHistory = new Stack<Vector3>();
-    Stack<Ingredients_SO> ingredientHistory = new Stack<Ingredients_SO>();
-    //Stack<(int nodeIndex, Level_SO.NodeTypes type)> chargersHistory = new Stack<(int nodeIndex, Level_SO.NodeTypes type)>;
     //one grid unit
     float unit;
 
     // array of special nodes, given the node index and node type
-    List<(int nodeIndex, Level_SO.NodeTypes type)> specials;
+    (int nodeIndex, NodeTypes type)[] specials;
     //types of nodes that need to be handled by SpecialNodeUpdate
-
+    enum NodeTypes
+    {
+        voidNode,
+        bipolar,
+        charger
+    }
 
     //positions of each emotional extreme
     Dictionary<string, Vector3> emotionValues = new Dictionary<string, Vector3>()
@@ -45,7 +45,6 @@ public class PotionBehavior : MonoBehaviour
     int poison = 0;
     int cost = 0;
     int chargersHit = 0;
-    int endpointIndex;
     
     private void Start()
     {
@@ -54,17 +53,16 @@ public class PotionBehavior : MonoBehaviour
         //potion position init, resolve how many rings will be in use and what the base ring units will be
         int rings = 10;
         int slices = 16;
-        float theta = 360 / slices;
+        float theta = 360f / slices;
         Vector3[] nodetemplate = new Vector3[rings];
         unit = 60f / rings;
-        for (int i = 1; i <= rings; i++)
+        for (int i = 0; i < rings; i++)
         {
-            nodetemplate[i-1] = center + new Vector3(i * unit, 0, 0);
+            nodetemplate[i] = center + new Vector3(i * unit, 0, 0);
         }
 
-        //indices for emotions and endpoints are 0 = center, 1-10 is fear,
-        //11-20 is between fear and admiration, 21-30 is admiration, etc. 
-
+        // 0 center, 1-10 fear, 11-20 fear/amazement, 21-30 amazement, etc. 
+        
         nodes.Add(center);
         //nodes.AddRange(nodetemplate);
         //populate node graph
@@ -79,20 +77,6 @@ public class PotionBehavior : MonoBehaviour
         }
     }
 
-    //Loading levels to add 
-   public void LoadLevelObject(Level_SO level)
-    {
-        int length = level.Special_Nodes_List.emotionIndex.Length;
-        for (int i = 0; i < length; i++)
-        {
-            specials.Add((level.Special_Nodes_List.emotionIndex[i], level.Special_Nodes_List.type[i]));
-        }
-        endpointIndex = level.Endpoint_Index;
-
-        poison = 0;
-        transform.localPosition = center;
-        cost = 0;
-    }
 
 
    
@@ -107,9 +91,6 @@ public class PotionBehavior : MonoBehaviour
      */
     void AddIngredient(Ingredients_SO ingredient) 
     {
-        nodeStartHistory.Push(transform.localPosition);
-        ingredientHistory.Push(ingredient);
-
         Vector3 move1 = emotionValues[ingredient.Ingredients_Vector.emotion[0]];
         float move1Amount = ingredient.Ingredients_Vector.value[0];
         MoveToward((move1, move1Amount));
@@ -122,17 +103,6 @@ public class PotionBehavior : MonoBehaviour
         }
         cost += ingredient.ingredients_Price;
         poison += ingredient.ingredients_Poison;
-
-        SpecialNodeUpdate();
-    }
-
-    //Undo move button! (TODO, undo charger use)
-    public void Undo()
-    {
-        transform.localPosition = nodeStartHistory.Pop();
-        Ingredients_SO tempIng = ingredientHistory.Pop();
-        poison -= tempIng.ingredients_Poison;
-        cost -= tempIng.ingredients_Price;
     }
 
     // moves toward a given endpoint by a certain distance
@@ -170,21 +140,21 @@ public class PotionBehavior : MonoBehaviour
     //called at the end of movetoward to see if we landed on any special nodes
     void SpecialNodeUpdate()
     {
-        for (int i = 0; i < specials.Count; i++)
+        for (int i = 0; i < specials.Length; i++)
         {
             if (nodes[specials[i].nodeIndex] == transform.localPosition)
             {
                 switch(specials[i].type)
                 {
-                    case Level_SO.NodeTypes.voidNode:
+                    case NodeTypes.voidNode:
                         break;
-                    case Level_SO.NodeTypes.charger:
+                    case NodeTypes.charger:
                         chargersHit++;
                         break;
-                    case Level_SO.NodeTypes.bipolar:
-                        for (int j = 0; j < specials.Count; j++)
+                    case NodeTypes.bipolar:
+                        for (int j = 0; j < specials.Length; j++)
                         {
-                            if (i != j && specials[j].type == Level_SO.NodeTypes.bipolar)
+                            if (i != j && specials[j].type == NodeTypes.bipolar)
                             {
                                 transform.localPosition = nodes[specials[j].nodeIndex];
                             }
