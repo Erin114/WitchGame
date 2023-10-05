@@ -31,14 +31,14 @@ public class PotionBehavior : MonoBehaviour
     //positions of each emotional extreme
     Dictionary<string, Vector3> emotionValues = new Dictionary<string, Vector3>()
     {
-        {"rage", new Vector3(-60, 0) },
-        {"fear", new Vector3(60,0) },
-        {"joy", new Vector3(0,60) },
-        {"grief", new Vector3(0,-60)},
-        {"loathing", new Vector3(-30 * Mathf.Sqrt(2),-30 * Mathf.Sqrt(2)) },
-        {"amazement", new Vector3(30 * Mathf.Sqrt(2),-30 * Mathf.Sqrt(2)) },
-        {"vigilance",new Vector3(-30 * Mathf.Sqrt(2),30 * Mathf.Sqrt(2)) },
-        {"admiration", new Vector3(30 * Mathf.Sqrt(2),30 * Mathf.Sqrt(2)) },
+        {"Rage", new Vector3(-60, 0) },
+        {"Terror", new Vector3(60,0) },
+        {"Joy", new Vector3(0,60) },
+        {"Grief", new Vector3(0,-60)},
+        {"Loathing", new Vector3(-30 * Mathf.Sqrt(2),-30 * Mathf.Sqrt(2)) },
+        {"Amazement", new Vector3(30 * Mathf.Sqrt(2),-30 * Mathf.Sqrt(2)) },
+        {"Vigilance",new Vector3(-30 * Mathf.Sqrt(2),30 * Mathf.Sqrt(2)) },
+        {"Admiration", new Vector3(30 * Mathf.Sqrt(2),30 * Mathf.Sqrt(2)) },
     };
 
     //relevant potion statistics
@@ -105,18 +105,18 @@ public class PotionBehavior : MonoBehaviour
      * int poison
      * String name
      */
-    void AddIngredient(Ingredients_SO ingredient) 
+    public void AddIngredient(Ingredients_SO ingredient) 
     {
         nodeStartHistory.Push(transform.localPosition);
         ingredientHistory.Push(ingredient);
 
         Vector3 move1 = emotionValues[ingredient.Ingredients_Vector.emotion[0]];
-        float move1Amount = ingredient.Ingredients_Vector.value[0];
+        float move1Amount = ingredient.Ingredients_Vector.value[0] * unit;
         MoveToward((move1, move1Amount));
         if (ingredient.Ingredients_Vector.emotion.Length > 1)
         {
             Vector3 move2 = emotionValues[ingredient.Ingredients_Vector.emotion[1]];
-            float move2Amount = ingredient.Ingredients_Vector.value[1];
+            float move2Amount = ingredient.Ingredients_Vector.value[1] * unit;
 
             MoveToward((move2, move2Amount));
         }
