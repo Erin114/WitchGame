@@ -92,12 +92,12 @@ public class PotionBehavior : MonoBehaviour
     public void AddIngredient(Ingredients_SO ingredient) 
     {
         Vector3 move1 = emotionValues[ingredient.Ingredients_Vector.emotion[0]];
-        float move1Amount = ingredient.Ingredients_Vector.value[0];
+        float move1Amount = ingredient.Ingredients_Vector.value[0] * unit;
         MoveToward((move1, move1Amount));
         if (ingredient.Ingredients_Vector.emotion.Length > 1)
         {
             Vector3 move2 = emotionValues[ingredient.Ingredients_Vector.emotion[1]];
-            float move2Amount = ingredient.Ingredients_Vector.value[1];
+            float move2Amount = ingredient.Ingredients_Vector.value[1] * unit;
 
             MoveToward((move2, move2Amount));
         }
