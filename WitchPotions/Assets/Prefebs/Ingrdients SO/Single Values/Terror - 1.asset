@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Terror - 1
   m_EditorClassIdentifier: 
   ingredients_Name: 'Dreadshade '
-  ingredients_Price: 0
+  ingredients_Price: 5
   ingredients_Poison: 1
-  ingredients_Sprite: {fileID: 0}
+  ingredients_Sprite: {fileID: 21300000, guid: 345c9c8b33b0b4445a0674ce050fe967, type: 3}
   ingredients_Emotion:
   - Terror
   ingredients_Value: 01000000

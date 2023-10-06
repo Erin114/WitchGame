@@ -15,7 +15,7 @@ MonoBehaviour:
   ingredients_Name: Radiance Thistle
   ingredients_Price: 0
   ingredients_Poison: 3
-  ingredients_Sprite: {fileID: 0}
+  ingredients_Sprite: {fileID: 21300000, guid: af5ed83773e96434094eadeaff60f7d3, type: 3}
   ingredients_Emotion:
   - Loathing
   - Amazement

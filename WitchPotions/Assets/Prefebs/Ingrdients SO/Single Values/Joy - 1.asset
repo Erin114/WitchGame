@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Joy - 1
   m_EditorClassIdentifier: 
   ingredients_Name: Viperthorn
-  ingredients_Price: 0
+  ingredients_Price: 5
   ingredients_Poison: 1
-  ingredients_Sprite: {fileID: 0}
+  ingredients_Sprite: {fileID: 21300000, guid: c50e322640ba4da48a1a61791a3ee251, type: 3}
   ingredients_Emotion:
   - Joy
   ingredients_Value: 01000000

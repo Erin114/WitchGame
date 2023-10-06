@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Joy - 3
   m_EditorClassIdentifier: 
   ingredients_Name: Smile Jam
-  ingredients_Price: 0
+  ingredients_Price: 10
   ingredients_Poison: 2
-  ingredients_Sprite: {fileID: 0}
+  ingredients_Sprite: {fileID: 21300000, guid: d3043a70dc4e6774a863904e58c4997f, type: 3}
   ingredients_Emotion:
   - Joy
   ingredients_Value: 03000000

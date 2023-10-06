@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Grief - 3
   m_EditorClassIdentifier: 
   ingredients_Name: Emberblossom
-  ingredients_Price: 0
+  ingredients_Price: 10
   ingredients_Poison: 2
-  ingredients_Sprite: {fileID: 0}
+  ingredients_Sprite: {fileID: 21300000, guid: 411f76869a441564a873d9ec5891299d, type: 3}
   ingredients_Emotion:
   - Grief
   ingredients_Value: 03000000

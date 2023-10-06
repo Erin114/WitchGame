@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Admiration - 5
   m_EditorClassIdentifier: 
   ingredients_Name: Wrathbark
-  ingredients_Price: 0
+  ingredients_Price: 15
   ingredients_Poison: 3
-  ingredients_Sprite: {fileID: 0}
+  ingredients_Sprite: {fileID: 21300000, guid: f7b3e88accfb89c4fa5168ae829aca13, type: 3}
   ingredients_Emotion:
   - Admiration
   ingredients_Value: 05000000

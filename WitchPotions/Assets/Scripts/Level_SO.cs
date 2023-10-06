@@ -14,6 +14,14 @@ public class Level_SO : ScriptableObject
 
     //indices for emotions and endpoints are 0 = center, 1-10 is fear,
     //11-20 is between fear and admiration, 21-30 is admiration, etc.
+    //Fear       - 1-10
+    //Admiration - 21-30
+    //Joy        - 41-50
+    //Vigilance  - 61-70
+    //Rage       - 81-90
+    //Loathing   - 101-110
+    //Giref      - 121-131
+    //Amazement  - 141-151
     [SerializeField] int[] emotionIndices;
     [SerializeField] NodeTypes[] nodeType;
     [SerializeField] int endpoint_Index;

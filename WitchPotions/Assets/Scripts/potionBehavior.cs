@@ -15,6 +15,7 @@ public class PotionBehavior : MonoBehaviour
      */
     Vector3 center;
     List<Vector3> nodes = new List<Vector3>();
+    List<Vector3> previewNodes = new List<Vector3>();
 
     // adds ingredient added and starting point before ingredient was added at beginning of AddIngredient() 
     Stack<int> nodeStartHistory = new Stack<int>();
@@ -78,6 +79,7 @@ public class PotionBehavior : MonoBehaviour
                 nodes.Add(newNode);
             }
         }
+        previewNodes = nodes;
     }
 
     //Loading levels to add 
@@ -127,6 +129,7 @@ public class PotionBehavior : MonoBehaviour
         poison += ingredient.ingredients_Poison;
 
         SpecialNodeUpdate();
+        previewNodes = nodes;
     }
 
     //Undo move button! (TODO, undo charger use)
@@ -284,6 +287,71 @@ public class PotionBehavior : MonoBehaviour
             pathNodes.AddRange(Pathing(endNode, closestToEndpoint, nodesToTraverse - 1));
         }
         return pathNodes.ToArray();
+    }
+    
+    //Create a line preview 
+    public LineRenderer lineRenderer;
+    public void HoverOverIngredeint(Ingredients_SO ingredient)
+    {
+
+        //Set up like the movement, only using Line renderer to save the data
+        //instead of moving using transform 
+        lineRenderer.positionCount = ingredient.ingredients_Value.Length + 1;
+        lineRenderer.SetPosition(0, transform.localPosition);
+        int[] path = PreviewPathing(emotionValues[ingredient.Ingredients_Vector.emotion[0]], currentNodePosition, ingredient.Ingredients_Vector.value[0]);
+        currentNodePosition = path[path.Length - 1];
+        Vector2 newLocation = nodes[currentNodePosition];
+        lineRenderer.SetPosition(1, newLocation);
+
+        //repeat if two different modes to ingredient
+        if (ingredient.Ingredients_Vector.emotion.Length > 1)
+        {
+            path = PreviewPathing(emotionValues[ingredient.Ingredients_Vector.emotion[1]], currentNodePosition, ingredient.Ingredients_Vector.value[1]);
+            currentNodePosition = path[path.Length - 1];
+            newLocation = nodes[path[path.Length - 1]];
+            lineRenderer.SetPosition(2, newLocation);
+        }
+    }
+
+    // End of path, Start of Path (usually current position), how many nodes into the path you traverse
+    int[] PreviewPathing(int endNode, int startNode, int nodesToTraverse)
+    {
+
+        List<int> pathNodes = new List<int>();
+        int[] neigbors = GetNodeNeigbors(startNode);
+        int closestToEndpoint = endNode;
+        float bestDist = Vector3.Distance(previewNodes[endNode], previewNodes[startNode]);
+
+        //checks neighbors for the new best distance
+        for (int i = 0; i < neigbors.Length; i++)
+        {
+            if (endNode == neigbors[i] || endNode == startNode)
+            {
+                closestToEndpoint = endNode;
+                break;
+            }
+            float dist = Vector3.Distance(previewNodes[endNode], previewNodes[neigbors[i]]);
+            if (dist <= bestDist)
+            {
+                bestDist = dist;
+                closestToEndpoint = neigbors[i];
+            }
+        }
+
+        //adds the winner to pathNodes, recursive calls for the rest of the nodes in the pathing, path endpoint being last
+        Debug.Log(closestToEndpoint);
+        pathNodes.Add(closestToEndpoint);
+        if (nodesToTraverse > 1 && endNode != closestToEndpoint)
+        {
+            pathNodes.AddRange(Pathing(endNode, closestToEndpoint, nodesToTraverse - 1));
+        }
+        return pathNodes.ToArray();
+    }
+    public void HoverEnd()
+    {
+        lineRenderer.positionCount = 0;
+        previewNodes = nodes;
+
     }
 
     //finish brewing, probably to be called by InventoryManager or another GameManager

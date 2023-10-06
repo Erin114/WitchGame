@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Amazement - 1
   m_EditorClassIdentifier: 
   ingredients_Name: Eclipsedaisy
-  ingredients_Price: 0
+  ingredients_Price: 5
   ingredients_Poison: 1
-  ingredients_Sprite: {fileID: 0}
+  ingredients_Sprite: {fileID: 21300000, guid: a534f5b0f6ac29e4083664cd903e4004, type: 3}
   ingredients_Emotion:
-  - 'Amazement '
+  - Amazement
   ingredients_Value: 01000000

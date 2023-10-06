@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Vigilance - 1
   m_EditorClassIdentifier: 
   ingredients_Name: 'Frenzyfruit '
-  ingredients_Price: 0
+  ingredients_Price: 5
   ingredients_Poison: 1
-  ingredients_Sprite: {fileID: 0}
+  ingredients_Sprite: {fileID: 21300000, guid: e059461eec20aa24fae4ebfd04d290cc, type: 3}
   ingredients_Emotion:
   - Vigilance
   ingredients_Value: 01000000

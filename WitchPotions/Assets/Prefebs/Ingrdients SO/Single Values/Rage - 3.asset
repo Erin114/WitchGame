@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Rage - 3
   m_EditorClassIdentifier: 
   ingredients_Name: Radiant Rosemary
-  ingredients_Price: 0
+  ingredients_Price: 10
   ingredients_Poison: 2
-  ingredients_Sprite: {fileID: 0}
+  ingredients_Sprite: {fileID: 21300000, guid: fec72432bd6b59745aea7e1a9ca529fd, type: 3}
   ingredients_Emotion:
   - Rage
   ingredients_Value: 03000000

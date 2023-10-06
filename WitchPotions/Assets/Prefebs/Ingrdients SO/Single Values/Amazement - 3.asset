@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Amazement - 3
   m_EditorClassIdentifier: 
   ingredients_Name: Lamentroot
-  ingredients_Price: 0
+  ingredients_Price: 10
   ingredients_Poison: 2
-  ingredients_Sprite: {fileID: 0}
+  ingredients_Sprite: {fileID: 21300000, guid: 9c7b5d56d54d76d4aaaad7d871a2f4bd, type: 3}
   ingredients_Emotion:
-  - 'Amazement '
+  - Amazement
   ingredients_Value: 03000000

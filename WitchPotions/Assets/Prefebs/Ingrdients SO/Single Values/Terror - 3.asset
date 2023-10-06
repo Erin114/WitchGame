@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Terror - 3
   m_EditorClassIdentifier: 
   ingredients_Name: Venomorchid
-  ingredients_Price: 0
+  ingredients_Price: 10
   ingredients_Poison: 2
-  ingredients_Sprite: {fileID: 0}
+  ingredients_Sprite: {fileID: 21300000, guid: c3270d3ef6e27374f898bd442402f395, type: 3}
   ingredients_Emotion:
   - Terror
   ingredients_Value: 03000000

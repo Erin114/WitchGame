@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Admiration - 3
   m_EditorClassIdentifier: 
   ingredients_Name: Raventwist
-  ingredients_Price: 0
+  ingredients_Price: 10
   ingredients_Poison: 2
-  ingredients_Sprite: {fileID: 0}
+  ingredients_Sprite: {fileID: 21300000, guid: c6232b7c1af67bc4b85c9e56cf3566a2, type: 3}
   ingredients_Emotion:
   - Admiration
   ingredients_Value: 03000000
