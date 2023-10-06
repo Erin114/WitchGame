@@ -17,28 +17,29 @@ public class PotionBehavior : MonoBehaviour
     List<Vector3> nodes = new List<Vector3>();
 
     // adds ingredient added and starting point before ingredient was added at beginning of AddIngredient() 
-    Stack<Vector3> nodeStartHistory = new Stack<Vector3>();
+    Stack<int> nodeStartHistory = new Stack<int>();
     Stack<Ingredients_SO> ingredientHistory = new Stack<Ingredients_SO>();
     //Stack<(int nodeIndex, Level_SO.NodeTypes type)> chargersHistory = new Stack<(int nodeIndex, Level_SO.NodeTypes type)>;
     //one grid unit
     float unit;
 
+    int currentNodePosition = 0;
     // array of special nodes, given the node index and node type
-    List<(int nodeIndex, Level_SO.NodeTypes type)> specials;
+    List<(int nodeIndex, Level_SO.NodeTypes type)> specials = new List<(int nodeIndex, Level_SO.NodeTypes type)>();
     //types of nodes that need to be handled by SpecialNodeUpdate
 
 
     //positions of each emotional extreme
-    Dictionary<string, Vector3> emotionValues = new Dictionary<string, Vector3>()
+    Dictionary<string, int> emotionValues = new Dictionary<string, int>()
     {
-        {"Rage", new Vector3(-60, 0) },
-        {"Terror", new Vector3(60,0) },
-        {"Joy", new Vector3(0,60) },
-        {"Grief", new Vector3(0,-60)},
-        {"Loathing", new Vector3(-30 * Mathf.Sqrt(2),-30 * Mathf.Sqrt(2)) },
-        {"Amazement", new Vector3(30 * Mathf.Sqrt(2),-30 * Mathf.Sqrt(2)) },
-        {"Vigilance",new Vector3(-30 * Mathf.Sqrt(2),30 * Mathf.Sqrt(2)) },
-        {"Admiration", new Vector3(30 * Mathf.Sqrt(2),30 * Mathf.Sqrt(2)) },
+        {"Rage", 90 },
+        {"Terror", 10 },
+        {"Joy", 50},
+        {"Grief", 130},
+        {"Loathing",110 },
+        {"Amazement", 150 },
+        {"Vigilance",70},
+        {"Admiration", 30 },
     };
 
     //relevant potion statistics
@@ -54,7 +55,7 @@ public class PotionBehavior : MonoBehaviour
         //potion position init, resolve how many rings will be in use and what the base ring units will be
         int rings = 10;
         int slices = 16;
-        float theta = 360 / slices;
+        float theta = 22.5f;
         Vector3[] nodetemplate = new Vector3[rings];
         unit = 60f / rings;
         for (int i = 1; i <= rings; i++)
@@ -107,18 +108,18 @@ public class PotionBehavior : MonoBehaviour
      */
     public void AddIngredient(Ingredients_SO ingredient) 
     {
-        nodeStartHistory.Push(transform.localPosition);
+        nodeStartHistory.Push(currentNodePosition);
         ingredientHistory.Push(ingredient);
 
-        Vector3 move1 = emotionValues[ingredient.Ingredients_Vector.emotion[0]];
-        float move1Amount = ingredient.Ingredients_Vector.value[0] * unit;
-        MoveToward((move1, move1Amount));
+        int[] path = Pathing(emotionValues[ingredient.Ingredients_Vector.emotion[0]], currentNodePosition, ingredient.Ingredients_Vector.value[0]);
+        currentNodePosition = path[path.Length - 1];
+        transform.localPosition = nodes[currentNodePosition];
+        
         if (ingredient.Ingredients_Vector.emotion.Length > 1)
         {
-            Vector3 move2 = emotionValues[ingredient.Ingredients_Vector.emotion[1]];
-            float move2Amount = ingredient.Ingredients_Vector.value[1] * unit;
-
-            MoveToward((move2, move2Amount));
+            path = Pathing(emotionValues[ingredient.Ingredients_Vector.emotion[1]], currentNodePosition, ingredient.Ingredients_Vector.value[1]);
+            currentNodePosition = path[path.Length - 1];
+            transform.localPosition = nodes[path[path.Length - 1]];
         }
         cost += ingredient.ingredients_Price;
         poison += ingredient.ingredients_Poison;
@@ -129,7 +130,7 @@ public class PotionBehavior : MonoBehaviour
     //Undo move button! (TODO, undo charger use)
     public void Undo()
     {
-        transform.localPosition = nodeStartHistory.Pop();
+        transform.localPosition = nodes[nodeStartHistory.Pop()];
         Ingredients_SO tempIng = ingredientHistory.Pop();
         poison -= tempIng.ingredients_Poison;
         cost -= tempIng.ingredients_Price;
@@ -139,13 +140,25 @@ public class PotionBehavior : MonoBehaviour
     void MoveToward((Vector3, float) inputs) {
 
         (Vector3 node, float distance) = inputs;
-
+        Vector3 v;
+        Vector3 vSpace;
+        Vector3 finalNode;
+        float distBest;
         if (node == transform.localPosition) return;
-        Vector3 v = (node - transform.localPosition).normalized * distance;
-        Vector3 vSpace = v + transform.localPosition;
-        //set final as destination node with distance 
-        Vector3 finalNode = node;
-        float distBest = Vector3.Distance(node,vSpace);
+        float distleft = Vector3.Distance(node, transform.localPosition);
+        if (distleft >= distance)
+        {
+            v = (node - transform.localPosition).normalized * distance;
+            vSpace = v + transform.localPosition;
+            //set final as destination node with distance 
+            finalNode = node;
+            distBest = Vector3.Distance(node, vSpace);
+        }
+        else
+        {
+            transform.localPosition = node;
+            return;
+        }
 
         //calcualtes the closest node (that is NOT the current node) and locks the point's position to it
         foreach (Vector3 point in nodes)
@@ -154,7 +167,7 @@ public class PotionBehavior : MonoBehaviour
 
             if (distBest > temp && point != transform.localPosition) { distBest = temp; finalNode = point; }
         }
-        transform.localPosition = finalNode;
+        transform.localPosition = finalNode; 
 
     }
 
@@ -170,6 +183,7 @@ public class PotionBehavior : MonoBehaviour
     //called at the end of movetoward to see if we landed on any special nodes
     void SpecialNodeUpdate()
     {
+        if (specials.Count == 0) return;
         for (int i = 0; i < specials.Count; i++)
         {
             if (nodes[specials[i].nodeIndex] == transform.localPosition)
@@ -197,6 +211,66 @@ public class PotionBehavior : MonoBehaviour
             }
         }
 
+    }
+
+    int[] GetNodeNeigbors(int node)
+    {
+        int[] neighbors;
+        if (node % 10 == 1)
+        {
+            neighbors = new int[6] {0, node + 10, node + 11, node + 1, node - 9, node - 10 };
+            
+        }
+        else if (node % 10 == 0 && node != 0)
+        {
+            neighbors = new int[5] { node + 10, node +9, node -1, node -11, node - 10 };
+
+        }
+        else if (node == 0){ neighbors = new int[16] {1,11,21,31,41,51,61,71,81,91,101,111,121,131,141,151 }; }
+        else { neighbors = new int[8] {node + 9, node + 10, node + 11, node + 1, node - 9, node -10, node-11, node-1 }; }
+
+        for (int i = 0; i < neighbors.Length; i++)
+        {
+            if (neighbors[i] <= 0 && i > 0 )
+            {
+                neighbors[i] = 160 + neighbors[i];
+            }
+            else if (neighbors[i] > 160) { neighbors[i] = neighbors[i] - 160; }
+        }
+        return neighbors;
+    }
+
+
+    int[] Pathing(int endNode,  int startNode, int nodesToTraverse)
+    {
+
+        List<int> pathNodes = new List<int>();
+        int[] neigbors = GetNodeNeigbors(startNode);
+        int closestToEndpoint = endNode;
+        float bestDist = Vector3.Distance(nodes[endNode], nodes[startNode]);
+
+        for (int i = 0; i < neigbors.Length; i++)
+        {
+            if (endNode == neigbors[i] || endNode == startNode)
+            {
+                closestToEndpoint = endNode;
+                break;
+            }
+            float dist = Vector3.Distance(nodes[endNode], nodes[neigbors[i]]);
+            if (dist <= bestDist)
+            {
+                bestDist = dist;
+                closestToEndpoint = neigbors[i];
+            }
+        }
+
+        Debug.Log(closestToEndpoint);
+        pathNodes.Add(closestToEndpoint);
+        if (nodesToTraverse > 1 && endNode != closestToEndpoint)
+        {
+            pathNodes.AddRange(Pathing(endNode, closestToEndpoint, nodesToTraverse - 1));
+        }
+        return pathNodes.ToArray();
     }
 
     //finish brewing, probably to be called by InventoryManager or another GameManager
