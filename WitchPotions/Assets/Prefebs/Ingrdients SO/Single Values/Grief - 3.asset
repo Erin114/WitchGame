@@ -17,5 +17,5 @@ MonoBehaviour:
   ingredients_Poison: 2
   ingredients_Sprite: {fileID: 0}
   ingredients_Emotion:
-  - 'Grief '
+  - Grief
   ingredients_Value: 03000000

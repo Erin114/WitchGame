@@ -111,10 +111,12 @@ public class PotionBehavior : MonoBehaviour
         nodeStartHistory.Push(currentNodePosition);
         ingredientHistory.Push(ingredient);
 
+        //creates a path, sets the current node position to the end point of the path, and then sets localposition to that end point
         int[] path = Pathing(emotionValues[ingredient.Ingredients_Vector.emotion[0]], currentNodePosition, ingredient.Ingredients_Vector.value[0]);
         currentNodePosition = path[path.Length - 1];
         transform.localPosition = nodes[currentNodePosition];
         
+        //repeat if two different modes to ingredient
         if (ingredient.Ingredients_Vector.emotion.Length > 1)
         {
             path = Pathing(emotionValues[ingredient.Ingredients_Vector.emotion[1]], currentNodePosition, ingredient.Ingredients_Vector.value[1]);
@@ -213,22 +215,29 @@ public class PotionBehavior : MonoBehaviour
 
     }
 
+
+    //returns all neighbors 
     int[] GetNodeNeigbors(int node)
     {
         int[] neighbors;
+        //innermost ring case
         if (node % 10 == 1)
         {
             neighbors = new int[6] {0, node + 10, node + 11, node + 1, node - 9, node - 10 };
             
         }
+        //outermost ring case
         else if (node % 10 == 0 && node != 0)
         {
             neighbors = new int[5] { node + 10, node +9, node -1, node -11, node - 10 };
 
         }
+        //center case
         else if (node == 0){ neighbors = new int[16] {1,11,21,31,41,51,61,71,81,91,101,111,121,131,141,151 }; }
+        //middle rings case
         else { neighbors = new int[8] {node + 9, node + 10, node + 11, node + 1, node - 9, node -10, node-11, node-1 }; }
 
+        //looping rings around when out of index
         for (int i = 0; i < neighbors.Length; i++)
         {
             if (neighbors[i] <= 0 && i > 0 )
@@ -241,6 +250,8 @@ public class PotionBehavior : MonoBehaviour
     }
 
 
+
+    // End of path, Start of Path (usually current position), how many nodes into the path you traverse
     int[] Pathing(int endNode,  int startNode, int nodesToTraverse)
     {
 
@@ -249,6 +260,7 @@ public class PotionBehavior : MonoBehaviour
         int closestToEndpoint = endNode;
         float bestDist = Vector3.Distance(nodes[endNode], nodes[startNode]);
 
+        //checks neighbors for the new best distance
         for (int i = 0; i < neigbors.Length; i++)
         {
             if (endNode == neigbors[i] || endNode == startNode)
@@ -264,6 +276,7 @@ public class PotionBehavior : MonoBehaviour
             }
         }
 
+        //adds the winner to pathNodes, recursive calls for the rest of the nodes in the pathing, path endpoint being last
         Debug.Log(closestToEndpoint);
         pathNodes.Add(closestToEndpoint);
         if (nodesToTraverse > 1 && endNode != closestToEndpoint)
