@@ -45,7 +45,7 @@ public class Ingredient_Menu : MonoBehaviour
       popUpPoison.text = "Poison - " + ingredient.ingredients_Poison.ToString();
         for (int i = 0; i < ingredient.ingredients_Emotion.Length; i++)
         {
-            popUpData.text += ingredient.ingredients_Emotion[i] + " = " + ingredient.ingredients_Value[i] + "\n\n";
+            popUpData.text += ingredient.ingredients_Emotion[i] + " = " + ingredient.ingredients_Value[i] + "\n";
         }
     }
     public void ClearUpPopUp()
