@@ -12,6 +12,12 @@ public class NPC : MonoBehaviour
     [SerializeField]
     protected TestCharacter characterInfo;
 
+    //ntch
+    public List<int> genericQuestionSpriteOrder;
+    public List<int> specificQuestionSpriteOrder;
+
+    public List<Sprite> spriteVariants;
+
     private CharacterList list;
 
     // Start is called before the first frame update
@@ -73,6 +79,9 @@ public class NPC : MonoBehaviour
         if (characterInfo.responses.Length > index)
         {
             patience -= 25f;
+
+            ChangeSprite(spriteVariants, genericQuestionSpriteOrder, index);
+
             return characterInfo.responses[index];
         }
         else
@@ -89,12 +98,23 @@ public class NPC : MonoBehaviour
         if (characterInfo.specificResponses.Length > index)
         {
             patience -= 50f;
+
+            ChangeSprite(spriteVariants, specificQuestionSpriteOrder, index);
+
             return characterInfo.specificResponses[index];
         }
         else
         {
             Debug.Log("Specific response index is out of bounds");
             return "";
+        }
+    }
+
+    public void ChangeSprite(List<Sprite> sprites, List<int> order, int index)
+    {
+        if(index < order.Count)
+        {
+            GetComponent<SpriteRenderer>().sprite = spriteVariants[order[index]];
         }
     }
 

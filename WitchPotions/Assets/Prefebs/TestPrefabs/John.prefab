@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5329478684438430015}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.896, y: 2.3, z: 0}
-  m_LocalScale: {x: 0.8091822, y: 0.8091822, z: 0.8091822}
+  m_LocalPosition: {x: -7.896, y: 3.5242, z: 0}
+  m_LocalScale: {x: 0.28223225, y: 0.28223225, z: 0.28223225}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: db7240d664befde40ad703e0b90f833b, type: 3}
+  m_Sprite: {fileID: -256196245, guid: 5005caf1da061664e992da5e8f4f28f5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -107,3 +107,10 @@ MonoBehaviour:
     intro: 
     responses: []
     specificResponses: []
+  genericQuestionSpriteOrder: 01000000020000000300000000000000
+  specificQuestionSpriteOrder: 0300000002000000010000000000000000000000030000000300000000000000
+  spriteVariants:
+  - {fileID: -256196245, guid: 5005caf1da061664e992da5e8f4f28f5, type: 3}
+  - {fileID: -728379334, guid: 5005caf1da061664e992da5e8f4f28f5, type: 3}
+  - {fileID: 920335037, guid: 5005caf1da061664e992da5e8f4f28f5, type: 3}
+  - {fileID: -1777462874, guid: 5005caf1da061664e992da5e8f4f28f5, type: 3}
