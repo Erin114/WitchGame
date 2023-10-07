@@ -307,7 +307,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: -7810464532476298364}
           m_TargetAssemblyTypeName: Ingredient_Button_Class, Assembly-CSharp
-          m_MethodName: CallPopUp
+          m_MethodName: HoverStart
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -323,7 +323,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: -7810464532476298364}
           m_TargetAssemblyTypeName: Ingredient_Button_Class, Assembly-CSharp
-          m_MethodName: ClearPopUp
+          m_MethodName: HoverEnd
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

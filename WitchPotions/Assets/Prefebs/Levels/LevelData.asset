@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986cbe450bb9f8a4ebe108f7f8fe1cee, type: 3}
   m_Name: LevelData
   m_EditorClassIdentifier: 
-  emotionIndices: 00000000
-  nodeType: 00000000
+  emotionIndices: 0100000001000000
+  nodeType: 0000000000000000
   endpoint_Index: 0
   coin_Reward: 0
