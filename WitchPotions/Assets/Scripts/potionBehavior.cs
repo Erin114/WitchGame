@@ -136,10 +136,41 @@ public class PotionBehavior : MonoBehaviour
     //Undo move button! (TODO, undo charger use)
     public void Undo()
     {
-        transform.localPosition = nodes[nodeStartHistory.Pop()];
-        Ingredients_SO tempIng = ingredientHistory.Pop();
-        poison -= tempIng.ingredients_Poison;
-        cost -= tempIng.ingredients_Price;
+        if (nodeStartHistory.Count >= 2)
+        {
+            nodeStartHistory.Pop();
+            transform.localPosition = nodes[nodeStartHistory.Peek()];
+            Ingredients_SO tempIng = ingredientHistory.Pop();
+            poison -= tempIng.ingredients_Poison;
+            cost -= tempIng.ingredients_Price;
+        }
+        else
+        {
+            if (nodeStartHistory.Count == 1)
+            {
+                Ingredients_SO tempIng = ingredientHistory.Peek();
+                poison -= tempIng.ingredients_Poison;
+                cost -= tempIng.ingredients_Price;
+                nodeStartHistory.Pop();
+                ingredientHistory.Pop();
+            }
+            
+            transform.localPosition = nodes[0];
+        }
+    }
+
+    //Reset all move button! 
+    public void Reset()
+    {
+        foreach (Ingredients_SO item in ingredientHistory)
+        {
+            poison -= item.ingredients_Poison;
+            cost -= item.ingredients_Price;
+        }
+            nodeStartHistory.Clear();
+            ingredientHistory.Clear();
+            transform.localPosition = nodes[0];
+            poison = 0;
     }
 
     // moves toward a given endpoint by a certain distance
