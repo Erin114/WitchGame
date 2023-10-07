@@ -17,5 +17,5 @@ MonoBehaviour:
   ingredients_Poison: 1
   ingredients_Sprite: {fileID: 21300000, guid: 07eea38e25f834c45a8c958ed988dd4a, type: 3}
   ingredients_Emotion:
-  - 'Rage '
+  - Rage
   ingredients_Value: 01000000

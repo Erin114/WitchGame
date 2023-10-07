@@ -27,6 +27,8 @@ public class Ingredient_Button_Class : MonoBehaviour
     public void SendIngredient()
     {
         PotionBehaviorManager.AddIngredient(ingredient);
+        PotionBehaviorManager.HoverOverIngredeint(ingredient);
+
     }
     public void CallPopUp()
     {
@@ -35,5 +37,14 @@ public class Ingredient_Button_Class : MonoBehaviour
     public void ClearPopUp()
     {
         menu.ClearUpPopUp();
+    }
+    public void HoverStart()
+    {
+        PotionBehaviorManager.HoverOverIngredeint(ingredient);
+    }
+    public void HoverEnd()
+    {
+        PotionBehaviorManager.HoverEnd();
+
     }
 }

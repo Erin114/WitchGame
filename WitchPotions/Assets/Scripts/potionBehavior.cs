@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PotionBehavior : MonoBehaviour
 {
@@ -135,10 +136,41 @@ public class PotionBehavior : MonoBehaviour
     //Undo move button! (TODO, undo charger use)
     public void Undo()
     {
-        transform.localPosition = nodes[nodeStartHistory.Pop()];
-        Ingredients_SO tempIng = ingredientHistory.Pop();
-        poison -= tempIng.ingredients_Poison;
-        cost -= tempIng.ingredients_Price;
+        if (nodeStartHistory.Count >= 2)
+        {
+            nodeStartHistory.Pop();
+            transform.localPosition = nodes[nodeStartHistory.Peek()];
+            Ingredients_SO tempIng = ingredientHistory.Pop();
+            poison -= tempIng.ingredients_Poison;
+            cost -= tempIng.ingredients_Price;
+        }
+        else
+        {
+            if (nodeStartHistory.Count == 1)
+            {
+                Ingredients_SO tempIng = ingredientHistory.Peek();
+                poison -= tempIng.ingredients_Poison;
+                cost -= tempIng.ingredients_Price;
+                nodeStartHistory.Pop();
+                ingredientHistory.Pop();
+            }
+            
+            transform.localPosition = nodes[0];
+        }
+    }
+
+    //Reset all move button! 
+    public void Reset()
+    {
+        foreach (Ingredients_SO item in ingredientHistory)
+        {
+            poison -= item.ingredients_Poison;
+            cost -= item.ingredients_Price;
+        }
+            nodeStartHistory.Clear();
+            ingredientHistory.Clear();
+            transform.localPosition = nodes[0];
+            poison = 0;
     }
 
     // moves toward a given endpoint by a certain distance
@@ -288,20 +320,22 @@ public class PotionBehavior : MonoBehaviour
         }
         return pathNodes.ToArray();
     }
-    
+
     //Create a line preview 
-    public LineRenderer lineRenderer;
+    public UILineRenderer lineRenderer;
     public void HoverOverIngredeint(Ingredients_SO ingredient)
     {
+        lineRenderer.gameObject.SetActive(true);
+
 
         //Set up like the movement, only using Line renderer to save the data
         //instead of moving using transform 
-        lineRenderer.positionCount = ingredient.ingredients_Value.Length + 1;
-        lineRenderer.SetPosition(0, transform.localPosition);
+        Vector2[] pointsV2 = new Vector2[ingredient.ingredients_Value.Length + 1];
+        pointsV2[0] = (transform.localPosition);
         int[] path = PreviewPathing(emotionValues[ingredient.Ingredients_Vector.emotion[0]], currentNodePosition, ingredient.Ingredients_Vector.value[0]);
         currentNodePosition = path[path.Length - 1];
         Vector2 newLocation = nodes[currentNodePosition];
-        lineRenderer.SetPosition(1, newLocation);
+        pointsV2[1] = newLocation;
 
         //repeat if two different modes to ingredient
         if (ingredient.Ingredients_Vector.emotion.Length > 1)
@@ -309,8 +343,18 @@ public class PotionBehavior : MonoBehaviour
             path = PreviewPathing(emotionValues[ingredient.Ingredients_Vector.emotion[1]], currentNodePosition, ingredient.Ingredients_Vector.value[1]);
             currentNodePosition = path[path.Length - 1];
             newLocation = nodes[path[path.Length - 1]];
-            lineRenderer.SetPosition(2, newLocation);
+            pointsV2[2] = newLocation;
         }
+        //make sure to not draw a line if start and end point are the same
+        if (pointsV2[0] != pointsV2[pointsV2.Length - 1])
+        {
+            lineRenderer.Points = pointsV2;
+        }
+        else
+        {
+            lineRenderer.gameObject.SetActive(false);
+        }
+
     }
 
     // End of path, Start of Path (usually current position), how many nodes into the path you traverse
@@ -349,7 +393,9 @@ public class PotionBehavior : MonoBehaviour
     }
     public void HoverEnd()
     {
-        lineRenderer.positionCount = 0;
+        lineRenderer.gameObject.SetActive(false);
+        Vector2[] pointsV2 = new Vector2[1];
+        lineRenderer.Points = pointsV2;
         previewNodes = nodes;
 
     }
