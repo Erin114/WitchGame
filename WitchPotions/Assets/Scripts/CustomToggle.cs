@@ -5,32 +5,21 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public enum ToggleStates
-{
-    Empty,
-    Yes,
-    No
-}
-
 public class CustomToggle : MonoBehaviour, IPointerClickHandler
 {
 
     public UnityEvent customToggleClicked;
 
     [SerializeField]
-    public ToggleStates toggleState = ToggleStates.Empty;
+    private int toggleState = 0;
 
     public GameObject x;
     public GameObject check;
-    public Emotions emotion;
-
-    public BookUI book;
 
     public void OnPointerClick(PointerEventData eventData)
     {
         Debug.Log("Clicked custom toggle");
         ChangeToggleValue();
-        book.UpdateUI();
         //customToggleClicked.Invoke();
     }
 
@@ -39,7 +28,7 @@ public class CustomToggle : MonoBehaviour, IPointerClickHandler
     // Start is called before the first frame update
     void Start()
     {
-        book = GameObject.Find("Book").GetComponent<BookUI>();
+        
     }
 
     // Update is called once per frame
@@ -58,23 +47,23 @@ public class CustomToggle : MonoBehaviour, IPointerClickHandler
                 check.SetActive(true);
 
                 //change states
-                toggleState = ToggleStates.Yes;
+                toggleState++;
                 break;
 
-            case ToggleStates.Yes:
+            case 1:
 
                 x.SetActive(true);
                 check.SetActive(false);
 
-                toggleState = ToggleStates.No;
+                toggleState++;
                 break;
 
-            case ToggleStates.No:
+            case 2:
 
                 x.SetActive(false);
                 check.SetActive(false);
 
-                toggleState = ToggleStates.Empty;
+                toggleState = 0;
                 break;
 
 
