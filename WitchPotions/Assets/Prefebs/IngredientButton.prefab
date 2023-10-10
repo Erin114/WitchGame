@@ -146,9 +146,9 @@ GameObject:
   - component: {fileID: 366469591047535100}
   - component: {fileID: 366469591047535099}
   - component: {fileID: 366469591047535098}
-  - component: {fileID: -7810464532476298364}
   - component: {fileID: 366469591047535101}
   - component: {fileID: 7363373093622462946}
+  - component: {fileID: 1881299294979876728}
   m_Layer: 5
   m_Name: IngredientButton
   m_TagString: Untagged
@@ -216,22 +216,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &-7810464532476298364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 366469591047535103}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b54ee65d61e52ad4099b94938e276528, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PotionBehaviorManager: {fileID: 0}
-  ingredient: {fileID: 0}
-  ingName: {fileID: 366469590172930950}
-  image: {fileID: 2586724458947166602}
 --- !u!114 &366469591047535101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,7 +260,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -7810464532476298364}
+      - m_Target: {fileID: 1881299294979876728}
         m_TargetAssemblyTypeName: Ingredient_Button_Class, Assembly-CSharp
         m_MethodName: SendIngredient
         m_Mode: 1
@@ -305,7 +289,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: -7810464532476298364}
+        - m_Target: {fileID: 1881299294979876728}
           m_TargetAssemblyTypeName: Ingredient_Button_Class, Assembly-CSharp
           m_MethodName: HoverStart
           m_Mode: 1
@@ -321,7 +305,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: -7810464532476298364}
+        - m_Target: {fileID: 1881299294979876728}
           m_TargetAssemblyTypeName: Ingredient_Button_Class, Assembly-CSharp
           m_MethodName: HoverEnd
           m_Mode: 1
@@ -333,6 +317,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &1881299294979876728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366469591047535103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbdba8463d7e1974ba463db65cb1abba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PotionBehaviorManager: {fileID: 0}
+  ingredient: {fileID: 0}
+  ingName: {fileID: 366469590172930950}
+  image: {fileID: 2586724458947166602}
 --- !u!1 &7895585543019839458
 GameObject:
   m_ObjectHideFlags: 0

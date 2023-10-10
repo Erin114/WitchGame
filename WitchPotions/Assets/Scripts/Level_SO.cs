@@ -26,6 +26,7 @@ public class Level_SO : ScriptableObject
     [SerializeField] NodeTypes[] nodeType;
     [SerializeField] int endpoint_Index;
     [SerializeField] int coin_Reward;
+    [SerializeField] int[] tags;
     public int Endpoint_Index { get => endpoint_Index; }
     public (int[] emotionIndex, NodeTypes[] type) Special_Nodes_List
     {
