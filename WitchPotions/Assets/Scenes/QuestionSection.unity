@@ -886,7 +886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tags: 04000000
-  potionName: 
+  potionName: Rage Potion
 --- !u!114 &81128455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -920,9 +920,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Potion
-
-'
+  m_Text: "Rage Potion\r"
 --- !u!222 &81128456
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2659,8 +2657,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bda878b5701cb04192e14b935e50fc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tags: 05000000
-  potionName: 
+  tags: 0500000002000000
+  potionName: Potion of confidence
 --- !u!114 &324957194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2694,9 +2692,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Potion
-
-'
+  m_Text: Potion of confidence
 --- !u!222 &324957195
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4819,9 +4815,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Potion
-
-'
+  m_Text: Love Potion
 --- !u!222 &781228741
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4842,8 +4836,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bda878b5701cb04192e14b935e50fc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tags: 0000000001000000
-  potionName: 
+  tags: 0700000005000000
+  potionName: Love
 --- !u!1 &786598529
 GameObject:
   m_ObjectHideFlags: 0
@@ -5526,8 +5520,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bda878b5701cb04192e14b935e50fc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tags: 07000000
-  potionName: 
+  tags: 0300000001000000
+  potionName: 'Potion of Remorse '
 --- !u!114 &881175803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5561,9 +5555,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Potion
-
-'
+  m_Text: "Potion of Remorse\r"
 --- !u!222 &881175804
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7579,8 +7571,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bda878b5701cb04192e14b935e50fc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tags: 03000000
-  potionName: 
+  tags: 06000000
+  potionName: Memory Loss Potion
 --- !u!114 &1231339263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7614,9 +7606,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Potion
-
-'
+  m_Text: Memory Loss Potion
 --- !u!222 &1231339264
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8174,8 +8164,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bda878b5701cb04192e14b935e50fc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tags: 0700000001000000
-  potionName: 
+  tags: 01000000
+  potionName: Sleep potion
 --- !u!114 &1417930045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8209,9 +8199,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Potion
-
-'
+  m_Text: Sleep potion
 --- !u!222 &1417930046
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8349,8 +8337,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bda878b5701cb04192e14b935e50fc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tags: 06000000
-  potionName: 
+  tags: 0600000000000000
+  potionName: 'Potion of Excitement  '
 --- !u!114 &1489050511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8384,9 +8372,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Potion
-
-'
+  m_Text: "Potion of Excitement\r"
 --- !u!222 &1489050512
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8604,8 +8590,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bda878b5701cb04192e14b935e50fc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tags: 02000000
-  potionName: 
+  tags: 0400000005000000
+  potionName: 'Healing Potion  '
 --- !u!114 &1511649660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8639,7 +8625,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Potion
+  m_Text: 'Healing Potion
+
+    
 
 '
 --- !u!222 &1511649661
