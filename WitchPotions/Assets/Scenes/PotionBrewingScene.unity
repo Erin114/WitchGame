@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -509,7 +509,6 @@ GameObject:
   - component: {fileID: 459714210}
   - component: {fileID: 459714213}
   - component: {fileID: 459714212}
-  - component: {fileID: 459714211}
   - component: {fileID: 459714214}
   m_Layer: 5
   m_Name: IngredientMenu
@@ -542,18 +541,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.32998657, y: -2}
   m_SizeDelta: {x: 0.8600006, y: 0.40000153}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &459714211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 459714209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff65fcaca96f9d74db495f8ad0354d67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &459714212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -574,7 +561,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7066e0747291df44fa5c2bf93bee3a6e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8348b06e3be669a4983a2e1c7e1a98ad, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -601,10 +588,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 459714209}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8dc661721880d54094f73c78d07c964, type: 3}
+  m_Script: {fileID: 11500000, guid: dd9d777187add524eadd85c0a8367a40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PotionBehaviorManager: {fileID: 563322918}
+  PotionBehaviorManager: {fileID: 563322921}
   ingredientMenuPanel: {fileID: 1931912713}
   ingredientsObjectArr:
   - {fileID: 11400000, guid: 8bba80425a6e33942804e3984c165fbc, type: 2}
@@ -639,7 +626,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 140351ede5d03cb4d813a6fbf5d5ced2, type: 2}
   - {fileID: 11400000, guid: ef329609589656248b6d748e16bbacaf, type: 2}
   - {fileID: 11400000, guid: 10d6c9d347d7d024bae26c4d25cc060e, type: 2}
-  buttonPrefeb: {fileID: 366469591047535103, guid: 9eacf080645b04d4bbac5843a0a947e3, type: 3}
+  buttonPrefeb: {fileID: 366469591047535103, guid: 3068a736f9ead664d89a6c5cb668f5ac, type: 3}
   infoPanel: {fileID: 1271379299}
   popUpPrice: {fileID: 331796496}
   popUpPoison: {fileID: 850758009}
@@ -804,7 +791,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 563322918}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PotionBehavior, Assembly-CSharp
         m_MethodName: Reset
         m_Mode: 1
@@ -836,7 +823,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: efee20b64d1e73942a29ba61ce3379c3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bd77ac1eb7a465f4e91c0c3f2ffe8a73, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -865,7 +852,7 @@ GameObject:
   - component: {fileID: 563322917}
   - component: {fileID: 563322920}
   - component: {fileID: 563322919}
-  - component: {fileID: 563322918}
+  - component: {fileID: 563322921}
   m_Layer: 5
   m_Name: potDot
   m_TagString: Untagged
@@ -893,19 +880,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &563322918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 563322916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14d868fd0f8ea0a40872819f5f9cc3f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lineRenderer: {fileID: 1959912091}
 --- !u!114 &563322919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -926,7 +900,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e9d4143c19529834981ac6821a04aecd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3d305a3e111468341809d58b10a2f7cf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -944,6 +918,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 563322916}
   m_CullTransparentMesh: 1
+--- !u!114 &563322921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563322916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14d868fd0f8ea0a40872819f5f9cc3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lineRenderer: {fileID: 1959912091}
 --- !u!1 &654890637
 GameObject:
   m_ObjectHideFlags: 0
@@ -1297,7 +1284,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 43a7d98bd4222b64e933596512dc09ad, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 82c17aa35c813c2458c07814e15d4d35, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1534,7 +1521,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 563322918}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PotionBehavior, Assembly-CSharp
         m_MethodName: Undo
         m_Mode: 1
@@ -1566,7 +1553,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: efee20b64d1e73942a29ba61ce3379c3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bd77ac1eb7a465f4e91c0c3f2ffe8a73, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1975,11 +1962,11 @@ RectTransform:
   m_Father: {fileID: 1797675422}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 3.3000183, y: -447}
-  m_SizeDelta: {x: 12.399987, y: -597.6003}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 3.3000336, y: -354}
+  m_SizeDelta: {x: 438.4, y: 200}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1108627049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2139,7 +2126,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 43a7d98bd4222b64e933596512dc09ad, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b682f8973a51e3e4a9369c13c8ca2c52, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2430,7 +2417,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 054411784c3fdf74d9db120b4a792a71, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 273bcd94a4ce4cf4fbbc01ae86158446, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2769,7 +2756,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: efee20b64d1e73942a29ba61ce3379c3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bd77ac1eb7a465f4e91c0c3f2ffe8a73, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2973,8 +2960,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 492385398}
   m_HandleRect: {fileID: 492385397}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.999955
+  m_Value: 0
+  m_Size: 0.96901983
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3077,7 +3064,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 90a2dde0942123c4ebb9c4af580c5818, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8348b06e3be669a4983a2e1c7e1a98ad, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3338,10 +3325,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1959912089}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2aae436ac99fd3d49946ccee091ef024, type: 3}
+  m_Script: {fileID: 11500000, guid: c323723962915f9489bd0a0330a6f2c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -3352,7 +3339,7 @@ MonoBehaviour:
   m_Sprite: {fileID: 0}
   m_points: []
   useRectAsNormalizedSpace: 0
-  lineThickness: 3
+  lineThickness: 2
   drawPointsAsPairs: 0
   lineCaps: 0
   LineJoins: 0
