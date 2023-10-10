@@ -59,7 +59,7 @@ public class PotionBehavior : MonoBehaviour
         int slices = 16;
         float theta = 22.5f;
         Vector3[] nodetemplate = new Vector3[rings];
-        unit = 60f / rings;
+        unit = 150f / rings;
         for (int i = 1; i <= rings; i++)
         {
             nodetemplate[i-1] = center + new Vector3(i * unit, 0, 0);
@@ -292,7 +292,7 @@ public class PotionBehavior : MonoBehaviour
 
         List<int> pathNodes = new List<int>();
         int[] neigbors = GetNodeNeigbors(startNode);
-        int closestToEndpoint = endNode;
+        int closestToEndpoint = 0;
         float bestDist = Vector3.Distance(nodes[endNode], nodes[startNode]);
 
         //checks neighbors for the new best distance
@@ -318,6 +318,7 @@ public class PotionBehavior : MonoBehaviour
         {
             pathNodes.AddRange(Pathing(endNode, closestToEndpoint, nodesToTraverse - 1));
         }
+        
         return pathNodes.ToArray();
     }
 
@@ -330,25 +331,29 @@ public class PotionBehavior : MonoBehaviour
 
         //Set up like the movement, only using Line renderer to save the data
         //instead of moving using transform 
-        Vector2[] pointsV2 = new Vector2[ingredient.ingredients_Value.Length + 1];
-        pointsV2[0] = (transform.localPosition);
+        List<Vector2> pointsV2 = new List<Vector2>();
+        //Vector2[] pointsV2 = new Vector2[ingredient.ingredients_Value.Length + 1];
+        pointsV2.Add(transform.localPosition);
         int[] path = PreviewPathing(emotionValues[ingredient.Ingredients_Vector.emotion[0]], currentNodePosition, ingredient.Ingredients_Vector.value[0]);
-        currentNodePosition = path[path.Length - 1];
-        Vector2 newLocation = nodes[currentNodePosition];
-        pointsV2[1] = newLocation;
-
+        int pos = path[path.Length - 1];
+         /*Vector2 newLocation = nodes[pos];
+         *pointsV2[1] = newLocation;
+         */
+        foreach (int p in path) pointsV2.Add(nodes[p]);
         //repeat if two different modes to ingredient
         if (ingredient.Ingredients_Vector.emotion.Length > 1)
         {
-            path = PreviewPathing(emotionValues[ingredient.Ingredients_Vector.emotion[1]], currentNodePosition, ingredient.Ingredients_Vector.value[1]);
-            currentNodePosition = path[path.Length - 1];
-            newLocation = nodes[path[path.Length - 1]];
-            pointsV2[2] = newLocation;
+            path = PreviewPathing(emotionValues[ingredient.Ingredients_Vector.emotion[1]], pos, ingredient.Ingredients_Vector.value[1]);
+            /*pos = path[path.Length - 1];
+             *newLocation = nodes[path[path.Length - 1]];
+             *pointsV2[2] = newLocation;
+             */
+            foreach (int p in path) pointsV2.Add(nodes[p]);
         }
         //make sure to not draw a line if start and end point are the same
-        if (pointsV2[0] != pointsV2[pointsV2.Length - 1])
+        if (pointsV2[0] != pointsV2[pointsV2.Count - 1])
         {
-            lineRenderer.Points = pointsV2;
+            lineRenderer.Points = pointsV2.ToArray();
         }
         else
         {
@@ -402,6 +407,17 @@ public class PotionBehavior : MonoBehaviour
 
     //finish brewing, probably to be called by InventoryManager or another GameManager
     //TODO by Elad
-    PotionObject FinishBrew() { return new PotionObject(); }
+    void  FinishBrew() 
+    {
+        if (currentNodePosition == endpointIndex)
+        {
+            sendData();
+        }
+        else { Debug.Log("nuh uh, you're not ready yet!"); }
+    }
+    (int chargers, int poison) sendData()
+    {
+        return (chargersHit, poison);
+    }
 }
 
