@@ -84,7 +84,7 @@ public class PotionBehavior : MonoBehaviour
     }
 
     //Loading levels to add 
-   public void LoadLevelObject(Level_SO level)
+   public void LoadLevelObject(Level_SO level, bool[] chargersDiscovered, bool voidDiscovered, bool bipolar)
     {
         int length = level.Special_Nodes_List.emotionIndex.Length;
         for (int i = 0; i < length; i++)
@@ -96,6 +96,7 @@ public class PotionBehavior : MonoBehaviour
         poison = 0;
         transform.localPosition = center;
         cost = 0;
+        
     }
 
 
