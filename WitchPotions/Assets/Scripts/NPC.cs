@@ -8,8 +8,6 @@ public class NPC : MonoBehaviour
     public string charName;
     public int ID;
     public float patience = 100;
-    public float maxPatience = 100;
-
 
     [SerializeField]
     protected TestCharacter characterInfo;

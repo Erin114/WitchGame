@@ -28,12 +28,6 @@ public class QuestionManager : MonoBehaviour
     public NPC currentCharacter;
     public List<NPC> characters;
 
-    //UI - Added by Elad - 10/10
-    public Slider patienceBar;
-    public Image patienceBarFace;
-    public int numberOfAnnoyedQuestions = 0;
-    public Sprite[] patienceFaces;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -202,38 +196,12 @@ public class QuestionManager : MonoBehaviour
         }
 
         UpdatePatience();
-        numberOfAnnoyedQuestions = 0;
 
     }
 
     void UpdatePatience()
     {
         patience.text = "Patience: " + currentCharacter.Patience.ToString();
-        if (currentCharacter.Patience > 0)//if still has Patience show it on bar
-        {
-            patienceBar.value = (currentCharacter.Patience / currentCharacter.maxPatience) * 100;
-        }
-        else//if out of patience apply this code
-        {
-            numberOfAnnoyedQuestions++;
-            patienceBar.value = 0;
-        }
-        if (currentCharacter.Patience > 75)
-        {
-            patienceBarFace.sprite = patienceFaces[0];
-        }
-        else if (currentCharacter.Patience > 50)
-        {
-            patienceBarFace.sprite = patienceFaces[1];
-        }
-        else if (currentCharacter.Patience > 25)
-        {
-            patienceBarFace.sprite = patienceFaces[2];
-        }
-        else
-        {
-            patienceBarFace.sprite = patienceFaces[3];
-        }
     }
 
     public void ShowScrollBar()
