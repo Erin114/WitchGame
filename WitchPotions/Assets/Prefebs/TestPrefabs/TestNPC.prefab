@@ -82,7 +82,7 @@ SpriteRenderer:
   m_Size: {x: 2.9, y: 2.22}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &5329478684438430014
@@ -99,6 +99,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: 
   ID: 0
+  maxPatience: 100
+  patience: 0
+  emotionalIndicees: 0b0000007b00000028000000
+  nodes: 020000000000000001000000
+  hasBeenDiscovered: 010101
   characterInfo:
     ID: 0
     name: 
@@ -106,3 +111,6 @@ MonoBehaviour:
     intro: 
     responses: []
     specificResponses: []
+  genericQuestionSpriteOrder: 
+  specificQuestionSpriteOrder: 
+  spriteVariants: []
