@@ -31,13 +31,46 @@ public enum GameStates
 
 public class GameManager : MonoBehaviour
 {
+    private static GameManager instance;
+
     [SerializeField]
     private float suspicion = 100;
 
     public GameStates currentState;
 
     [SerializeField]
-    NPC currentCharacter;
+    public NPC currentCharacter;
+    [SerializeField]
+    public bool[] currentCharacterDiscoveredInfo;
+
+    PotionBehavior potBehavior;
+
+    /// <summary>
+    /// Should correspond to each day. Ex) levels[0][0] would be day 1, customer 1 and levels[2][1] would be day 3, customer 2
+    /// </summary>
+    public Level_SO[,] levels;
+
+    public Level_SO currentLevel;
+
+    [SerializeField]
+    int currentDay;
+
+    [SerializeField]
+    int currentCustomerIndex;
+
+    public static GameManager Instance
+    {
+        get
+        {
+            return instance;
+        }
+    }
+
+    private void Awake()
+    {
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -123,13 +156,27 @@ public class GameManager : MonoBehaviour
     public void SwitchToPotionScene(Level_SO levelObj, bool[] discoveredEmotionalInfo)
     {
         //go to potions scene
-        ChangeScene("PotionBrewing");
+        ChangeScene("PotionBrewingScene");
 
         //get reference to the potionBehavior script somehow
+        //potBehavior = GameObject.Find("potDot").GetComponent<PotionBehavior>();
 
+        //call load level
+        //potBehavior.LoadLevelObject(levelObj, discoveredEmotionalInfo);
 
     }
 
+    public void NextCustomer()
+    {
+
+    }
+
+    public void JohnJohnson()
+    {
+        currentCharacterDiscoveredInfo = GameObject.Find("TempManager").GetComponent<QuestionManager>().characters[2].hasBeenDiscovered;
+
+        SwitchToPotionScene(currentLevel, currentCharacterDiscoveredInfo);
+    }
 
 
 }

@@ -101,9 +101,9 @@ MonoBehaviour:
   ID: 2
   maxPatience: 500
   patience: 500
-  emotionalIndicees: 
-  nodes: 
-  hasBeenDiscovered: 
+  emotionalIndicees: 01000000790000001a000000
+  nodes: 020000000000000001000000
+  hasBeenDiscovered: 010101
   characterInfo:
     ID: 0
     name: 

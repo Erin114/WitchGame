@@ -27,6 +27,7 @@ public class PotionBehavior : MonoBehaviour
 
     int currentNodePosition = 0;
     // array of special nodes, given the node index and node type
+    [SerializeField]
     List<(int nodeIndex, Level_SO.NodeTypes type)> specials = new List<(int nodeIndex, Level_SO.NodeTypes type)>();
     //types of nodes that need to be handled by SpecialNodeUpdate
 
@@ -48,6 +49,7 @@ public class PotionBehavior : MonoBehaviour
     int poison = 0;
     int cost = 0;
     int chargersHit = 0;
+    [SerializeField]
     int endpointIndex;
     
     private void Start()
@@ -81,10 +83,14 @@ public class PotionBehavior : MonoBehaviour
             }
         }
         previewNodes = nodes;
+
+        //load in the current level
+        LoadLevelObject(GameManager.Instance.currentLevel, GameManager.Instance.currentCharacterDiscoveredInfo);
+
     }
 
     //Loading levels to add 
-   public void LoadLevelObject(Level_SO level, bool[] chargersDiscovered, bool voidDiscovered, bool bipolar)
+   public void LoadLevelObject(Level_SO level, bool[] discovered)
     {
         int length = level.Special_Nodes_List.emotionIndex.Length;
         for (int i = 0; i < length; i++)
@@ -96,7 +102,9 @@ public class PotionBehavior : MonoBehaviour
         poison = 0;
         transform.localPosition = center;
         cost = 0;
-        
+
+        Debug.Log(discovered.Length);
+
     }
 
 

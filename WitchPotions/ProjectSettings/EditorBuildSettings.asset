@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Witch Project.unity
     guid: 0484a9303f9f9824c8a8bf633580b368
+  - enabled: 1
+    path: Assets/Scenes/PotionBrewingScene.unity
+    guid: ff5f5efa69f49014cac0693976669640
   m_configObjects: {}
