@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69c38f2378e10704da2a6da594b293ec, type: 3}
-  m_Name: JohnJohnson
+  m_Name: Level 1 - JohnJohnson
   m_EditorClassIdentifier: 
-  emotionIndices: 01000000790000001a000000
-  nodeType: 020000000000000001000000
-  endpoint_Index: 50
-  coin_Reward: 0
+  emotionIndices: 
+  nodeType: 
+  endpoint_Index: 78
+  coin_Reward: 20
   tags: 
