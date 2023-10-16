@@ -3207,7 +3207,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Fear
+          m_StringArgument: Terror
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1371247376
@@ -3775,8 +3775,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 492385398}
   m_HandleRect: {fileID: 492385397}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.9997828
+  m_Value: 0
+  m_Size: 0.9994017
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
