@@ -29,7 +29,13 @@ public class PotionBehavior : MonoBehaviour
     // array of special nodes, given the node index and node type
     [SerializeField]
     List<(int nodeIndex, Level_SO.NodeTypes type)> specials = new List<(int nodeIndex, Level_SO.NodeTypes type)>();
-    //types of nodes that need to be handled by SpecialNodeUpdate
+    //Special Node Prefabs
+    [SerializeField] GameObject endpointPrefab;
+    [SerializeField] GameObject chargerPrefab;
+    [SerializeField] GameObject voidPrefab;
+    [SerializeField] GameObject bipolarPrefab;
+    GameObject[] instantiatedPrefabs;
+    GameObject endpoint;
 
 
     //positions of each emotional extreme
@@ -93,12 +99,36 @@ public class PotionBehavior : MonoBehaviour
    public void LoadLevelObject(Level_SO level, bool[] discovered)
     {
         int length = level.Special_Nodes_List.emotionIndex.Length;
+        instantiatedPrefabs = new GameObject[length];
         for (int i = 0; i < length; i++)
         {
-            specials.Add((level.Special_Nodes_List.emotionIndex[i], level.Special_Nodes_List.type[i]));
+            if (discovered[i])
+            {
+                specials.Add((level.Special_Nodes_List.emotionIndex[i], level.Special_Nodes_List.type[i]));
+                switch (level.Special_Nodes_List.type[i])
+                {
+                    case Level_SO.NodeTypes.voidNode:
+                        instantiatedPrefabs[i] = Instantiate(voidPrefab,transform.parent);
+                        instantiatedPrefabs[i].transform.position = nodes[level.Special_Nodes_List.emotionIndex[i]];
+                        
+                        break;
+                    case Level_SO.NodeTypes.charger:
+                        instantiatedPrefabs[i] = Instantiate(chargerPrefab, transform.parent);
+                        instantiatedPrefabs[i].transform.position = nodes[level.Special_Nodes_List.emotionIndex[i]];
+                        break;
+                    case Level_SO.NodeTypes.bipolar:
+                        instantiatedPrefabs[i] = Instantiate(bipolarPrefab, transform.parent);
+                        instantiatedPrefabs[i].transform.position = nodes[level.Special_Nodes_List.emotionIndex[i]];
+                        break;
+                    default:
+                        break;
+                }
+                
+            }
         }
         endpointIndex = level.Endpoint_Index;
-
+        endpoint = Instantiate(endpointPrefab, transform.parent);
+        endpoint.transform.position = nodes[level.Endpoint_Index];
         poison = 0;
         transform.localPosition = center;
         cost = 0;
@@ -240,6 +270,7 @@ public class PotionBehavior : MonoBehaviour
                         break;
                     case Level_SO.NodeTypes.charger:
                         chargersHit++;
+                        GameObject.Destroy(instantiatedPrefabs[i]);
                         break;
                     case Level_SO.NodeTypes.bipolar:
                         for (int j = 0; j < specials.Count; j++)
