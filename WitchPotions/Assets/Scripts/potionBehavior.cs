@@ -27,7 +27,6 @@ public class PotionBehavior : MonoBehaviour
 
     int currentNodePosition = 0;
     // array of special nodes, given the node index and node type
-    [SerializeField]
     List<(int nodeIndex, Level_SO.NodeTypes type)> specials = new List<(int nodeIndex, Level_SO.NodeTypes type)>();
     //Special Node Prefabs
     [SerializeField] GameObject endpointPrefab;
@@ -99,6 +98,14 @@ public class PotionBehavior : MonoBehaviour
    public void LoadLevelObject(Level_SO level, bool[] discovered)
     {
         int length = level.Special_Nodes_List.emotionIndex.Length;
+        if (instantiatedPrefabs.Length > 0)
+        {
+            for (int i = 0; i < instantiatedPrefabs.Length; i++)
+            {
+                Destroy(instantiatedPrefabs[i]);
+            }
+            specials.Clear();
+        }
         instantiatedPrefabs = new GameObject[length];
         for (int i = 0; i < length; i++)
         {
@@ -109,16 +116,16 @@ public class PotionBehavior : MonoBehaviour
                 {
                     case Level_SO.NodeTypes.voidNode:
                         instantiatedPrefabs[i] = Instantiate(voidPrefab,transform.parent);
-                        instantiatedPrefabs[i].transform.position = nodes[level.Special_Nodes_List.emotionIndex[i]];
+                        instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[i]];
                         
                         break;
                     case Level_SO.NodeTypes.charger:
                         instantiatedPrefabs[i] = Instantiate(chargerPrefab, transform.parent);
-                        instantiatedPrefabs[i].transform.position = nodes[level.Special_Nodes_List.emotionIndex[i]];
+                        instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[i]];
                         break;
                     case Level_SO.NodeTypes.bipolar:
                         instantiatedPrefabs[i] = Instantiate(bipolarPrefab, transform.parent);
-                        instantiatedPrefabs[i].transform.position = nodes[level.Special_Nodes_List.emotionIndex[i]];
+                        instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[i]];
                         break;
                     default:
                         break;
