@@ -16,7 +16,7 @@ public class NPC : MonoBehaviour
     public bool[] hasBeenDiscovered;
 
     [SerializeField]
-    protected TestCharacter characterInfo;
+    public TestCharacter characterInfo;
 
     //ntch
     public List<int> genericQuestionSpriteOrder;

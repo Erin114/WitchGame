@@ -45,18 +45,17 @@ public class GameManager : MonoBehaviour
 
     PotionBehavior potBehavior;
 
-    /// <summary>
-    /// Should correspond to each day. Ex) levels[0][0] would be day 1, customer 1 and levels[2][1] would be day 3, customer 2
-    /// </summary>
-    public Level_SO[,] levels;
+    public Level_SO[] dayOneLevels;
 
     public Level_SO currentLevel;
 
-    [SerializeField]
-    int currentDay;
+    public GameObject[] dayOneCharacters;
 
     [SerializeField]
-    int currentCustomerIndex;
+    public int currentDay;
+
+    [SerializeField]
+    public int currentCustomerIndex;
 
     public static GameManager Instance
     {
@@ -107,6 +106,14 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    /*public GameObject[,] Characters
+    {
+        get
+        {
+            return characters;
+        }
+    }*/
 
     public void ChangeSuspicion(float value)
     {
@@ -173,9 +180,20 @@ public class GameManager : MonoBehaviour
 
     public void JohnJohnson()
     {
-        currentCharacterDiscoveredInfo = GameObject.Find("TempManager").GetComponent<QuestionManager>().characters[2].hasBeenDiscovered;
+        currentCharacterDiscoveredInfo = GameObject.Find("TempManager").GetComponent<QuestionManager>().currentCharacter.hasBeenDiscovered;
 
-        SwitchToPotionScene(currentLevel, currentCharacterDiscoveredInfo);
+        SwitchToPotionScene(dayOneLevels[0], currentCharacterDiscoveredInfo);
+    }
+
+    public void NextDay()
+    {
+        currentDay++;
+
+        currentCustomerIndex = 0;
+
+        //currentCharacter = characters[currentDay, currentCustomerIndex].GetComponent<NPC>();
+
+
     }
 
 
