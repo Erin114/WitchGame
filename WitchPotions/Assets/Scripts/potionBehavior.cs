@@ -143,7 +143,7 @@ public class PotionBehavior : MonoBehaviour
         transform.localPosition = center;
         cost = 0;
 
-        Debug.Log(discovered.Length);
+        Debug.Log(discovered.Length + " discovered indices");
 
     }
 
