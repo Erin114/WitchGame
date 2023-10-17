@@ -61,6 +61,8 @@ public class PotionBehavior : MonoBehaviour
     {
         center = gameObject.transform.localPosition;
 
+        instantiatedPrefabs = new GameObject[0];
+
         //potion position init, resolve how many rings will be in use and what the base ring units will be
         int rings = 10;
         int slices = 16;
@@ -140,7 +142,7 @@ public class PotionBehavior : MonoBehaviour
         transform.localPosition = center;
         cost = 0;
 
-        Debug.Log(discovered.Length);
+        Debug.Log(discovered.Length + " discovered indices");
 
     }
 
