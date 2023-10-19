@@ -6,8 +6,11 @@ using UnityEngine.UI;
 public class QuestionManager : MonoBehaviour
 {
 
+
+
     public GameObject questionScrollBar;
     public GameObject characterText;
+    public GameObject conversationBox;
 
     public Text t;
     public Text name;
@@ -23,10 +26,15 @@ public class QuestionManager : MonoBehaviour
 
     //index for the current character in the list
     public int currentChar = 0;
+    public int currentDay;
+
+    public GameObject spawnLocation;
 
     public NPC startingCharacter;
     public NPC currentCharacter;
     public List<NPC> characters;
+
+
 
     //Added by Elad 10/10/2023 - UI and Patiance Bar
     public Slider bar;
@@ -35,14 +43,24 @@ public class QuestionManager : MonoBehaviour
     public int annoyedQuestionsCount = 0;
 
 
+    //Question Manager handles one character at a time
+    //Press door for character to spawn and walk up to the desk
+    //Character says intro text
+    //Ask questions
+    //Mark in the book and click the correct potion
+    //Once correct potion is clicked, UI will pop up showing discovered charges, voids, and bipolars
+    //Button is pressed to advance to the next level
     // Start is called before the first frame update
     void Start()
     {
+        currentDay = GameManager.Instance.currentDay;
+        currentChar = GameManager.Instance.currentCustomerIndex;
+
         list = GameObject.Find("TempManager").GetComponent<JSONManager>().list;
-        characters = new List<NPC>();
+        //characters = new List<NPC>();
 
         //spawn in all characters, enable only the first one
-        for (int i = 0; i < characterPrefabs.Count; i++)
+        /*for (int i = 0; i < characterPrefabs.Count; i++)
         {
             GameObject temp = Instantiate(characterPrefabs[i]);
             temp.transform.position = new Vector3(0.0f, 0.0f);
@@ -58,12 +76,31 @@ public class QuestionManager : MonoBehaviour
             {
                 currentChar = temp.GetComponent<NPC>().ID;
             }
-        }
+        }*/
 
-        currentCharacter = characters[currentChar];
+        //currentCharacter = characters[currentChar];
+        //name.text = "Name: " + currentCharacter.charName;
+        //ChangeCharacter(characters[currentChar]);
+
+    }
+
+    public void SpawnInCurrentCharacter()
+    {
+        //TODO: support more than just one day
+        GameObject prefab = GameManager.Instance.dayOneCharacters[currentChar];
+        GameObject character = Instantiate(prefab, spawnLocation.transform.position, Quaternion.identity);
+
+        currentCharacter = character.GetComponent<NPC>();
+        currentCharacter.LoadCharacterInfo();
+
         name.text = "Name: " + currentCharacter.charName;
-        ChangeCharacter(characters[currentChar]);
 
+        nextButton.gameObject.SetActive(false);
+
+        UpdatePatience();
+
+        //enable the conversation box
+        conversationBox.SetActive(true);
     }
 
     public void ChangeCharacter(NPC character)
@@ -79,7 +116,8 @@ public class QuestionManager : MonoBehaviour
     public void ShowIntroText()
     {
         list = GameObject.Find("TempManager").GetComponent<JSONManager>().list;
-        t.text = list.characters[currentChar].intro;
+        //t.text = list.characters[currentChar].intro;
+        t.text = currentCharacter.characterInfo.intro;
         introButton.gameObject.SetActive(false);
 
         //show all generic questions and emotion specific questions
@@ -261,6 +299,12 @@ public class QuestionManager : MonoBehaviour
 
         questionScrollBar.SetActive(true);
         characterText.SetActive(false);
+
+        if(currentCharacter.patience <= 0)
+        {
+            conversationBox.SetActive(false);
+        }
+
     }
 
 

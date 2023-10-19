@@ -28,7 +28,13 @@ public class PotionBehavior : MonoBehaviour
     int currentNodePosition = 0;
     // array of special nodes, given the node index and node type
     List<(int nodeIndex, Level_SO.NodeTypes type)> specials = new List<(int nodeIndex, Level_SO.NodeTypes type)>();
-    //types of nodes that need to be handled by SpecialNodeUpdate
+    //Special Node Prefabs
+    [SerializeField] GameObject endpointPrefab;
+    [SerializeField] GameObject chargerPrefab;
+    [SerializeField] GameObject voidPrefab;
+    [SerializeField] GameObject bipolarPrefab;
+    GameObject[] instantiatedPrefabs = new GameObject[0];
+    GameObject endpoint;
 
 
     //positions of each emotional extreme
@@ -48,11 +54,14 @@ public class PotionBehavior : MonoBehaviour
     int poison = 0;
     int cost = 0;
     int chargersHit = 0;
+    [SerializeField]
     int endpointIndex;
     
     private void Start()
     {
         center = gameObject.transform.localPosition;
+
+
 
         //potion position init, resolve how many rings will be in use and what the base ring units will be
         int rings = 10;
@@ -81,22 +90,61 @@ public class PotionBehavior : MonoBehaviour
             }
         }
         previewNodes = nodes;
+
+        //load in the current level
+        LoadLevelObject(GameManager.Instance.currentLevel, GameManager.Instance.currentCharacterDiscoveredInfo);
+
     }
 
     //Loading levels to add 
-   public void LoadLevelObject(Level_SO level, bool[] chargersDiscovered, bool voidDiscovered, bool bipolar)
+   public void LoadLevelObject(Level_SO level, bool[] discovered)
     {
+        Transform parent = gameObject.transform.parent;
         int length = level.Special_Nodes_List.emotionIndex.Length;
+        if (instantiatedPrefabs != null || instantiatedPrefabs.Length > 0)
+        {
+            for (int i = 0; i < instantiatedPrefabs.Length; i++)
+            {
+                Destroy(instantiatedPrefabs[i]);
+            }
+            specials.Clear();
+        }
+        instantiatedPrefabs = new GameObject[length];
         for (int i = 0; i < length; i++)
         {
-            specials.Add((level.Special_Nodes_List.emotionIndex[i], level.Special_Nodes_List.type[i]));
+            if (discovered[i])
+            {
+                specials.Add((level.Special_Nodes_List.emotionIndex[i], level.Special_Nodes_List.type[i]));
+                switch (level.Special_Nodes_List.type[i])
+                {
+                    case Level_SO.NodeTypes.voidNode:
+                        instantiatedPrefabs[i] = Instantiate(voidPrefab,parent);
+                        instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[i]];
+                        
+                        break;
+                    case Level_SO.NodeTypes.charger:
+                        instantiatedPrefabs[i] = Instantiate(chargerPrefab, parent);
+                        instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[i]];
+                        break;
+                    case Level_SO.NodeTypes.bipolar:
+                        instantiatedPrefabs[i] = Instantiate(bipolarPrefab, parent);
+                        instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[i]];
+                        break;
+                    default:
+                        break;
+                }
+                
+            }
         }
         endpointIndex = level.Endpoint_Index;
-
+        endpoint = Instantiate(endpointPrefab, parent);
+        endpoint.transform.localPosition = nodes[level.Endpoint_Index];
         poison = 0;
         transform.localPosition = center;
         cost = 0;
-        
+
+        Debug.Log(discovered.Length + " discovered indices");
+
     }
 
 
@@ -232,6 +280,7 @@ public class PotionBehavior : MonoBehaviour
                         break;
                     case Level_SO.NodeTypes.charger:
                         chargersHit++;
+                        GameObject.Destroy(instantiatedPrefabs[i]);
                         break;
                     case Level_SO.NodeTypes.bipolar:
                         for (int j = 0; j < specials.Count; j++)

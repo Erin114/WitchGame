@@ -10,9 +10,13 @@ public class NPC : MonoBehaviour
     public float maxPatience = 100;
     public float patience;
 
+    public int[] emotionalIndicees;
+    public Level_SO.NodeTypes[] nodes;
+
+    public bool[] hasBeenDiscovered;
 
     [SerializeField]
-    protected TestCharacter characterInfo;
+    public TestCharacter characterInfo;
 
     //ntch
     public List<int> genericQuestionSpriteOrder;
