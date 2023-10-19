@@ -30,20 +30,17 @@ public class Ingredient_Button_Class : MonoBehaviour
         PotionBehaviorManager.HoverOverIngredeint(ingredient);
 
     }
-    public void CallPopUp()
-    {
-        menu.SetUpPopUp(ingredient);
-    }
-    public void ClearPopUp()
-    {
-        menu.ClearUpPopUp();
-    }
+ 
     public void HoverStart()
     {
+        menu.SetUpPopUp(ingredient, this.gameObject);
+
         PotionBehaviorManager.HoverOverIngredeint(ingredient);
     }
     public void HoverEnd()
     {
+        menu.ClearUpPopUp();
+
         PotionBehaviorManager.HoverEnd();
 
     }

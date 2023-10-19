@@ -38,9 +38,21 @@ public class Ingredient_Menu : MonoBehaviour
         
     }
 
-    public void SetUpPopUp(Ingredients_SO ingredient)
-    {
+
+
+    //Used to show pop up
+    public float moveX = 80;
+    public float moveY = 80;
+
+    public void SetUpPopUp(Ingredients_SO ingredient, GameObject button)
+    { 
         infoPanel.SetActive(true);
+        Vector3 popUpLoction = button.transform.position;
+        popUpLoction.x += moveX;
+        popUpLoction.y += moveY;
+
+        infoPanel.transform.position = popUpLoction;
+
         popUpPrice.text = "Price - " + ingredient.ingredients_Price.ToString();
       popUpPoison.text = "Poison - " + ingredient.ingredients_Poison.ToString();
         for (int i = 0; i < ingredient.ingredients_Emotion.Length; i++)
