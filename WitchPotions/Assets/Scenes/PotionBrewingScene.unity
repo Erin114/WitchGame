@@ -698,8 +698,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.07062391, y: 0.1361148}
   m_AnchorMax: {x: 0.9027642, y: 0.7658442}
-  m_AnchoredPosition: {x: 3.0249481, y: -17.534979}
-  m_SizeDelta: {x: -2.9501572, y: -2.489955}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &451022570
 MonoBehaviour:
@@ -810,7 +810,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.537, y: 0.17500001}
   m_AnchorMax: {x: 0.98619294, y: 0.938}
-  m_AnchoredPosition: {x: 0.32998657, y: 0}
+  m_AnchoredPosition: {x: 0.32995605, y: 0}
   m_SizeDelta: {x: 0.8600006, y: 0.40000153}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &459714212
@@ -867,43 +867,43 @@ MonoBehaviour:
   ingredientMenuPanel: {fileID: 1931912713}
   ingredientsObjectArr:
   - {fileID: 11400000, guid: 8bba80425a6e33942804e3984c165fbc, type: 2}
-  - {fileID: 11400000, guid: 426728432a754aa4281aa9fd39089a0e, type: 2}
   - {fileID: 11400000, guid: c9ee04464d7ccef49a3db4bab65639a9, type: 2}
   - {fileID: 11400000, guid: 4622aa8f3c08c764987d6f742c939e82, type: 2}
-  - {fileID: 11400000, guid: 102ce656e9bae6641a56541b5422261c, type: 2}
   - {fileID: 11400000, guid: 2ff7a4e5abc575d44a0590a177b6de34, type: 2}
   - {fileID: 11400000, guid: 60814cf198c037947bca9542ee710986, type: 2}
-  - {fileID: 11400000, guid: 4dbb58a1ca5e660429195a0c992d7cae, type: 2}
   - {fileID: 11400000, guid: 76d96e3e9e31cb3488b8095bc268758b, type: 2}
   - {fileID: 11400000, guid: dbb847f44eaca844393262fea50d3ea6, type: 2}
-  - {fileID: 11400000, guid: 19da7607cfb7510458da20fa03371869, type: 2}
   - {fileID: 11400000, guid: 0036b70b5532a46499ea6fdc6dba27d4, type: 2}
   - {fileID: 11400000, guid: 95c6e23a1543ac547963c7ae94b3936e, type: 2}
-  - {fileID: 11400000, guid: 63d2859f2ed69a349a9bce8ce2503700, type: 2}
   - {fileID: 11400000, guid: fdf5576348060ff40b455b4136503f5e, type: 2}
   - {fileID: 11400000, guid: 6c0cbc12216dad647a9a91d1c8258bfe, type: 2}
-  - {fileID: 11400000, guid: a337adeb50546e241998e3ecb4259c44, type: 2}
   - {fileID: 11400000, guid: 8deca838fb0629a47b6dce9d96283dbb, type: 2}
   - {fileID: 11400000, guid: e99f130bcff923245ba380e57050e282, type: 2}
-  - {fileID: 11400000, guid: 8005cf1487ef19d45b44bedc4705574a, type: 2}
   - {fileID: 11400000, guid: f08dc3e8a97ef1a4b9d592811c4d4173, type: 2}
   - {fileID: 11400000, guid: 690ef1d5dfaefa247b581c8e1c9885c5, type: 2}
-  - {fileID: 11400000, guid: 9fc336a2afab3ab4aaa36d3eb5f253fa, type: 2}
   - {fileID: 11400000, guid: 3975023d29a4fe443a8e6eef8cdc4e74, type: 2}
-  - {fileID: 11400000, guid: 67166710a2b3b2a4db5babdfc6437f9c, type: 2}
   - {fileID: 11400000, guid: 50c53ff95fc2dd84ba63d7fcf2a9fa00, type: 2}
-  - {fileID: 11400000, guid: e0f6b918e5de70d4cb79bfae50e3622c, type: 2}
+  - {fileID: 11400000, guid: 67166710a2b3b2a4db5babdfc6437f9c, type: 2}
+  - {fileID: 11400000, guid: 843f9ced5916cdc468cf5839ea14cd0b, type: 2}
+  - {fileID: 11400000, guid: 1a9a012854701d84d9de59f51b660b33, type: 2}
+  - {fileID: 11400000, guid: 5ce23cb0e9f143f449000182617fd60d, type: 2}
   - {fileID: 11400000, guid: 13850fe063b0b70429ffa0e01d778233, type: 2}
+  - {fileID: 11400000, guid: e0f6b918e5de70d4cb79bfae50e3622c, type: 2}
+  - {fileID: 11400000, guid: c97da78761335854eb60f70c2f16ccc0, type: 2}
+  - {fileID: 11400000, guid: d1d75ce2807322e40b31ba0f296dacba, type: 2}
   - {fileID: 11400000, guid: 825ab08f87375614686062e78dc01c19, type: 2}
+  - {fileID: 11400000, guid: 68e3ecf56377e714082fedbbcde52357, type: 2}
   - {fileID: 11400000, guid: 140351ede5d03cb4d813a6fbf5d5ced2, type: 2}
   - {fileID: 11400000, guid: ef329609589656248b6d748e16bbacaf, type: 2}
   - {fileID: 11400000, guid: 10d6c9d347d7d024bae26c4d25cc060e, type: 2}
+  - {fileID: 11400000, guid: a3a85b604b7a57f45968e6c68c4d4983, type: 2}
+  - {fileID: 11400000, guid: 47dfa2e1ffed24f4ca70e7946e01ec57, type: 2}
   buttonPrefeb: {fileID: 366469591047535103, guid: 3068a736f9ead664d89a6c5cb668f5ac, type: 3}
   infoPanel: {fileID: 1271379299}
   popUpPrice: {fileID: 331796496}
   popUpPoison: {fileID: 850758009}
   popUpData: {fileID: 1604166190}
-  moveX: 80
+  moveX: -80
   moveY: 80
 --- !u!1 &492385396
 GameObject:
@@ -1065,7 +1065,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 563322921}
         m_TargetAssemblyTypeName: PotionBehavior, Assembly-CSharp
         m_MethodName: Reset
         m_Mode: 1
@@ -1317,8 +1317,8 @@ MonoBehaviour:
   m_Padding:
     m_Left: 20
     m_Right: 20
-    m_Top: 40
-    m_Bottom: 40
+    m_Top: 0
+    m_Bottom: 0
   m_ChildAlignment: 1
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
@@ -3541,13 +3541,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 563322916}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 563322921}
+        m_TargetAssemblyTypeName: PotionBehavior, Assembly-CSharp
+        m_MethodName: Undo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3779,8 +3779,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 492385398}
   m_HandleRect: {fileID: 492385397}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.84678257
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
