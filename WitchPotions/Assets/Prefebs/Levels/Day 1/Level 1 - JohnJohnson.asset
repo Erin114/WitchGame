@@ -17,3 +17,4 @@ MonoBehaviour:
   endpoint_Index: 78
   coin_Reward: 20
   tags: 
+  potionName: Healing Potion

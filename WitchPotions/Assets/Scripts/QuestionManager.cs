@@ -34,7 +34,7 @@ public class QuestionManager : MonoBehaviour
     public NPC currentCharacter;
     public List<NPC> characters;
 
-
+    public int amountOfDiscovered = 0;
 
     //Added by Elad 10/10/2023 - UI and Patiance Bar
     public Slider bar;
@@ -149,6 +149,27 @@ public class QuestionManager : MonoBehaviour
         t.text = currentCharacter.SpecificResponse(index);
 
         emotionQuestions[index].gameObject.SetActive(false);
+
+        //reveal emotional info
+
+        //loop through all the emotional info, seeing if the indices match
+        for(int i = 0; i < currentCharacter.GetComponent<NPC>().potionPossibilities.Count; i++)
+        {
+            for(int a = 0; a < GameManager.Instance.emotionalIndexes[index].Length; a++)
+            {
+
+                for(int p = 0; p < currentCharacter.GetComponent<NPC>().potionPossibilities[i].emotionIndices.Length; p++)
+                {
+                    if (currentCharacter.GetComponent<NPC>().potionPossibilities[i].emotionIndices[p] == GameManager.Instance.emotionalIndexes[index][a])
+                    {
+                        //set the proper "discovered" bool on the NPC script
+                        currentCharacter.GetComponent<NPC>().hasBeenDiscovered[p] = true;
+                        amountOfDiscovered++;
+                    }
+                }
+            }
+        }
+
 
         UpdatePatience();
     }

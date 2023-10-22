@@ -26,6 +26,8 @@ public class NPC : MonoBehaviour
 
     private CharacterList list;
 
+    public List<Level_SO> potionPossibilities;
+
     // Start is called before the first frame update
     protected virtual void Start()
     {

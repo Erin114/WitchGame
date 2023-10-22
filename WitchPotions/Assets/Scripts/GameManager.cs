@@ -13,6 +13,7 @@ public struct TestCharacter
     public string intro;
     public string[] responses;
     public string[] specificResponses;
+    //public bool[] revealsEmotionalInfo;
 }
 
 [System.Serializable]
@@ -36,6 +37,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float suspicion = 100;
 
+    [SerializeField]
+    private float money = 0;
+
     public GameStates currentState;
 
     [SerializeField]
@@ -57,6 +61,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public int currentCustomerIndex;
 
+    public List<int[]> emotionalIndexes;
+
     public static GameManager Instance
     {
         get
@@ -74,6 +80,31 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        emotionalIndexes = new List<int[]>();
+
+        int[] terror = {1,2,3,4,5,6,7,8,9,10};
+        emotionalIndexes.Add(terror);
+
+        int[] grief = {121,122,123,124,126,127,128,129,130};
+        emotionalIndexes.Add(grief);
+
+        int[] Vigilance = {61,62,63,64,65,66,67,68,69,70};
+        emotionalIndexes.Add(Vigilance);
+
+        int[] Loathing = {101,102,103,104,105,106,107,108,109,110};
+        emotionalIndexes.Add(Loathing);
+
+        int[] Rage = {81,82,83,84,85,86,87,88,89,90};
+        emotionalIndexes.Add(Rage);
+
+        int[] Joy = {41,42,43,44,45,46,47,48,49,50};
+        emotionalIndexes.Add(Joy);
+
+        int[] Amazement = {141,142,143,144,145,146,147,148,149,150};
+        emotionalIndexes.Add(Amazement);
+
+        int[] Admiration = {21,22,23,24,25,26,27,28,29,30};
+        emotionalIndexes.Add(Admiration);
 
     }
 
@@ -104,6 +135,26 @@ public class GameManager : MonoBehaviour
             {
                 suspicion = value;
             }
+        }
+    }
+
+    public float Money
+    {
+        get
+        {
+            return money;
+        }
+
+        set
+        {
+            //if (value < 0)
+            //{
+                //money = 0;
+            //}
+            //else
+            //{
+                suspicion = value;
+            //}
         }
     }
 
@@ -183,6 +234,12 @@ public class GameManager : MonoBehaviour
         currentCharacterDiscoveredInfo = GameObject.Find("TempManager").GetComponent<QuestionManager>().currentCharacter.hasBeenDiscovered;
 
         SwitchToPotionScene(dayOneLevels[0], currentCharacterDiscoveredInfo);
+    }
+
+    public void SendInfoToPotionScene(Level_SO level, bool[] discoveredInfo)
+    {
+        currentCharacterDiscoveredInfo = discoveredInfo;
+        SwitchToPotionScene(level, currentCharacterDiscoveredInfo);
     }
 
     public void NextDay()

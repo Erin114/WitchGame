@@ -103,7 +103,7 @@ MonoBehaviour:
   patience: 500
   emotionalIndicees: 01000000790000001a000000
   nodes: 020000000000000001000000
-  hasBeenDiscovered: 010101
+  hasBeenDiscovered: 000000
   characterInfo:
     ID: 0
     name: 
@@ -118,3 +118,5 @@ MonoBehaviour:
   - {fileID: 1028143441, guid: d617fb98a8562554f8695756e489b068, type: 3}
   - {fileID: -1063602500, guid: d617fb98a8562554f8695756e489b068, type: 3}
   - {fileID: 390769421, guid: d617fb98a8562554f8695756e489b068, type: 3}
+  potionPossibilities:
+  - {fileID: 11400000, guid: a468d387df2c4ce4db8375c9ebff854a, type: 2}

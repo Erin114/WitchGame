@@ -27,6 +27,63 @@ public class BookUI : MonoBehaviour
         
     }
 
+    public void UpdatePotions()
+    {
+        //clear potions
+        for(int i = 0; i < potions.Count; i++)
+        {
+            potions[i].gameObject.GetComponent<PotionUI>().active = false;
+            potions[i].gameObject.GetComponent<PotionUI>().UpdateGraphic(false);
+        }
+    }
+
+    public void RevealEmotionalInfo(Level_SO level)
+    {
+
+        QuestionManager m = GameObject.Find("TempManager").GetComponent<QuestionManager>();
+
+        for(int i = 0; i < emotions.Count; i++)
+        {
+            //charges
+            if(emotions[i].toggleState == ToggleStates.Yes)
+            {
+                //loop through each indice/node
+                for(int a = 0; a < level.emotionIndices.Length; a++)
+                {
+                    //check it against the indices for that emotion
+                    for(int k = 0; k < GameManager.Instance.emotionalIndexes[i].Length; k++)
+                    {
+                        //if the indicee is the same, and its a charger then reveal the charger
+                        if(GameManager.Instance.emotionalIndexes[i][k] == level.emotionIndices[a] && level.nodeType[a] == Level_SO.NodeTypes.charger)
+                        {
+                            m.currentCharacter.hasBeenDiscovered[a] = true;
+                            m.amountOfDiscovered++;
+                        }
+                    }
+                }
+            }
+            //voids
+            else if(emotions[i].toggleState == ToggleStates.No)
+            {
+                //loop through each indice/node
+                for (int a = 0; a < level.emotionIndices.Length; a++)
+                {
+                    //check it against the indices for that emotion
+                    for (int k = 0; k < GameManager.Instance.emotionalIndexes[i].Length; k++)
+                    {
+                        //if the indicee is the same, and its a charger then reveal the charger
+                        if (GameManager.Instance.emotionalIndexes[i][k] == level.emotionIndices[a] && level.nodeType[a] == Level_SO.NodeTypes.voidNode)
+                        {
+                            m.currentCharacter.hasBeenDiscovered[a] = true;
+                            m.amountOfDiscovered++;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
     public void UpdateUI()
     {
         activeEmotions.Clear();

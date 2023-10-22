@@ -22,11 +22,12 @@ public class Level_SO : ScriptableObject
     //Loathing   - 101-110
     //Giref      - 121-131
     //Amazement  - 141-151
-    [SerializeField] int[] emotionIndices;
-    [SerializeField] NodeTypes[] nodeType;
-    [SerializeField] int endpoint_Index;
+    [SerializeField] public int[] emotionIndices;
+    [SerializeField] public NodeTypes[] nodeType;
+    [SerializeField] public int endpoint_Index;
     [SerializeField] int coin_Reward;
     [SerializeField] int[] tags;
+    [SerializeField] public string potionName;
     public int Endpoint_Index { get => endpoint_Index; }
     public (int[] emotionIndex, NodeTypes[] type) Special_Nodes_List
     {
