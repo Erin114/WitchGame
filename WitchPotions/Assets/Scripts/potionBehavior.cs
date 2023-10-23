@@ -56,12 +56,13 @@ public class PotionBehavior : MonoBehaviour
     int chargersHit = 0;
     [SerializeField]
     int endpointIndex;
+    int currentMoney;
     
     private void Start()
     {
         center = gameObject.transform.localPosition;
 
-
+        
 
         //potion position init, resolve how many rings will be in use and what the base ring units will be
         int rings = 10;
@@ -227,15 +228,13 @@ public class PotionBehavior : MonoBehaviour
     //Reset all move button! 
     public void Reset()
     {
-        foreach (Ingredients_SO item in ingredientHistory)
-        {
-            poison -= item.ingredients_Poison;
-            cost -= item.ingredients_Price;
-        }
-            nodeStartHistory.Clear();
-            ingredientHistory.Clear();
-            transform.localPosition = nodes[0];
-            poison = 0;
+        nodeStartHistory.Clear();
+        ingredientHistory.Clear();
+        transform.localPosition = nodes[0];
+        poison = 0;
+        cost = 0;
+        LoadLevelObject(GameManager.Instance.currentLevel, GameManager.Instance.currentCharacterDiscoveredInfo);
+
     }
 
     // moves toward a given endpoint by a certain distance
@@ -479,6 +478,7 @@ public class PotionBehavior : MonoBehaviour
     {
         if (currentNodePosition == endpointIndex)
         {
+            
             sendData();
         }
         else { Debug.Log("nuh uh, you're not ready yet!"); }
