@@ -110,27 +110,43 @@ public class PotionBehavior : MonoBehaviour
             specials.Clear();
         }
         instantiatedPrefabs = new GameObject[length];
+        int currentIndex = 0;
         for (int i = 0; i < length; i++)
         {
             if (discovered[i])
             {
-                specials.Add((level.Special_Nodes_List.emotionIndex[i], level.Special_Nodes_List.type[i]));
                 switch (level.Special_Nodes_List.type[i])
                 {
-                    case Level_SO.NodeTypes.voidNode:
-                        instantiatedPrefabs[i] = Instantiate(voidPrefab,parent);
-                        instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[i]];
+                   // case Level_SO.NodeTypes.voidNode:
+                     //   instantiatedPrefabs[i] = Instantiate(voidPrefab,parent);
+                       // instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[i]];
                         
-                        break;
+                       // break;
                     case Level_SO.NodeTypes.charger:
+                        specials.Add((level.Special_Nodes_List.emotionIndex[i], level.Special_Nodes_List.type[i]));
                         instantiatedPrefabs[i] = Instantiate(chargerPrefab, parent);
                         instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[i]];
-                        break;
-                    case Level_SO.NodeTypes.bipolar:
-                        instantiatedPrefabs[i] = Instantiate(bipolarPrefab, parent);
-                        instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[i]];
+                        currentIndex = i;
                         break;
                     default:
+                        if (currentIndex == i - 1) currentIndex = i;
+                        Level_SO.NodeTypes typing = level.Special_Nodes_List.type[currentIndex];
+                        while (typing == level.Special_Nodes_List.type[currentIndex])
+                        {
+                            if (typing == Level_SO.NodeTypes.voidNode)
+                            {
+                                specials.Add((level.Special_Nodes_List.emotionIndex[currentIndex], level.Special_Nodes_List.type[currentIndex]));
+                                instantiatedPrefabs[i] = Instantiate(voidPrefab, parent);
+                                instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[currentIndex]];
+                            }
+                            else
+                            {
+                                specials.Add((level.Special_Nodes_List.emotionIndex[currentIndex], level.Special_Nodes_List.type[currentIndex]));
+                                instantiatedPrefabs[i] = Instantiate(bipolarPrefab, parent);
+                                instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[currentIndex]];
+                            }
+                            currentIndex++;
+                        }
                         break;
                 }
                 
@@ -277,6 +293,7 @@ public class PotionBehavior : MonoBehaviour
                 switch(specials[i].type)
                 {
                     case Level_SO.NodeTypes.voidNode:
+                        Debug.Log("oops! you hit a void :(");
                         break;
                     case Level_SO.NodeTypes.charger:
                         chargersHit++;
@@ -288,6 +305,7 @@ public class PotionBehavior : MonoBehaviour
                             if (i != j && specials[j].type == Level_SO.NodeTypes.bipolar)
                             {
                                 transform.localPosition = nodes[specials[j].nodeIndex];
+                                currentNodePosition = specials[j].nodeIndex;
                             }
                         }
                         break;
