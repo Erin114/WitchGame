@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   emotionIndices: 
   nodeType: 
-  endpoint_Index: 55
+  endpoint_Index: 49
   coin_Reward: 20
   tags: 
+  potionName: Potion of Happiness
