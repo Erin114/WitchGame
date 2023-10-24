@@ -73,6 +73,9 @@ public class Ingredient_Menu : MonoBehaviour
                     case "Amazement":
                         ingredientsDic["Amazement"].Add(buttons[i]);
                         break;
+                    case "Center":
+                        ingredientsDic["Center"].Add(buttons[i]);
+                        break;
                     default:
                         Debug.Log("error, ingredient doesn't exists");
                         break;
@@ -97,6 +100,7 @@ public class Ingredient_Menu : MonoBehaviour
         ingredientsDic.Add("Loathing", new List<GameObject>());
         ingredientsDic.Add("Grief", new List<GameObject>());
         ingredientsDic.Add("Amazement", new List<GameObject>());
+        ingredientsDic.Add("Center", new List<GameObject>());
 
         ingredientsAtiveCheck.Add("Terror", true);
         ingredientsAtiveCheck.Add("Admiration", true);
@@ -106,6 +110,8 @@ public class Ingredient_Menu : MonoBehaviour
         ingredientsAtiveCheck.Add("Loathing", true);
         ingredientsAtiveCheck.Add("Grief", true);
         ingredientsAtiveCheck.Add("Amazement", true);
+        ingredientsAtiveCheck.Add("Center", true);
+
     }
 
 
