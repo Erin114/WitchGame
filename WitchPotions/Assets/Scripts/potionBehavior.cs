@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PotionBehavior : MonoBehaviour
 {
@@ -58,7 +59,9 @@ public class PotionBehavior : MonoBehaviour
     [SerializeField]
     int endpointIndex;
     int currentMoney;
-    
+
+    [SerializeField] GameObject UIPanel;
+    [SerializeField] TextMeshProUGUI UIText;
     private void Start()
     {
         center = gameObject.transform.localPosition;
@@ -133,7 +136,7 @@ public class PotionBehavior : MonoBehaviour
                     default:
                         if (currentIndex == i - 1) currentIndex = i;
                         Level_SO.NodeTypes typing = level.Special_Nodes_List.type[currentIndex];
-                        while (typing == level.Special_Nodes_List.type[currentIndex])
+                        while (currentIndex < level.Special_Nodes_List.type.Length && typing == level.Special_Nodes_List.type[currentIndex])
                         {
                             if (typing == Level_SO.NodeTypes.voidNode)
                             {
@@ -541,11 +544,15 @@ public class PotionBehavior : MonoBehaviour
 
     //finish brewing, probably to be called by InventoryManager or another GameManager
     //TODO by Elad
-    void  FinishBrew() 
+    public void  FinishBrew() 
     {
         if (currentNodePosition == endpointIndex)
         {
-            
+            if (UIPanel)
+            {
+                UIPanel.SetActive(true);
+                UIText.text = ("Chargers Hit:" + chargersHit + "/n" + "Poison:" + poison + "/n" + "Money Spent:" + cost + "/n");
+            }
             sendData();
         }
         else { Debug.Log("nuh uh, you're not ready yet!"); }
