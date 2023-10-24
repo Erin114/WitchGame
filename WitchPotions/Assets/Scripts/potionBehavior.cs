@@ -40,6 +40,7 @@ public class PotionBehavior : MonoBehaviour
     //positions of each emotional extreme
     Dictionary<string, int> emotionValues = new Dictionary<string, int>()
     {
+        {"Center", 0 },
         {"Rage", 90 },
         {"Terror", 10 },
         {"Joy", 50},
