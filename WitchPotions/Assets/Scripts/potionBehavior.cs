@@ -551,7 +551,7 @@ public class PotionBehavior : MonoBehaviour
             if (UIPanel)
             {
                 UIPanel.SetActive(true);
-                UIText.text = ("Chargers Hit:" + chargersHit + "/n" + "Poison:" + poison + "/n" + "Money Spent:" + cost + "/n");
+                UIText.text = ("Chargers Hit:" + chargersHit + "<br>" + "Poison:" + poison + "<br>" + "Money Spent:" + cost);
             }
             sendData();
         }
