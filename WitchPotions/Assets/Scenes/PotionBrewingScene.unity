@@ -1174,6 +1174,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4dcb5c4129fe48a4fa5d9f864130613c, type: 2}
   - {fileID: 11400000, guid: 6536193d31ceb134486e03dae9f2dd0b, type: 2}
   - {fileID: 11400000, guid: 28590067a8c6d3f40aa28cb0f54afb78, type: 2}
+  - {fileID: 11400000, guid: 041aa7c5e05808c4ea570fbb21ef93d0, type: 2}
+  - {fileID: 11400000, guid: 78b5db78b9bbe594b8660fbbefdd2b58, type: 2}
+  - {fileID: 11400000, guid: 5087fcf8172e94842a46ac87a74474d8, type: 2}
+  - {fileID: 11400000, guid: badbf41075cd1624682a35837d9ef48c, type: 2}
+  - {fileID: 11400000, guid: fe7cec1caa6f3394db355e4f897afff6, type: 2}
+  - {fileID: 11400000, guid: 721e9282b4e45ed4ea2856461ad44f34, type: 2}
+  - {fileID: 11400000, guid: fa134ba86e32ba54e880517f44bc2660, type: 2}
+  - {fileID: 11400000, guid: 2204bf919b5888a4187755853aeefc33, type: 2}
   buttonPrefeb: {fileID: 366469591047535103, guid: 3068a736f9ead664d89a6c5cb668f5ac, type: 3}
   infoPanel: {fileID: 1271379299}
   popUpPrice: {fileID: 331796496}
