@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Admiration - 1
   m_EditorClassIdentifier: 
   ingredients_Name: Mourning Petal
-  ingredients_Price: 5
-  ingredients_Poison: 1
+  ingredients_Price: 1
+  ingredients_Poison: 2
   ingredients_Sprite: {fileID: 21300000, guid: f40f8e4e2e01d3d4a8fa07648a447b40, type: 3}
   ingredients_Emotion:
   - Admiration

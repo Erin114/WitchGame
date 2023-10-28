@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97681d1b423341742836e18ab76d2459, type: 3}
-  m_Name: Admiration - 4
+  m_Name: Vigilance 4 Joy 2
   m_EditorClassIdentifier: 
-  ingredients_Name: Wrathbark
-  ingredients_Price: 3
-  ingredients_Poison: 3
-  ingredients_Sprite: {fileID: 21300000, guid: f7b3e88accfb89c4fa5168ae829aca13, type: 3}
+  ingredients_Name: Emberblossom
+  ingredients_Price: 4
+  ingredients_Poison: 4
+  ingredients_Sprite: {fileID: 21300000, guid: dea3ea6eeadb3d8488806bab2dfe173e, type: 3}
   ingredients_Emotion:
-  - Admiration
-  ingredients_Value: 04000000
+  - Vigilance
+  - Joy
+  ingredients_Value: 0100000002000000

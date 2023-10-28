@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Loathing - 1
   m_EditorClassIdentifier: 
   ingredients_Name: Crystalbloom
-  ingredients_Price: 5
-  ingredients_Poison: 1
+  ingredients_Price: 1
+  ingredients_Poison: 2
   ingredients_Sprite: {fileID: 21300000, guid: d2ba80758f2cfa9498e514a6aedb1126, type: 3}
   ingredients_Emotion:
   - Loathing

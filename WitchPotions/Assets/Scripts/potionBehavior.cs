@@ -51,6 +51,10 @@ public class PotionBehavior : MonoBehaviour
     int endpointIndex;
     int currentMoney;
 
+    //UI elements:
+    public TextMeshProUGUI poisonText;
+    public TextMeshProUGUI costText;
+
 
     //Grid Values:
     int rings = 10;
@@ -275,6 +279,8 @@ public class PotionBehavior : MonoBehaviour
         }
         cost += ingredient.ingredients_Price;
         poison += ingredient.ingredients_Poison;
+        poisonText.text = poison.ToString();
+        costText.text = cost.ToString();
 
         SpecialNodeUpdate();
         previewNodes = nodes;
@@ -292,6 +298,7 @@ public class PotionBehavior : MonoBehaviour
             Ingredients_SO tempIng = ingredientHistory.Pop();
             poison -= tempIng.ingredients_Poison;
             cost -= tempIng.ingredients_Price;
+
         }
         else
         {
@@ -306,6 +313,9 @@ public class PotionBehavior : MonoBehaviour
             
             transform.localPosition = nodes[0];
         }
+        poisonText.text = poison.ToString();
+        costText.text = cost.ToString();
+
     }
 
     //Reset all move button! 
@@ -316,8 +326,12 @@ public class PotionBehavior : MonoBehaviour
         transform.localPosition = nodes[0];
         poison = 0;
         cost = 0;
+        currentNodePosition = 0;
         LoadLevelObject(GameManager.Instance.currentLevel, GameManager.Instance.currentCharacterDiscoveredInfo);
-
+        poisonText.text = poison.ToString();
+        costText.text = cost.ToString();
+        poisonText.text = poison.ToString();
+        costText.text = cost.ToString();
     }
 
     // moves toward a given endpoint by a certain distance

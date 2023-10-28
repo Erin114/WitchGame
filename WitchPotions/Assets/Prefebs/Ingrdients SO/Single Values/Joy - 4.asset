@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Joy - 4
   m_EditorClassIdentifier: 
   ingredients_Name: Agonyrose
-  ingredients_Price: 15
+  ingredients_Price: 3
   ingredients_Poison: 3
   ingredients_Sprite: {fileID: 21300000, guid: d2800bf0d8c426046ba840491c034af8, type: 3}
   ingredients_Emotion:

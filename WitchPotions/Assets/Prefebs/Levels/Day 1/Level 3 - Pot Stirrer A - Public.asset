@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   emotionIndices: 44000000
   nodeType: 02000000
-  endpoint_Index: 95
+  endpoint_Index: 96
   coin_Reward: 20
   tags: 
   potionName: Rage Potion

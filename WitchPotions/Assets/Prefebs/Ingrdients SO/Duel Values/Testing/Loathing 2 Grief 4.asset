@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97681d1b423341742836e18ab76d2459, type: 3}
-  m_Name: Admiration - 4
+  m_Name: Loathing 2 Grief 4
   m_EditorClassIdentifier: 
-  ingredients_Name: Wrathbark
-  ingredients_Price: 3
-  ingredients_Poison: 3
-  ingredients_Sprite: {fileID: 21300000, guid: f7b3e88accfb89c4fa5168ae829aca13, type: 3}
+  ingredients_Name: Tranquil Lily
+  ingredients_Price: 4
+  ingredients_Poison: 4
+  ingredients_Sprite: {fileID: 21300000, guid: af5ed83773e96434094eadeaff60f7d3, type: 3}
   ingredients_Emotion:
-  - Admiration
-  ingredients_Value: 04000000
+  - Loathing
+  - Grief
+  ingredients_Value: 0200000001000000

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97681d1b423341742836e18ab76d2459, type: 3}
-  m_Name: Loathing 2 Vigilence 6
+  m_Name: Admiration 2 Joy  4
   m_EditorClassIdentifier: 
-  ingredients_Name: Mournroot
-  ingredients_Price: 0
-  ingredients_Poison: 3
-  ingredients_Sprite: {fileID: 21300000, guid: f91dcb6ce2302c9408cc043995c0621a, type: 3}
+  ingredients_Name: Raventwist
+  ingredients_Price: 4
+  ingredients_Poison: 4
+  ingredients_Sprite: {fileID: 21300000, guid: d1df496f1b352bd45bcfad1b1b25badf, type: 3}
   ingredients_Emotion:
-  - Loathing
-  - Vigilance
-  ingredients_Value: 0200000003000000
+  - Admiration
+  - Joy
+  ingredients_Value: 0200000004000000

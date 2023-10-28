@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Center - 3
   m_EditorClassIdentifier: 
   ingredients_Name: Iron Morel
-  ingredients_Price: 15
-  ingredients_Poison: 4
+  ingredients_Price: 3
+  ingredients_Poison: 3
   ingredients_Sprite: {fileID: 21300000, guid: 6f6c46041030e294e9d9a7b6864702bd, type: 3}
   ingredients_Emotion:
   - Center

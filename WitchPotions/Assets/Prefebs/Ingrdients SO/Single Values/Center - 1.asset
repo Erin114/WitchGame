@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Center - 1
   m_EditorClassIdentifier: 
   ingredients_Name: Grey Wisp
-  ingredients_Price: 15
+  ingredients_Price: 1
   ingredients_Poison: 2
   ingredients_Sprite: {fileID: 21300000, guid: 3a66b2b0f3a6a594f98eeff3eb261732, type: 3}
   ingredients_Emotion:
