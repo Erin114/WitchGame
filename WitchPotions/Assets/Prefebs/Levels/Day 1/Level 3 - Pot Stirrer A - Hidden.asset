@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69c38f2378e10704da2a6da594b293ec, type: 3}
   m_Name: Level 3 - Pot Stirrer A - Hidden
   m_EditorClassIdentifier: 
-  emotionIndices: 2d000000
+  emotionIndices: 44000000
   nodeType: 02000000
-  endpoint_Index: 156
-  coin_Reward: 20
+  endpoint_Index: 235
+  coin_Reward: 30
   tags: 
   potionName: Memory Loss Potion

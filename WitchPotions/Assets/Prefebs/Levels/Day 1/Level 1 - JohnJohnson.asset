@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   emotionIndices: 
   nodeType: 
-  endpoint_Index: 78
+  endpoint_Index: 108
   coin_Reward: 20
   tags: 
-  potionName: 'Healing Vetality '
+  potionName: Potion of Vitality

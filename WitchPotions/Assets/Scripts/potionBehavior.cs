@@ -37,21 +37,12 @@ public class PotionBehavior : MonoBehaviour
     GameObject[] instantiatedPrefabs = new GameObject[0];
     GameObject endpoint;
 
+    //Debug
+    public GameObject visablePoint;
+    public GameObject backGround;
 
     //positions of each emotional extreme
-    Dictionary<string, int> emotionValues = new Dictionary<string, int>()
-    {
-        {"Center", 0 },
-        {"Rage", 90 },
-        {"Terror", 10 },
-        {"Joy", 50},
-        {"Grief", 130},
-        {"Loathing",110 },
-        {"Amazement", 150 },
-        {"Vigilance",70},
-        {"Admiration", 30 },
-    };
-
+  
     //relevant potion statistics
     int poison = 0;
     int cost = 0;
@@ -59,6 +50,26 @@ public class PotionBehavior : MonoBehaviour
     [SerializeField]
     int endpointIndex;
     int currentMoney;
+
+
+    //Grid Values:
+    int rings = 10;
+    int slices = 24;
+    float theta = 15.0f;
+
+    Dictionary<string, int> emotionValues = new Dictionary<string, int>()
+    {
+        {"Center", 0 },
+        {"Terror", 10 },
+        {"Admiration", 40 },
+        {"Joy", 70},
+        {"Vigilance",100},
+        {"Rage", 130 },
+        {"Loathing",160 },
+        {"Grief", 190},
+        {"Amazement", 220 },
+
+    };
 
     [SerializeField] GameObject UIPanel;
     [SerializeField] TextMeshProUGUI UIText;
@@ -69,9 +80,7 @@ public class PotionBehavior : MonoBehaviour
         
 
         //potion position init, resolve how many rings will be in use and what the base ring units will be
-        int rings = 10;
-        int slices = 16;
-        float theta = 22.5f;
+      
         Vector3[] nodetemplate = new Vector3[rings];
         unit = 150f / rings;
         for (int i = 1; i <= rings; i++)
@@ -91,6 +100,8 @@ public class PotionBehavior : MonoBehaviour
             {
                 Vector3 newNode;
                 newNode = Quaternion.Euler(0, 0, (i * theta)) * nodetemplate[j];
+               // GameObject point =  Instantiate(visablePoint, backGround.transform);
+               // point.transform.localPosition = newNode;
                 nodes.Add(newNode);
             }
         }
@@ -267,6 +278,8 @@ public class PotionBehavior : MonoBehaviour
 
         SpecialNodeUpdate();
         previewNodes = nodes;
+      
+
     }
 
     //Undo move button! (TODO, undo charger use)
@@ -338,8 +351,7 @@ public class PotionBehavior : MonoBehaviour
 
             if (distBest > temp && point != transform.localPosition) { distBest = temp; finalNode = point; }
         }
-        transform.localPosition = finalNode; 
-
+        transform.localPosition = finalNode;
     }
 
     Vector3 CreatePathEndpoint(Vector3 node, float distance)
@@ -391,6 +403,7 @@ public class PotionBehavior : MonoBehaviour
     //returns all neighbors 
     int[] GetNodeNeigbors(int node)
     {
+        int sliceCutsIndexs = (slices-1) * 10;
         int[] neighbors;
         //innermost ring case
         if (node % 10 == 1)
@@ -405,7 +418,14 @@ public class PotionBehavior : MonoBehaviour
 
         }
         //center case
-        else if (node == 0){ neighbors = new int[16] {1,11,21,31,41,51,61,71,81,91,101,111,121,131,141,151 }; }
+        else if (node == 0)
+        { 
+            neighbors = new int[slices];
+            for (int i = 0; i < slices; i++)
+            {
+                neighbors[i] = 1 + i * 10;
+            }
+        }
         //middle rings case
         else { neighbors = new int[8] {node + 9, node + 10, node + 11, node + 1, node - 9, node -10, node-11, node-1 }; }
 
@@ -414,9 +434,9 @@ public class PotionBehavior : MonoBehaviour
         {
             if (neighbors[i] <= 0 && i > 0 )
             {
-                neighbors[i] = 160 + neighbors[i];
+                neighbors[i] = sliceCutsIndexs + neighbors[i];
             }
-            else if (neighbors[i] > 160) { neighbors[i] = neighbors[i] - 160; }
+            else if (neighbors[i] > sliceCutsIndexs) { neighbors[i] = neighbors[i] - sliceCutsIndexs; }
         }
         return neighbors;
     }
@@ -429,6 +449,7 @@ public class PotionBehavior : MonoBehaviour
 
         List<int> pathNodes = new List<int>();
         int[] neigbors = GetNodeNeigbors(startNode);
+
         int closestToEndpoint = 0;
         float bestDist = Vector3.Distance(nodes[endNode], nodes[startNode]);
 

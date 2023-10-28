@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69c38f2378e10704da2a6da594b293ec, type: 3}
-  m_Name: Level 2 - Pippin - Hidden
+  m_Name: Level X - Inquisitor #1 Public
   m_EditorClassIdentifier: 
-  emotionIndices: 
-  nodeType: 
-  endpoint_Index: 86
-  coin_Reward: 20
+  emotionIndices: 0a000000
+  nodeType: 02000000
+  endpoint_Index: 69
+  coin_Reward: 30
   tags: 
-  potionName: Potion of Confidence
+  potionName: Potion of Happiness
