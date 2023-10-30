@@ -9,6 +9,7 @@ public class PotionUI : MonoBehaviour, IPointerClickHandler
 {
 
     public bool active = false;
+    public bool isLocked = false;
 
     public GameObject indicator;
 
@@ -17,10 +18,12 @@ public class PotionUI : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
 
-        book.UpdatePotions();
-
-        active = !active;
-        UpdateGraphic(active);
+        //book.UpdatePotions();
+        if(!isLocked)
+        {
+            active = !active;
+            UpdateGraphic(active);
+        }
     }
 
     public void UpdateGraphic(bool a)

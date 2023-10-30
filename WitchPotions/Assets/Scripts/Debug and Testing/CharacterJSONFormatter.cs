@@ -59,8 +59,8 @@ public class CharacterJSONFormatter : MonoBehaviour
             specific[i] = specificQuestionIFs[i].text;
         }
 
-        newCharacter.responses = generic;
-        newCharacter.specificResponses = specific;
+        //newCharacter.responses = generic;
+        //newCharacter.specificResponses = specific;
 
         list.characters.Add(newCharacter);
 

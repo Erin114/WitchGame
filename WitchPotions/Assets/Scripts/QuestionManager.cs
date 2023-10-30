@@ -5,11 +5,9 @@ using UnityEngine.UI;
 
 public class QuestionManager : MonoBehaviour
 {
-
-
-
     public GameObject questionScrollBar;
     public GameObject characterText;
+    public GameObject convoButton;
     public GameObject conversationBox;
 
     public Text t;
@@ -42,6 +40,10 @@ public class QuestionManager : MonoBehaviour
     public Sprite [] allFace;
     public int annoyedQuestionsCount = 0;
 
+    //variables to progress through a conversation
+    string[] convo;
+    int convoIndex = 0;
+    bool convoStarted = false;
 
     //Question Manager handles one character at a time
     //Press door for character to spawn and walk up to the desk
@@ -55,6 +57,8 @@ public class QuestionManager : MonoBehaviour
     {
         currentDay = GameManager.Instance.currentDay;
         currentChar = GameManager.Instance.currentCustomerIndex;
+
+        //convo = 
 
         list = GameObject.Find("TempManager").GetComponent<JSONManager>().list;
         //characters = new List<NPC>();
@@ -91,9 +95,9 @@ public class QuestionManager : MonoBehaviour
         GameObject character = Instantiate(prefab, spawnLocation.transform.position, Quaternion.identity);
 
         currentCharacter = character.GetComponent<NPC>();
-        currentCharacter.LoadCharacterInfo();
+        //currentCharacter.LoadCharacterInfo();
 
-        name.text = "Name: " + currentCharacter.charName;
+        name.text = "Name: " + currentCharacter.characterInfo.name;
 
         nextButton.gameObject.SetActive(false);
 
@@ -140,6 +144,9 @@ public class QuestionManager : MonoBehaviour
 
         genericQuestions[index].gameObject.SetActive(false);
 
+        convo = currentCharacter.characterInfo.genericConvo[index].dialogue;
+        convoIndex = 0;
+
         UpdatePatience();
     }
 
@@ -150,10 +157,13 @@ public class QuestionManager : MonoBehaviour
 
         emotionQuestions[index].gameObject.SetActive(false);
 
+        convo = currentCharacter.characterInfo.specificConvo[index].dialogue;
+        convoIndex = 0;
+
         //reveal emotional info
 
         //loop through all the emotional info, seeing if the indices match
-        for(int i = 0; i < currentCharacter.GetComponent<NPC>().potionPossibilities.Count; i++)
+        for (int i = 0; i < currentCharacter.GetComponent<NPC>().potionPossibilities.Count; i++)
         {
             for(int a = 0; a < GameManager.Instance.emotionalIndexes[index].Length; a++)
             {
@@ -267,7 +277,7 @@ public class QuestionManager : MonoBehaviour
 
     void UpdatePatience()
     {
-        patience.text = "Patience: " + currentCharacter.Patience.ToString();
+        //patience.text = "Patience: " + currentCharacter.Patience.ToString();
         if (currentCharacter.Patience >0)
         {
             bar.value = (currentCharacter.Patience / currentCharacter.maxPatience) * 100;
@@ -303,6 +313,48 @@ public class QuestionManager : MonoBehaviour
     public void ShowCharacterText()
     {
         StartCoroutine(DisableScroll());
+    }
+
+    //increase convo index and display new text
+    //once the end of the convo is reached, display questions again
+    public void GoThroughConversation()
+    {
+        //if there is a convo to display, and we arent at the end
+        if (convo != null && convoIndex < convo.Length - 1)
+        {
+            //start the conversation with vivian's first response
+            if(!convoStarted)
+            {
+                convoStarted = true;
+                name.text = "Vivian";
+                t.text = convo[0];
+            }
+            //continue the conversation till the end
+            else
+            {
+                convoIndex++;
+                t.text = convo[convoIndex];
+
+                //change the name on the conversation box UI
+                if (convoIndex % 2 == 0)
+                {
+                    name.text = "Vivian";
+                }
+                else
+                {
+                    name.text = currentCharacter.characterInfo.name;
+                }
+            }
+        }
+        //either there is no convo to display (showing intro text, or none exists, etc.) or we reached the end of it
+        else
+        {
+            ShowScrollBar();
+            name.text = currentCharacter.characterInfo.name;
+            convoIndex = 0;
+            convo = null;
+            convoStarted = false;
+        }
     }
 
     IEnumerator DisableScroll()

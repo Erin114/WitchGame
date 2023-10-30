@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1176,6 +1176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 0
+  isLocked: 0
   indicator: {fileID: 1035509301}
 --- !u!1 &91672426
 GameObject:
@@ -2771,7 +2772,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &277754075
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3461,6 +3462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 0
+  isLocked: 0
   indicator: {fileID: 1882753964}
 --- !u!1 &332931923
 GameObject:
@@ -4445,6 +4447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 0
+  isLocked: 0
   indicator: {fileID: 1977963175}
 --- !u!1 &459926774
 GameObject:
@@ -4753,6 +4756,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questionScrollBar: {fileID: 661396502}
   characterText: {fileID: 1602674561}
+  convoButton: {fileID: 0}
   conversationBox: {fileID: 1030550816}
   t: {fileID: 1634036198}
   name: {fileID: 1053460014}
@@ -6405,6 +6409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 0
+  isLocked: 0
   indicator: {fileID: 441007385}
 --- !u!1 &781756045
 GameObject:
@@ -7147,6 +7152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 0
+  isLocked: 0
   indicator: {fileID: 1686465141}
 --- !u!1 &878839913
 GameObject:
@@ -7336,6 +7342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 0
+  isLocked: 0
   indicator: {fileID: 1749130029}
 --- !u!1 &921353150
 GameObject:
@@ -8082,6 +8089,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 0
+  isLocked: 0
   indicator: {fileID: 583842741}
 --- !u!1 &981533282
 GameObject:
@@ -8130,8 +8138,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1, y: 0}
-  m_SizeDelta: {x: -611.0383, y: -208.6981}
+  m_AnchoredPosition: {x: 1, y: 36.978333}
+  m_SizeDelta: {x: -611.0383, y: -134.7414}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &981533284
 MonoBehaviour:
@@ -8969,7 +8977,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1266497331615204200, guid: a4aefae4e50d0224c9a53e44efcdc04f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -44.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1266497331615204200, guid: a4aefae4e50d0224c9a53e44efcdc04f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -10119,6 +10127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 0
+  isLocked: 0
   indicator: {fileID: 278732871}
 --- !u!1 &1231339260
 GameObject:
@@ -10232,6 +10241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 0
+  isLocked: 0
   indicator: {fileID: 1497693891}
 --- !u!1 &1286776391
 GameObject:
@@ -10993,6 +11003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 0
+  isLocked: 0
   indicator: {fileID: 296164934}
 --- !u!1 &1433186654
 GameObject:
@@ -11262,6 +11273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 0
+  isLocked: 0
   indicator: {fileID: 790074499}
 --- !u!1 &1497693891
 GameObject:
@@ -11611,6 +11623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 0
+  isLocked: 0
   indicator: {fileID: 781756045}
 --- !u!1 &1558096554
 GameObject:
@@ -12080,7 +12093,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 466256264}
         m_TargetAssemblyTypeName: QuestionManager, Assembly-CSharp
-        m_MethodName: ShowScrollBar
+        m_MethodName: GoThroughConversation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12165,7 +12178,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -253.7, y: 148.9}
+  m_AnchoredPosition: {x: -253.7, y: 178}
   m_SizeDelta: {x: 34.78, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1608334825
@@ -15491,7 +15504,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -0.0038452148, y: 0}
-  m_SizeDelta: {x: -0.0022888184, y: 47.69812}
+  m_SizeDelta: {x: -0.0022888184, y: -26.258606}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2006532901
 MonoBehaviour:
@@ -16094,7 +16107,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.75439453}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -674.3786, y: -84.0963}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2040420359

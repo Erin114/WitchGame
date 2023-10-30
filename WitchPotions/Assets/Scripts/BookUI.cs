@@ -103,7 +103,7 @@ public class BookUI : MonoBehaviour
         }
 
         //display certain values based on this
-        for(int i = 0; i < potions.Count; i++)
+        /*for(int i = 0; i < potions.Count; i++)
         {
             //check against each emotion in the potion's tag list
             for(int j = 0; j < potions[i].tags.Count; j++)
@@ -143,7 +143,7 @@ public class BookUI : MonoBehaviour
 
             }
 
-        }
+        }*/
 
     }
 }

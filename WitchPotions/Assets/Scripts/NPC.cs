@@ -10,8 +10,8 @@ public class NPC : MonoBehaviour
     public float maxPatience = 100;
     public float patience;
 
-    public int[] emotionalIndicees;
-    public Level_SO.NodeTypes[] nodes;
+    //public int[] emotionalIndicees;
+    //public Level_SO.NodeTypes[] nodes;
 
     public bool[] hasBeenDiscovered;
 
@@ -85,17 +85,17 @@ public class NPC : MonoBehaviour
     //return the generic response at a given index, decrease patience
     public string GenericResponse(int index)
     {
-        if (characterInfo.responses.Length > index)
+        if (characterInfo.genericConvo.Length > index)
         {
             patience -= 25f;
 
             ChangeSprite(spriteVariants, genericQuestionSpriteOrder, index);
 
-            return characterInfo.responses[index];
+            return characterInfo.genericConvo[index].initialResponse;
         }
         else
         {
-            Debug.Log("Generic response index is out of bounds" + "|" + characterInfo.responses.Length);
+            Debug.Log("Generic response index is out of bounds" + "|" + characterInfo.genericConvo.Length);
             return "";
         }
     }
@@ -104,13 +104,13 @@ public class NPC : MonoBehaviour
 
     public string SpecificResponse(int index)
     {
-        if (characterInfo.specificResponses.Length > index)
+        if (characterInfo.specificConvo.Length > index)
         {
             patience -= 50f;
 
             ChangeSprite(spriteVariants, specificQuestionSpriteOrder, index);
 
-            return characterInfo.specificResponses[index];
+            return characterInfo.specificConvo[index].initialResponse;
         }
         else
         {

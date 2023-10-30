@@ -11,15 +11,24 @@ public struct TestCharacter
     public string name;
     public string emotion;
     public string intro;
-    public string[] responses;
-    public string[] specificResponses;
-    //public bool[] revealsEmotionalInfo;
+    //public string[] responses;
+    //public string[] specificResponses;
+    public Conversation[] genericConvo;
+    public Conversation[] specificConvo;
 }
 
 [System.Serializable]
 public class CharacterList
 {
     public List<TestCharacter> characters = new List<TestCharacter>();
+}
+
+[System.Serializable]
+//class that is used for asking questions. When a question button is pressed, it checks against a character's conversation objects
+public class Conversation
+{
+    public string initialResponse;
+    public string[] dialogue;
 }
 
 public enum GameStates
@@ -213,15 +222,11 @@ public class GameManager : MonoBehaviour
 
     public void SwitchToPotionScene(Level_SO levelObj, bool[] discoveredEmotionalInfo)
     {
+        //set the current level
+        currentLevel = levelObj;
+
         //go to potions scene
         ChangeScene("PotionBrewingScene");
-
-        //get reference to the potionBehavior script somehow
-        //potBehavior = GameObject.Find("potDot").GetComponent<PotionBehavior>();
-
-        //call load level
-        //potBehavior.LoadLevelObject(levelObj, discoveredEmotionalInfo);
-
     }
 
     public void NextCustomer()
