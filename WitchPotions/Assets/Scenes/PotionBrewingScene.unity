@@ -1412,7 +1412,7 @@ GameObject:
   - component: {fileID: 563322919}
   - component: {fileID: 563322921}
   m_Layer: 5
-  m_Name: potDot
+  m_Name: Pointer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1492,7 +1492,7 @@ MonoBehaviour:
   chargerPrefab: {fileID: 4636563715448737716, guid: e5d2c20b67086514eac91b119bc0696c, type: 3}
   voidPrefab: {fileID: 4636563715448737716, guid: 1e975cee95d0f5241811b80684c9cc42, type: 3}
   bipolarPrefab: {fileID: 4636563715448737716, guid: 6627049186a31774484faef6418fb937, type: 3}
-  visablePoint: {fileID: 3988188653581058223, guid: ab6573dc49a5ca74789141c2e9172248, type: 3}
+  visablePoint: {fileID: 1916772718230522287, guid: 4288a7cf50ae75647924e75452af648c, type: 3}
   backGround: {fileID: 1963352092}
   endpointIndex: 0
   poisonText: {fileID: 352932259}
@@ -2356,7 +2356,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 563322921}
         m_TargetAssemblyTypeName: PotionBehavior, Assembly-CSharp
         m_MethodName: Undo
         m_Mode: 1
@@ -4506,7 +4506,7 @@ MonoBehaviour:
         m_MethodName: LoadLevelObject
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: a468d387df2c4ce4db8375c9ebff854a, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: ab980471589b477449658ee70be607cb, type: 2}
           m_ObjectArgumentAssemblyTypeName: Level_SO, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -5687,8 +5687,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1959912089}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.000088509616}
-  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1963352093}

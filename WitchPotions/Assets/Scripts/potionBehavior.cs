@@ -86,7 +86,7 @@ public class PotionBehavior : MonoBehaviour
         //potion position init, resolve how many rings will be in use and what the base ring units will be
       
         Vector3[] nodetemplate = new Vector3[rings];
-        unit = 150f / rings;
+        unit = 200f / rings;
         for (int i = 1; i <= rings; i++)
         {
             nodetemplate[i-1] = center + new Vector3(i * unit, 0, 0);
@@ -104,8 +104,8 @@ public class PotionBehavior : MonoBehaviour
             {
                 Vector3 newNode;
                 newNode = Quaternion.Euler(0, 0, (i * theta)) * nodetemplate[j];
-               // GameObject point =  Instantiate(visablePoint, backGround.transform);
-               // point.transform.localPosition = newNode;
+                GameObject point =  Instantiate(visablePoint, backGround.transform);
+                point.transform.localPosition = newNode;
                 nodes.Add(newNode);
             }
         }

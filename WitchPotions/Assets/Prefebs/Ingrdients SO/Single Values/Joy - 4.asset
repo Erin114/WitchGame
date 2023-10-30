@@ -18,4 +18,4 @@ MonoBehaviour:
   ingredients_Sprite: {fileID: 21300000, guid: d2800bf0d8c426046ba840491c034af8, type: 3}
   ingredients_Emotion:
   - Joy
-  ingredients_Value: 05000000
+  ingredients_Value: 04000000
