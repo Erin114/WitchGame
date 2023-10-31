@@ -389,6 +389,7 @@ public class PotionBehavior : MonoBehaviour
                 {
                     case Level_SO.NodeTypes.voidNode:
                         Debug.Log("oops! you hit a void :(");
+                        Reset();
                         break;
                     case Level_SO.NodeTypes.charger:
                         chargersHit++;
