@@ -23,7 +23,9 @@ public class Ingredient_Menu : MonoBehaviour
     public GameObject infoPanel;
     public TextMeshProUGUI popUpPrice;
     public TextMeshProUGUI popUpPoison;
-    public TextMeshProUGUI popUpData;
+    public TextMeshProUGUI [] popUpData;
+    public Image[] iconSprites;
+    public Sprite[] emotionIcons;
 
     //Slection Options:
     Dictionary<string, List<GameObject>> ingredientsDic = 
@@ -131,9 +133,57 @@ public class Ingredient_Menu : MonoBehaviour
 
         popUpPrice.text = "Price - " + ingredient.ingredients_Price.ToString();
       popUpPoison.text = "Poison - " + ingredient.ingredients_Poison.ToString();
+
+        //Shut on/off the second info line if it's needed
+        if (ingredient.ingredients_Emotion.Length == 1)
+        {
+            iconSprites[1].gameObject.SetActive(false);
+            popUpData[1].gameObject.SetActive(false);
+        }
+        else
+        {
+            iconSprites[1].gameObject.SetActive(true);
+            popUpData[1].gameObject.SetActive(true);
+        }
+
+        //Set icon
         for (int i = 0; i < ingredient.ingredients_Emotion.Length; i++)
         {
-            popUpData.text += ingredient.ingredients_Emotion[i] + " = " + ingredient.ingredients_Value[i] + "\n";
+            switch (ingredient.ingredients_Emotion[i])
+            {
+                case "Terror":
+                    iconSprites[i].sprite = emotionIcons[0];
+                    break;
+                case "Admiration":
+                    iconSprites[i].sprite = emotionIcons[1];
+                    break;
+                case "Joy":
+                    iconSprites[i].sprite = emotionIcons[2];
+                    break;
+                case "Vigilance":
+                    iconSprites[i].sprite = emotionIcons[3];
+                    break;
+                case "Rage":
+                    iconSprites[i].sprite = emotionIcons[4];
+                    break;
+                case "Loathing":
+                    iconSprites[i].sprite = emotionIcons[5];
+                    break;
+                case "Grief":
+                    iconSprites[i].sprite = emotionIcons[6];
+                    break;
+                case "Amazement":
+                    iconSprites[i].sprite = emotionIcons[7];
+                    break;
+                case "Center":
+                    iconSprites[i].sprite = emotionIcons[8];
+                    break;
+                default:
+                    Debug.Log("error, ingredient doesn't exists");
+                    break;
+
+            }
+            popUpData[i].text +=  " = " + ingredient.ingredients_Value[i];
         }
     }
     public void ClearUpPopUp()
@@ -141,8 +191,11 @@ public class Ingredient_Menu : MonoBehaviour
         infoPanel.SetActive(false);
         popUpPrice.text = "";
         popUpPoison.text = "";
-        popUpData.text = "";
-        
+        foreach (var item in popUpData)
+        {
+            item.text = "";
+        }
+
     }
 
     public void ShowCaseSpesificIng(string Key)
