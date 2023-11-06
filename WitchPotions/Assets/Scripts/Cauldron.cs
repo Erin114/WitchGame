@@ -8,6 +8,8 @@ public class Cauldron : MonoBehaviour
     public GameObject potionInfoUI;
     PotionUI potion;
     Level_SO level;
+    public Material outline;
+    public Material normal;
 
     // Start is called before the first frame update
     void Start()
@@ -85,6 +87,16 @@ public class Cauldron : MonoBehaviour
     public void StartBrewingProcess()
     {
         GameManager.Instance.SendInfoToPotionScene(level, GameObject.Find("TempManager").GetComponent<QuestionManager>().currentCharacter.hasBeenDiscovered);
+    }
+
+    private void OnMouseEnter()
+    {
+        GetComponent<SpriteRenderer>().material = outline;
+    }
+    private void OnMouseExit()
+    {
+        GetComponent<SpriteRenderer>().material = normal;
+
     }
 
 }
