@@ -110,46 +110,122 @@ MonoBehaviour:
     genericConvo:
     - initialResponse: I've been feeling pretty worn out these days
       dialogue:
-      - Im sorry to hear that
-      - It's alright, it all comes with age I guess
-      - Is that all?
-      - Well my sleep hasn't been the best recently
+      - character: 1
+        text: "(This is a great starting point!  We know that he\u2019s been feeling
+          tired lately, so maybe his problem lies in his vigilance.  Let\u2019s ask
+          him an emotion specific question now.)"
+      - character: 1
+        text: "( These questions cost more patience since you\u2019re prying into
+          thier emotions, but they\u2019ll give you a good answer on if they\u2019re
+          having trouble with this emotion or not.  Why don\u2019t you ask him if
+          anything\u2019s been distracting him.) "
     - initialResponse: Well my horse, Bessy, has fallen ill. Can't tell why, she
         was sturdy as an oak up until a few days ago...
       dialogue:
-      - Maybe she's just getting old
-      - No way, shes only 4 years
-      - Hmmmm thats strange
+      - character: 0
+        text: "Oh no!  Do you think she\u2019s going to be ok?"
+      - character: 2
+        text: "Ms. Bessy? Of course!  I\u2019d bet anything she\u2019ll be back on
+          her hooves in no time."
     - initialResponse: Well I tried carrying the plow myself but I'm nowhere near
         as strong as Bessy
-      dialogue: []
+      dialogue:
+      - character: 0
+        text: Do you have any other horses that can carry it?
+      - character: 2
+        text: "Nah, I don\u2019t need no other horses in my life, just Ms. Bessy. 
+          She don\u2019t play well with others anyways.  Gets too jealous."
     - initialResponse: I've been working all day and night to try and tend to my
         fields but my horse is ill
-      dialogue: []
+      dialogue:
+      - character: 0
+        text: "You don\u2019t have anyone else to help you plow your fields?"
+      - character: 2
+        text: Nope.  Just me and Ms. Bessy.  My Pa has been too old to even carry
+          a hoe for some time now.
     specificConvo:
     - initialResponse: Only thing John Johnson is afraid of is not being able to
-        get these crops harvested before the winter comes!
-      dialogue: []
+        get these crops harvested before the winter comes, ya hear?
+      dialogue:
+      - character: 0
+        text: "So like bears, snakes, they don\u2019t do anything to you?"
+      - character: 2
+        text: "There ain\u2019t never been a thing I couldn\u2019t handle!"
+      - character: 0
+        text: Ok but what about a big spider.  Like, a REALLY big spider?
+      - character: 2
+        text: Nope.  Nothing.
+      - character: 1
+        text: "(Seems like he doesn\u2019t have any issues with fear so we can mark
+          that down as a no.  Unfortunately, we don\u2019t have any potions to help
+          with delusions, a big spider WOULD be scary.)"
     - initialResponse: De-what? What in the devil does that mean?
-      dialogue: []
-    - initialResponse: I've been so distracted with the field that I haven't been
-        able to focus on anything else. I just feel so tired lately. I need a little
-        something to get me going again.
-      dialogue: []
+      dialogue:
+      - character: 0
+        text: You know, like really sad?
+      - character: 2
+        text: Nah, I got Ms. Bessy to keep my spirits up
+      - character: 1
+        text: "(Seems like he doesn\u2019t have any issues with grief so we can mark
+          that down as a no.)"
+    - initialResponse: "I\u2019ve been so distracted with the field that I haven\u2019t
+        been able to focus on anything else.  I just feel so tired lately.  I need
+        a little something to get me going again."
+      dialogue:
+      - character: 1
+        text: "(I think you\u2019ve found the emotion at the root of his problems. 
+          Great work Vivian!  Make sure to make a note of this in my pages.  Clicking
+          once on an emotion will indicate that they are having problems with that
+          emotion, checking twice will indicate that they aren\u2019t.)"
+      - character: 1
+        text: "(You can ask him more questions if you want, but I think we found
+          our answer.  When you\u2019re done, take a look at the potions we can make
+          and click on the Potion of Vigilance and then head to the cauldron!)"
     - initialResponse: Miss, I don't have time to be 'voiding nothing!
-      dialogue: []
+      dialogue:
+      - character: 0
+        text: Gee, I wish I could work as hard as you Mr. Johnson
+      - character: 2
+        text: "It\u2019s worn me down like a ton of bricks lil\u2019 miss."
+      - character: 1
+        text: "(Seems like he doesn\u2019t have any issues with loathing so we can
+          mark that down as a no.  It sounds to me that he\u2019s pretty worn out. 
+          Why don\u2019t you ask him if anything\u2019s been distracting him if you
+          haven\u2019t already.)"
     - initialResponse: I ain't been angered since I knocked over my sister's stick
         and hoop as a kid. My daddy put the fear of god in me that day and I ain't
         done no such thing since!
-      dialogue: []
+      dialogue:
+      - character: 0
+        text: "Gee!  I suck at stick and hooping.  I\u2019d be so mad if someone
+          knocked mine over."
+      - character: 2
+        text: Yeah, not my best moment, but I know better now.
+      - character: 1
+        text: "(Seems like he doesn\u2019t have any issues with rage so we can mark
+          that down as a no.)"
     - initialResponse: I love my work, just got too much of it on my plate ya hear?
-      dialogue: []
+      dialogue:
+      - character: 1
+        text: "(Seems like he doesn\u2019t have any issues with joy so we can mark
+          that down as a no.)"
     - initialResponse: Well my one field of wheat grew taller than I expected! But
         besides that, not much...
-      dialogue: []
+      dialogue:
+      - character: 1
+        text: "(Seems like he doesn\u2019t have any issues with amazement so we can
+          mark that down as a no.)"
     - initialResponse: Well I appreciate my horse Ms. Bessy a whole heck of a lot
         more now!
-      dialogue: []
+      dialogue:
+      - character: 0
+        text: You must really love her, huh?
+      - character: 2
+        text: "She\u2019s the best!  Wouldn\u2019t get nowhere on the farm without
+          her"
+      - character: 1
+        text: "(Seems like he doesn\u2019t have any issues with admiration so we
+          can mark that down as a no.)"
   genericQuestionSpriteOrder: 01000000020000000300000000000000
   specificQuestionSpriteOrder: 0300000002000000010000000000000000000000030000000300000000000000
   spriteVariants:
@@ -158,4 +234,39 @@ MonoBehaviour:
   - {fileID: -1063602500, guid: d617fb98a8562554f8695756e489b068, type: 3}
   - {fileID: 390769421, guid: d617fb98a8562554f8695756e489b068, type: 3}
   potionPossibilities:
-  - {fileID: 11400000, guid: ee22abcff0090344caf3b510772544d4, type: 2}
+  - {fileID: 11400000, guid: a468d387df2c4ce4db8375c9ebff854a, type: 2}
+  introConversation:
+  - character: 0
+    text: Hello sir, welcome to [APOTHECARY NAME]!
+  - character: 2
+    text: "Howdy lil\u2019 missy.  Are you new around town?"
+  - character: 0
+    text: Yes sir!  Me and my- I mean I just opened up this shop.
+  - character: 2
+    text: "Well allow me to extend my warmest hop-spit-tality to you while you\u2019re
+      here."
+  - character: 1
+    text: "(Pst, Vivian!  This guy seems like he doesn\u2019t have a lot going on
+      between his ears, so I\u2019ll help guide you.  Just follow my lead.)"
+  - character: 2
+    text: What was that?
+  - character: 0
+    text: "Oh uh\u2026 nothing! It was nothing!  The cauldron is just extra bubbly
+      today I guess."
+  - character: 2
+    text: "Huh, well I\u2019ll be.  I could have sworn I heard someone else but you\u2019re
+      right, that cauldron is bubbling mighty hard."
+  - character: 1
+    text: "(See, I told you.  The man\u2019s head must be filled with cobwebs.  Let\u2019s
+      start by asking him some questions to see what\u2019s wrong with him.  Emotionally,
+      that is.  Mentally, I don\u2019t want to know)"
+  - character: 1
+    text: 'Each customer has a level of patience that you can see here.  This will
+      let you know how many questions you can ask them before they get upset. '
+  - character: 1
+    text: " Let\u2019s start off by asking him some generic questions to get an understanding
+      of what might be going on with him.  These type of questions take the least
+      amount of patience, but give vague information about the customer\u2019s emotional
+      state.  "
+  - character: 1
+    text: Go ahead, ask him how he feels!

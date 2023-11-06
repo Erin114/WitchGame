@@ -5,6 +5,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [System.Serializable]
+public enum Character
+{
+    Vivian,
+    Grimoire,
+    John_Johnson
+}
+
+[System.Serializable]
 public struct TestCharacter
 {
     public int ID;
@@ -28,7 +36,14 @@ public class CharacterList
 public class Conversation
 {
     public string initialResponse;
-    public string[] dialogue;
+    public Dialogue[] dialogue;
+}
+
+[System.Serializable]
+public struct Dialogue
+{
+    public Character character;
+    public string text;
 }
 
 public enum GameStates
