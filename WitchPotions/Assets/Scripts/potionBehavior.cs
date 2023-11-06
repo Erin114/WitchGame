@@ -221,7 +221,7 @@ public class PotionBehavior : MonoBehaviour
                     default:
                         if (currentIndex == i - 1) currentIndex = i;
                         Level_SO.NodeTypes typing = level.Special_Nodes_List.type[currentIndex];
-                        while (typing == level.Special_Nodes_List.type[currentIndex])
+                        while (currentIndex < level.emotionIndices.Length && typing == level.Special_Nodes_List.type[currentIndex])
                         {
                             if (typing == Level_SO.NodeTypes.voidNode)
                             {
@@ -236,7 +236,9 @@ public class PotionBehavior : MonoBehaviour
                                 instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[currentIndex]];
                             }
                             currentIndex++;
+                            i++;
                         }
+                   
                         break;              
 
             }
