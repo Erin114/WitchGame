@@ -265,17 +265,39 @@ public class PotionBehavior : MonoBehaviour
         nodeStartHistory.Push(currentNodePosition);
         ingredientHistory.Push(ingredient);
 
-        //creates a path, sets the current node position to the end point of the path, and then sets localposition to that end point
-        int[] path = Pathing(emotionValues[ingredient.Ingredients_Vector.emotion[0]], currentNodePosition, ingredient.Ingredients_Vector.value[0]);
-        currentNodePosition = path[path.Length - 1];
-        transform.localPosition = nodes[currentNodePosition];
-        
-        //repeat if two different modes to ingredient
-        if (ingredient.Ingredients_Vector.emotion.Length > 1)
+        //Making sure move towards center allways moves towards center without side movements
+        if (ingredient.ingredients_Emotion[0] == "Center")
         {
-            path = Pathing(emotionValues[ingredient.Ingredients_Vector.emotion[1]], currentNodePosition, ingredient.Ingredients_Vector.value[1]);
+            //If value of movment is bigger then the current emotional value, just go to center
+            if (currentNodePosition % 10 > ingredient.ingredients_Value[0] ||  currentNodePosition%10 ==0 && currentNodePosition!=0)
+            {
+                currentNodePosition = currentNodePosition - ingredient.ingredients_Value[0];
+                transform.localPosition = nodes[currentNodePosition];
+                
+            }
+            //If it's not bigger just move toward centers on the same axis
+            else
+            {
+                currentNodePosition = 0;
+                transform.localPosition = nodes[0];
+            }
+        }
+        //If ing is not center, do calculate movement
+        else
+        {
+
+            //creates a path, sets the current node position to the end point of the path, and then sets localposition to that end point
+            int[] path = Pathing(emotionValues[ingredient.Ingredients_Vector.emotion[0]], currentNodePosition, ingredient.Ingredients_Vector.value[0]);
             currentNodePosition = path[path.Length - 1];
-            transform.localPosition = nodes[path[path.Length - 1]];
+            transform.localPosition = nodes[currentNodePosition];
+
+            //repeat if two different modes to ingredient
+            if (ingredient.Ingredients_Vector.emotion.Length > 1)
+            {
+                path = Pathing(emotionValues[ingredient.Ingredients_Vector.emotion[1]], currentNodePosition, ingredient.Ingredients_Vector.value[1]);
+                currentNodePosition = path[path.Length - 1];
+                transform.localPosition = nodes[path[path.Length - 1]];
+            }
         }
         cost += ingredient.ingredients_Price;
         poison += ingredient.ingredients_Poison;
@@ -500,27 +522,49 @@ public class PotionBehavior : MonoBehaviour
     {
         lineRenderer.gameObject.SetActive(true);
 
+        
+
 
         //Set up like the movement, only using Line renderer to save the data
         //instead of moving using transform 
         List<Vector2> pointsV2 = new List<Vector2>();
         //Vector2[] pointsV2 = new Vector2[ingredient.ingredients_Value.Length + 1];
         pointsV2.Add(transform.localPosition);
-        int[] path = PreviewPathing(emotionValues[ingredient.Ingredients_Vector.emotion[0]], currentNodePosition, ingredient.Ingredients_Vector.value[0]);
-        int pos = path[path.Length - 1];
-         /*Vector2 newLocation = nodes[pos];
-         *pointsV2[1] = newLocation;
-         */
-        foreach (int p in path) pointsV2.Add(nodes[p]);
-        //repeat if two different modes to ingredient
-        if (ingredient.Ingredients_Vector.emotion.Length > 1)
+
+        //In case of move towards center, force preview and ignore pathing
+        if (ingredient.ingredients_Emotion[0] == "Center")
         {
-            path = PreviewPathing(emotionValues[ingredient.Ingredients_Vector.emotion[1]], pos, ingredient.Ingredients_Vector.value[1]);
-            /*pos = path[path.Length - 1];
-             *newLocation = nodes[path[path.Length - 1]];
-             *pointsV2[2] = newLocation;
-             */
+            //If value of movment is bigger then the current emotional value, just go to center
+            if (currentNodePosition % 10 > ingredient.ingredients_Value[0] || currentNodePosition % 10 == 0 && currentNodePosition != 0)
+            {
+                pointsV2.Add(nodes[currentNodePosition - ingredient.ingredients_Value[0]]);
+
+            }
+            //If it's not bigger just move toward centers on the same axis
+            else
+            {
+                pointsV2.Add(nodes[0]);
+            }
+        }
+        //If not center use notmal pathing
+        else
+        {
+            int[] path = PreviewPathing(emotionValues[ingredient.Ingredients_Vector.emotion[0]], currentNodePosition, ingredient.Ingredients_Vector.value[0]);
+            int pos = path[path.Length - 1];
+            /*Vector2 newLocation = nodes[pos];
+            *pointsV2[1] = newLocation;
+            */
             foreach (int p in path) pointsV2.Add(nodes[p]);
+            //repeat if two different modes to ingredient
+            if (ingredient.Ingredients_Vector.emotion.Length > 1)
+            {
+                 path = PreviewPathing(emotionValues[ingredient.Ingredients_Vector.emotion[1]], pos, ingredient.Ingredients_Vector.value[1]);
+                 /*pos = path[path.Length - 1];
+                  *newLocation = nodes[path[path.Length - 1]];
+                  *pointsV2[2] = newLocation;
+                  */
+                  foreach (int p in path) pointsV2.Add(nodes[p]);
+            }
         }
         //make sure to not draw a line if start and end point are the same
         if (pointsV2[0] != pointsV2[pointsV2.Count - 1])
