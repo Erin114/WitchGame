@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class QuestionManager : MonoBehaviour
 {
@@ -33,6 +34,7 @@ public class QuestionManager : MonoBehaviour
     public List<NPC> characters;
 
     public int amountOfDiscovered = 0;
+    public GameObject emotionInfoTextPopUp;
 
     //Added by Elad 10/10/2023 - UI and Patiance Bar
     public Slider bar;
@@ -183,6 +185,8 @@ public class QuestionManager : MonoBehaviour
                     {
                         //set the proper "discovered" bool on the NPC script
                         currentCharacter.GetComponent<NPC>().hasBeenDiscovered[p] = true;
+                        emotionInfoTextPopUp.GetComponent<TMP_Text>().text = "New " + currentCharacter.GetComponent<NPC>().potionPossibilities[i].nodeType[p] + " discovered!";
+                        emotionInfoTextPopUp.GetComponent<Animator>().SetTrigger("Reset");
                         amountOfDiscovered++;
                     }
                 }
@@ -334,7 +338,7 @@ public class QuestionManager : MonoBehaviour
 
         }*/
 
-        Debug.Log("why");
+        //Debug.Log("why");
 
         //if there is a convo to display, and we arent at the end
         if (convo != null && convoIndex < convo.Length - 1)
@@ -344,7 +348,7 @@ public class QuestionManager : MonoBehaviour
             {
                 convoStarted = true;
                 convoIndex = 0;
-                name.text = convo[convoIndex].character.ToString();
+                name.text = convo[convoIndex].character.ToString().Replace('_',' ');
                 t.text = convo[convoIndex].text;
             }
             //continue the conversation till the end
@@ -353,7 +357,7 @@ public class QuestionManager : MonoBehaviour
                 convoIndex++;
                 t.text = convo[convoIndex].text;
 
-                name.text = convo[convoIndex].character.ToString();
+                name.text = convo[convoIndex].character.ToString().Replace('_', ' ');
 
             }
         }

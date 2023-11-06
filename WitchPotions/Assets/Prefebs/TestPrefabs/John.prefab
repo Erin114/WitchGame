@@ -234,7 +234,7 @@ MonoBehaviour:
   - {fileID: -1063602500, guid: d617fb98a8562554f8695756e489b068, type: 3}
   - {fileID: 390769421, guid: d617fb98a8562554f8695756e489b068, type: 3}
   potionPossibilities:
-  - {fileID: 11400000, guid: a468d387df2c4ce4db8375c9ebff854a, type: 2}
+  - {fileID: 11400000, guid: ee22abcff0090344caf3b510772544d4, type: 2}
   introConversation:
   - character: 0
     text: Hello sir, welcome to [APOTHECARY NAME]!
