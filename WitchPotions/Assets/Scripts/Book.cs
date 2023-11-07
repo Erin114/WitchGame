@@ -14,16 +14,21 @@ public class Book : MonoBehaviour
 
     public AudioSource soundEffect;
 
+    QuestionManager m;
+
+    public List<int> discoveredIndexes;
+    public List<Level_SO.NodeTypes> discoveredNodes;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        m = GameObject.Find("TempManager").GetComponent<QuestionManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && m.currentCharacter != null)
         {
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
@@ -31,6 +36,7 @@ public class Book : MonoBehaviour
             {
                 //display book UI
                 bookUI.SetActive(true);
+                bookUI.GetComponent<BookUI>().ShowRevealedInfo(discoveredIndexes, discoveredNodes);
                 soundEffect.Play();
             }
 
