@@ -12,6 +12,8 @@ public class Book : MonoBehaviour
     public Material outline;
     public Material normal;
 
+    public AudioSource soundEffect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +31,7 @@ public class Book : MonoBehaviour
             {
                 //display book UI
                 bookUI.SetActive(true);
+                soundEffect.Play();
             }
 
         }

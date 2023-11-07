@@ -31,7 +31,7 @@ public class CustomToggle : MonoBehaviour, IPointerClickHandler
         Debug.Log("Clicked custom toggle");
         ChangeToggleValue();
         book.UpdateUI();
-        //customToggleClicked.Invoke();
+        customToggleClicked.Invoke();
     }
 
     //Text 
