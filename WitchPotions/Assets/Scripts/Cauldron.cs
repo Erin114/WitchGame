@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Cauldron : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class Cauldron : MonoBehaviour
     public Material normal;
 
     public GameObject arrow;
+    public GameObject wrongPotionPopUp;
 
     // Start is called before the first frame update
     void Start()
@@ -79,6 +82,11 @@ public class Cauldron : MonoBehaviour
                                                                                                   GameObject.Find("TempManager").GetComponent<QuestionManager>().currentCharacter.hasBeenDiscovered.Length,
                                                                                                   potion.gameObject.GetComponent<Potion>().potionName);
 
+                    }
+                    else
+                    {
+                        wrongPotionPopUp.GetComponent<Animator>().SetTrigger("Reset");
+                        wrongPotionPopUp.GetComponent<TMP_Text>().text = "Incorrect potion, try another...";
                     }
 
                 }
