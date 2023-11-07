@@ -56,8 +56,12 @@ public class BookUI : MonoBehaviour
                         //if the indicee is the same, and its a charger then reveal the charger
                         if(GameManager.Instance.emotionalIndexes[i][k] == level.emotionIndices[a] && level.nodeType[a] == Level_SO.NodeTypes.charger)
                         {
-                            m.currentCharacter.hasBeenDiscovered[a] = true;
-                            m.amountOfDiscovered++;
+                            //if we havent already counted this charger
+                            if(!m.currentCharacter.hasBeenDiscovered[a])
+                            {
+                                m.currentCharacter.hasBeenDiscovered[a] = true;
+                                m.amountOfDiscovered++;
+                            }
                         }
                     }
                 }
@@ -74,8 +78,12 @@ public class BookUI : MonoBehaviour
                         //if the indicee is the same, and its a charger then reveal the charger
                         if (GameManager.Instance.emotionalIndexes[i][k] == level.emotionIndices[a] && level.nodeType[a] == Level_SO.NodeTypes.voidNode)
                         {
-                            m.currentCharacter.hasBeenDiscovered[a] = true;
-                            m.amountOfDiscovered++;
+                            //if we havent already counted this void
+                            if (!m.currentCharacter.hasBeenDiscovered[a])
+                            {
+                                m.currentCharacter.hasBeenDiscovered[a] = true;
+                                m.amountOfDiscovered++;
+                            }
                         }
                     }
                 }

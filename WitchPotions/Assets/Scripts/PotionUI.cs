@@ -18,12 +18,25 @@ public class PotionUI : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
 
-        //book.UpdatePotions();
+        book.UpdatePotions();
+
         if(!isLocked)
         {
             active = !active;
             UpdateGraphic(active);
         }
+
+        //if(active)
+        //{
+            bool isValidPotionChoice = GameObject.Find("Desk").transform.Find("Cauldron").GetComponent<Cauldron>().ValidPotionChoice(this);
+
+            //if(isValidPotionChoice)
+            //{
+                //display the arrow above the cauldron
+            //}
+
+        //}
+
     }
 
     public void UpdateGraphic(bool a)
@@ -37,7 +50,7 @@ public class PotionUI : MonoBehaviour, IPointerClickHandler
             indicator.SetActive(false);
         }
 
-        Debug.Log("cliek");
+        //Debug.Log("cliek");
     }
 
     void Start()

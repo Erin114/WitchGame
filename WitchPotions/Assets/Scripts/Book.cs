@@ -14,16 +14,18 @@ public class Book : MonoBehaviour
 
     public AudioSource soundEffect;
 
+    QuestionManager m;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        m = GameObject.Find("TempManager").GetComponent<QuestionManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && m.currentCharacter != null)
         {
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 

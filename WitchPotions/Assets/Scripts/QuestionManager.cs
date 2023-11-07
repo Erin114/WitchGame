@@ -48,6 +48,9 @@ public class QuestionManager : MonoBehaviour
     public bool convoStarted = false;
 
     public Dialogue[] firstDayBookIntroConversation;
+    bool isFirstInteraction;
+
+    public GameObject doorArrow;
 
     //Question Manager handles one character at a time
     //Press door for character to spawn and walk up to the desk
@@ -92,6 +95,12 @@ public class QuestionManager : MonoBehaviour
 
         //if its day 1, set up the starting conversation
         convo = firstDayBookIntroConversation;
+
+        //if its the first day, set up the tutorial arrows/objects
+        if(currentDay == 0 && currentChar == 0)
+        {
+
+        }
 
     }
 
@@ -375,9 +384,19 @@ public class QuestionManager : MonoBehaviour
             else
             {
                 conversationBox.SetActive(false);
-                convoIndex = 0;
-                convo = null;
+                convoIndex = 0;                
                 convoStarted = false;
+
+                //if its the end of that first intro conversation with the book
+                //(the one that tells you to open to door)
+                //display the arrow showing where the door is
+                if(convo == firstDayBookIntroConversation)
+                {
+                    doorArrow.SetActive(true);
+                }
+
+                convo = null;
+
             }
         }
     }
