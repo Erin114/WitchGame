@@ -196,6 +196,10 @@ public class QuestionManager : MonoBehaviour
                         currentCharacter.GetComponent<NPC>().hasBeenDiscovered[p] = true;
                         emotionInfoTextPopUp.GetComponent<TMP_Text>().text = "New " + currentCharacter.GetComponent<NPC>().potionPossibilities[i].nodeType[p] + " discovered!";
                         emotionInfoTextPopUp.GetComponent<Animator>().SetTrigger("Reset");
+                        //GameObject.Find("Book").GetComponent<BookUI>().RevealInfoInBook(currentCharacter.GetComponent<NPC>().potionPossibilities[i].emotionIndices[p],
+                                                                                        //currentCharacter.GetComponent<NPC>().potionPossibilities[i].nodeType[p]);
+                        GameObject.Find("BookImage").GetComponent<Book>().discoveredIndexes.Add(currentCharacter.GetComponent<NPC>().potionPossibilities[i].emotionIndices[p]);
+                        GameObject.Find("BookImage").GetComponent<Book>().discoveredNodes.Add(currentCharacter.GetComponent<NPC>().potionPossibilities[i].nodeType[p]);
                         amountOfDiscovered++;
                     }
                 }

@@ -48,6 +48,35 @@ public class CustomToggle : MonoBehaviour, IPointerClickHandler
         
     }
 
+    public void UpdateGraphics()
+    {
+        switch (toggleState)
+        {
+            case 0:
+                //hide a certain graphic, show another one
+                x.SetActive(false);
+                check.SetActive(false);
+
+                break;
+
+            case ToggleStates.Yes:
+
+                x.SetActive(false);
+                check.SetActive(true);
+
+                break;
+
+            case ToggleStates.No:
+
+                x.SetActive(true);
+                check.SetActive(false);
+
+                break;
+
+
+        }
+    }
+
     public void ChangeToggleValue()
     {
         switch(toggleState)

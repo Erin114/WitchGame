@@ -16,6 +16,9 @@ public class Book : MonoBehaviour
 
     QuestionManager m;
 
+    public List<int> discoveredIndexes;
+    public List<Level_SO.NodeTypes> discoveredNodes;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +36,7 @@ public class Book : MonoBehaviour
             {
                 //display book UI
                 bookUI.SetActive(true);
+                bookUI.GetComponent<BookUI>().ShowRevealedInfo(discoveredIndexes, discoveredNodes);
                 soundEffect.Play();
             }
 

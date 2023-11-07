@@ -14,11 +14,17 @@ public class BookUI : MonoBehaviour
     private List<Emotions> activeEmotions;
     private List<Emotions> inactiveEmotions;
 
+    public List<int> discoveredIndexes;
+    public List<Level_SO.NodeTypes> discoveredNodes;
+
     // Start is called before the first frame update
     void Start()
     {
         activeEmotions = new List<Emotions>();
         inactiveEmotions = new List<Emotions>();
+
+        discoveredIndexes = new List<int>();
+        discoveredNodes = new List<Level_SO.NodeTypes>();
     }
 
     // Update is called once per frame
@@ -34,6 +40,48 @@ public class BookUI : MonoBehaviour
         {
             potions[i].gameObject.GetComponent<PotionUI>().active = false;
             potions[i].gameObject.GetComponent<PotionUI>().UpdateGraphic(false);
+        }
+    }
+
+    public void ShowRevealedInfo(List<int> discoveredIndexes, List<Level_SO.NodeTypes> discoveredNodes)
+    {
+        //reveal discovered info
+        for (int i = 0; i < discoveredIndexes.Count; i++)
+        {
+            RevealInfoInBook(discoveredIndexes[i], discoveredNodes[i]);
+        }
+    }
+
+    public void RevealInfoInBook(int emotionIndex, Level_SO.NodeTypes nodeType)
+    {
+        //loop through emotions
+        for(int i = 0; i < emotions.Count; i++)
+        {
+            //loop through indices for each emotion until they match
+            for(int a = 0; a < GameManager.Instance.emotionalIndexes[i].Length; a++)
+            {
+                //if they match, change the state of the toggle inside the book
+                if(GameManager.Instance.emotionalIndexes[i][a] == emotionIndex)
+                {
+                    switch(nodeType)
+                    {
+                        case Level_SO.NodeTypes.bipolar:
+
+                            break;
+
+                        case Level_SO.NodeTypes.charger:
+                            emotions[i].toggleState = ToggleStates.Yes;
+                            emotions[i].UpdateGraphics();
+                            Debug.Log("rara");
+                            break;
+
+                        case Level_SO.NodeTypes.voidNode:
+                            emotions[i].toggleState = ToggleStates.No;
+                            emotions[i].UpdateGraphics();
+                            break;
+                    }
+                }
+            }
         }
     }
 
