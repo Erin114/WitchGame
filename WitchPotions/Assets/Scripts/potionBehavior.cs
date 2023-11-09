@@ -413,6 +413,7 @@ public class PotionBehavior : MonoBehaviour
                 {
                     case Level_SO.NodeTypes.voidNode:
                         Debug.Log("oops! you hit a void :(");
+                        Reset();
                         break;
                     case Level_SO.NodeTypes.charger:
                         chargersHit++;
@@ -441,7 +442,7 @@ public class PotionBehavior : MonoBehaviour
     //returns all neighbors 
     int[] GetNodeNeigbors(int node)
     {
-        int sliceCutsIndexs = (slices-1) * 10;
+        int sliceCutsIndexs = (slices) * 10;
         int[] neighbors;
         //innermost ring case
         if (node % 10 == 1)

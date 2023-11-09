@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class QuestionManager : MonoBehaviour
 {
@@ -33,6 +34,7 @@ public class QuestionManager : MonoBehaviour
     public List<NPC> characters;
 
     public int amountOfDiscovered = 0;
+    public GameObject emotionInfoTextPopUp;
 
     //Added by Elad 10/10/2023 - UI and Patiance Bar
     public Slider bar;
@@ -41,9 +43,14 @@ public class QuestionManager : MonoBehaviour
     public int annoyedQuestionsCount = 0;
 
     //variables to progress through a conversation
-    string[] convo;
+    public Dialogue[] convo; //array of dialogue = conversation
     int convoIndex = 0;
-    bool convoStarted = false;
+    public bool convoStarted = false;
+
+    public Dialogue[] firstDayBookIntroConversation;
+    bool isFirstInteraction;
+
+    public GameObject doorArrow;
 
     //Question Manager handles one character at a time
     //Press door for character to spawn and walk up to the desk
@@ -86,6 +93,15 @@ public class QuestionManager : MonoBehaviour
         //name.text = "Name: " + currentCharacter.charName;
         //ChangeCharacter(characters[currentChar]);
 
+        //if its day 1, set up the starting conversation
+        convo = firstDayBookIntroConversation;
+
+        //if its the first day, set up the tutorial arrows/objects
+        if(currentDay == 0 && currentChar == 0)
+        {
+
+        }
+
     }
 
     public void SpawnInCurrentCharacter()
@@ -97,7 +113,10 @@ public class QuestionManager : MonoBehaviour
         currentCharacter = character.GetComponent<NPC>();
         //currentCharacter.LoadCharacterInfo();
 
-        name.text = "Name: " + currentCharacter.characterInfo.name;
+        //name.text = "Vivian";//"Name: " + currentCharacter.characterInfo.name;
+        //t.text = "Hello, welcome to [APOTHECARY NAME]!";
+
+        convo = currentCharacter.introConversation;
 
         nextButton.gameObject.SetActive(false);
 
@@ -105,6 +124,7 @@ public class QuestionManager : MonoBehaviour
 
         //enable the conversation box
         conversationBox.SetActive(true);
+        GoThroughConversation();
     }
 
     public void ChangeCharacter(NPC character)
@@ -174,6 +194,12 @@ public class QuestionManager : MonoBehaviour
                     {
                         //set the proper "discovered" bool on the NPC script
                         currentCharacter.GetComponent<NPC>().hasBeenDiscovered[p] = true;
+                        emotionInfoTextPopUp.GetComponent<TMP_Text>().text = "New " + currentCharacter.GetComponent<NPC>().potionPossibilities[i].nodeType[p] + " discovered!";
+                        emotionInfoTextPopUp.GetComponent<Animator>().SetTrigger("Reset");
+                        //GameObject.Find("Book").GetComponent<BookUI>().RevealInfoInBook(currentCharacter.GetComponent<NPC>().potionPossibilities[i].emotionIndices[p],
+                                                                                        //currentCharacter.GetComponent<NPC>().potionPossibilities[i].nodeType[p]);
+                        GameObject.Find("BookImage").GetComponent<Book>().discoveredIndexes.Add(currentCharacter.GetComponent<NPC>().potionPossibilities[i].emotionIndices[p]);
+                        GameObject.Find("BookImage").GetComponent<Book>().discoveredNodes.Add(currentCharacter.GetComponent<NPC>().potionPossibilities[i].nodeType[p]);
                         amountOfDiscovered++;
                     }
                 }
@@ -319,6 +345,14 @@ public class QuestionManager : MonoBehaviour
     //once the end of the convo is reached, display questions again
     public void GoThroughConversation()
     {
+
+        /*if(convo != null && convoIndex < convo.Length - 1)
+        {
+
+        }*/
+
+        //Debug.Log("why");
+
         //if there is a convo to display, and we arent at the end
         if (convo != null && convoIndex < convo.Length - 1)
         {
@@ -326,34 +360,48 @@ public class QuestionManager : MonoBehaviour
             if(!convoStarted)
             {
                 convoStarted = true;
-                name.text = "Vivian";
-                t.text = convo[0];
+                convoIndex = 0;
+                name.text = convo[convoIndex].character.ToString().Replace('_',' ');
+                t.text = convo[convoIndex].text;
             }
             //continue the conversation till the end
             else
             {
                 convoIndex++;
-                t.text = convo[convoIndex];
+                t.text = convo[convoIndex].text;
 
-                //change the name on the conversation box UI
-                if (convoIndex % 2 == 0)
-                {
-                    name.text = "Vivian";
-                }
-                else
-                {
-                    name.text = currentCharacter.characterInfo.name;
-                }
+                name.text = convo[convoIndex].character.ToString().Replace('_', ' ');
+
             }
         }
         //either there is no convo to display (showing intro text, or none exists, etc.) or we reached the end of it
         else
         {
-            ShowScrollBar();
-            name.text = currentCharacter.characterInfo.name;
-            convoIndex = 0;
-            convo = null;
-            convoStarted = false;
+            if(currentCharacter != null)
+            {
+                ShowScrollBar();
+                name.text = currentCharacter.characterInfo.name;
+                convoIndex = 0;
+                convo = null;
+                convoStarted = false;
+            }
+            else
+            {
+                conversationBox.SetActive(false);
+                convoIndex = 0;                
+                convoStarted = false;
+
+                //if its the end of that first intro conversation with the book
+                //(the one that tells you to open to door)
+                //display the arrow showing where the door is
+                if(convo == firstDayBookIntroConversation)
+                {
+                    doorArrow.SetActive(true);
+                }
+
+                convo = null;
+
+            }
         }
     }
 

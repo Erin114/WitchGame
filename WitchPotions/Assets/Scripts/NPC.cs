@@ -28,6 +28,8 @@ public class NPC : MonoBehaviour
 
     public List<Level_SO> potionPossibilities;
 
+    public Dialogue[] introConversation;
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
