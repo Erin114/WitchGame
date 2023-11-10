@@ -25,7 +25,7 @@ public class Level_SO : ScriptableObject
     [SerializeField] public int[] emotionIndices;
     [SerializeField] public NodeTypes[] nodeType;
     [SerializeField] public int endpoint_Index;
-    [SerializeField] int coin_Reward;
+    [SerializeField] public int coin_Reward;
     [SerializeField] int[] tags;
     [SerializeField] public string potionName;
     public int Endpoint_Index { get => endpoint_Index; }

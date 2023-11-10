@@ -46,6 +46,7 @@ public class PotionBehavior : MonoBehaviour
     //relevant potion statistics
     int poison = 0;
     int cost = 0;
+    int chargesCount = 0;
     int chargersHit = 0;
     [SerializeField]
     int endpointIndex;
@@ -60,6 +61,13 @@ public class PotionBehavior : MonoBehaviour
     int rings = 10;
     int slices = 24;
     float theta = 15.0f;
+
+    //Star system
+    int star2Posion = 25;
+    int star1Posion = 50;
+    public GameObject[] stars;
+    float moneyMadeOnFInish = 0;
+
 
     Dictionary<string, int> emotionValues = new Dictionary<string, int>()
     {
@@ -147,6 +155,7 @@ public class PotionBehavior : MonoBehaviour
                         instantiatedPrefabs[i] = Instantiate(chargerPrefab, parent);
                         instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[i]];
                         currentIndex = i;
+                        chargesCount++;
                         break;
                     default:
                         if (currentIndex == i - 1) currentIndex = i;
@@ -166,6 +175,7 @@ public class PotionBehavior : MonoBehaviour
                                 instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[currentIndex]];
                             }
                             currentIndex++;
+                            i++;
                         }
                         break;
                 }
@@ -178,7 +188,7 @@ public class PotionBehavior : MonoBehaviour
         poison = 0;
         transform.localPosition = center;
         cost = 0;
-
+        moneyMadeOnFInish = level.coin_Reward;
         Debug.Log(discovered.Length + " discovered indices");
 
     }
@@ -202,6 +212,7 @@ public class PotionBehavior : MonoBehaviour
         }
         instantiatedPrefabs = new GameObject[length];
         int currentIndex = 0;
+        moneyMadeOnFInish = level.coin_Reward;
         for (int i = 0; i < length; i++)
         {
             
@@ -217,7 +228,8 @@ public class PotionBehavior : MonoBehaviour
                         instantiatedPrefabs[i] = Instantiate(chargerPrefab, parent);
                         instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[i]];
                         currentIndex = i;
-                        break;
+                        chargesCount++;
+                    break;
                     default:
                         if (currentIndex == i - 1) currentIndex = i;
                         Level_SO.NodeTypes typing = level.Special_Nodes_List.type[currentIndex];
@@ -628,12 +640,38 @@ public class PotionBehavior : MonoBehaviour
     //TODO by Elad
     public void  FinishBrew() 
     {
+        int starcount = 0;
+        float moneyEarned = moneyMadeOnFInish;
+        foreach (var item in stars)
+        {
+            item.SetActive(false);
+        }
         if (currentNodePosition == endpointIndex)
         {
             if (UIPanel)
             {
+                if(chargersHit == chargesCount && poison <star2Posion)
+                {
+                    starcount = 3;
+                }
+                else if (chargersHit == chargesCount-1 && poison < star2Posion || chargersHit == chargesCount && poison < star1Posion && poison > star2Posion)
+                {
+                    starcount = 2;
+                    moneyEarned = moneyEarned * 0.75f;
+                }
+                else
+                {
+                    starcount = 1;
+                    moneyEarned = moneyEarned * 0.5f;
+
+                }
                 UIPanel.SetActive(true);
-                UIText.text = ("Chargers Hit:" + chargersHit + "<br>" + "Poison:" + poison + "<br>" + "Money Spent:" + cost);
+              
+                UIText.text = ("Chargers Hit:" + chargersHit + "<br>" + "Poison:" + poison + "<br>" + "Money Spent:" + cost + "<br>" + "Money Earned:" + moneyEarned);
+                for (int i = 0; i < starcount; i++)
+                {
+                    stars[i].SetActive(true);
+                }
             }
             sendData();
         }
