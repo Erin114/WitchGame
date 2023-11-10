@@ -30,6 +30,7 @@ public class PotionBehavior : MonoBehaviour
     // array of special nodes, given the node index and node type
     List<(int nodeIndex, Level_SO.NodeTypes type)> specials = new List<(int nodeIndex, Level_SO.NodeTypes type)>();
     //Special Node Prefabs
+    List<int> voids = new List<int>();
     [SerializeField] GameObject endpointPrefab;
     [SerializeField] GameObject chargerPrefab;
     [SerializeField] GameObject voidPrefab;
@@ -165,6 +166,7 @@ public class PotionBehavior : MonoBehaviour
                             if (typing == Level_SO.NodeTypes.voidNode)
                             {
                                 specials.Add((level.Special_Nodes_List.emotionIndex[currentIndex], level.Special_Nodes_List.type[currentIndex]));
+                                voids.Add(level.Special_Nodes_List.emotionIndex[currentIndex]);
                                 instantiatedPrefabs[i] = Instantiate(voidPrefab, parent);
                                 instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[currentIndex]];
                             }
@@ -304,13 +306,24 @@ public class PotionBehavior : MonoBehaviour
             int[] path = Pathing(emotionValues[ingredient.Ingredients_Vector.emotion[0]], currentNodePosition, ingredient.Ingredients_Vector.value[0]);
             currentNodePosition = path[path.Length - 1];
             transform.localPosition = nodes[currentNodePosition];
-
+            if (VoidUpdate(path) == true) 
+            { 
+                Reset();
+                Debug.Log("void in middle of path!");
+                return;
+            }
             //repeat if two different modes to ingredient
             if (ingredient.Ingredients_Vector.emotion.Length > 1)
             {
                 path = Pathing(emotionValues[ingredient.Ingredients_Vector.emotion[1]], currentNodePosition, ingredient.Ingredients_Vector.value[1]);
                 currentNodePosition = path[path.Length - 1];
                 transform.localPosition = nodes[path[path.Length - 1]];
+                if (VoidUpdate(path) == true)
+                {
+                    Reset();
+                    Debug.Log("void in middle of path!");
+                    return;
+                }
             }
         }
         cost += ingredient.ingredients_Price;
@@ -415,6 +428,17 @@ public class PotionBehavior : MonoBehaviour
 
 
     //called at the end of movetoward to see if we landed on any special nodes
+    bool VoidUpdate(int[] path)
+    {
+        for(int i = 0; i < path.Length; i++)
+        {
+            if (voids.Contains(path[i]))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     void SpecialNodeUpdate()
     {
         if (specials.Count == 0) return;
