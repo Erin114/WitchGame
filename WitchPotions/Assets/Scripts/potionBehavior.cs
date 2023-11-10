@@ -329,8 +329,7 @@ public class PotionBehavior : MonoBehaviour
     {
         if (nodeStartHistory.Count >= 2)
         {
-            nodeStartHistory.Pop();
-            transform.localPosition = nodes[nodeStartHistory.Peek()];
+            transform.localPosition = nodes[nodeStartHistory.Pop()];
             Ingredients_SO tempIng = ingredientHistory.Pop();
             poison -= tempIng.ingredients_Poison;
             cost -= tempIng.ingredients_Price;
@@ -363,7 +362,9 @@ public class PotionBehavior : MonoBehaviour
         poison = 0;
         cost = 0;
         currentNodePosition = 0;
-        LoadLevelObject(GameManager.Instance.currentLevel, GameManager.Instance.currentCharacterDiscoveredInfo);
+        //CHECK IF THERE IS A LEVEL BEFORE
+        if (GameManager.Instance != null)
+        { LoadLevelObject(GameManager.Instance.currentLevel, GameManager.Instance.currentCharacterDiscoveredInfo); }
         poisonText.text = poison.ToString();
         costText.text = cost.ToString();
         poisonText.text = poison.ToString();
