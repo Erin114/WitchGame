@@ -93,38 +93,39 @@ public class QuestionManager : MonoBehaviour
         //name.text = "Name: " + currentCharacter.charName;
         //ChangeCharacter(characters[currentChar]);
 
-        //if its day 1, set up the starting conversation
-        convo = firstDayBookIntroConversation;
-
         //if its the first day, set up the tutorial arrows/objects
         if(currentDay == 0 && currentChar == 0)
         {
-
+            //if its day 1, set up the starting conversation
+            convo = firstDayBookIntroConversation;
         }
 
     }
 
     public void SpawnInCurrentCharacter()
     {
-        //TODO: support more than just one day
-        GameObject prefab = GameManager.Instance.dayOneCharacters[currentChar];
-        GameObject character = Instantiate(prefab, spawnLocation.transform.position, Quaternion.identity);
+        if(currentChar < GameManager.Instance.dayOneCharacters.Length)
+        {
+            //TODO: support more than just one day
+            GameObject prefab = GameManager.Instance.dayOneCharacters[currentChar];
+            GameObject character = Instantiate(prefab, spawnLocation.transform.position, Quaternion.identity);
 
-        currentCharacter = character.GetComponent<NPC>();
-        //currentCharacter.LoadCharacterInfo();
+            currentCharacter = character.GetComponent<NPC>();
+            //currentCharacter.LoadCharacterInfo();
 
-        //name.text = "Vivian";//"Name: " + currentCharacter.characterInfo.name;
-        //t.text = "Hello, welcome to [APOTHECARY NAME]!";
+            //name.text = "Vivian";//"Name: " + currentCharacter.characterInfo.name;
+            //t.text = "Hello, welcome to [APOTHECARY NAME]!";
 
-        convo = currentCharacter.introConversation;
+            convo = currentCharacter.introConversation;
 
-        nextButton.gameObject.SetActive(false);
+            nextButton.gameObject.SetActive(false);
 
-        UpdatePatience();
+            UpdatePatience();
 
-        //enable the conversation box
-        conversationBox.SetActive(true);
-        GoThroughConversation();
+            //enable the conversation box
+            conversationBox.SetActive(true);
+            GoThroughConversation();
+        }
     }
 
     public void ChangeCharacter(NPC character)

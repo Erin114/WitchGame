@@ -22,4 +22,17 @@ public class ChangeScenes : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 
+    public void GoToQuestionScene()
+    {
+        GameManager.Instance.currentCustomerIndex++;
+        UnityEngine.SceneManagement.SceneManager.LoadScene("QuestionSection");
+
+    }
+
+    public void GoToScene(string name)
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(name);
+
+    }
+
 }

@@ -1,0 +1,247 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5329478684438430015
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5329478684438430000}
+  - component: {fileID: 5329478684438430001}
+  - component: {fileID: 5329478684438430014}
+  m_Layer: 0
+  m_Name: Pippin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5329478684438430000
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5329478684438430015}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.896, y: 3.5242, z: 0}
+  m_LocalScale: {x: 0.36704305, y: 0.36704305, z: 0.36704305}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &5329478684438430001
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5329478684438430015}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 1405223881, guid: 5e33c3646ec884f4abf17cba578c7706, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 16.59, y: 30.010664}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &5329478684438430014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5329478684438430015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 797cfc998dec3934ca5886a95bcd3cb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charName: 
+  ID: 2
+  maxPatience: 500
+  patience: 500
+  hasBeenDiscovered: 00
+  characterInfo:
+    ID: 0
+    name: Pippin Pobblestone
+    emotion: this is irrelevant
+    intro: Howdy Miss, been better
+    genericConvo:
+    - initialResponse: In my darkest hours, I feel not but a superior dread that
+        I cannot vanquish on my own!  Mistress Vivian, please relieve me of the burden
+        in which I carry!  The melancholy which plagues me has made off with my wisecracks
+        like a thief in the night!  Oh, how my morale has been trampled upon by the
+        cloven hooves of these New English animals!
+      dialogue: []
+    - initialResponse: "Why, of course!  That\u2019s what brings me to this ramshackle
+        establishment!  Tell me, the common folk here, have their ears never been
+        graced by humor? These fools must be listless in their pursuit of happiness."
+      dialogue: []
+    - initialResponse: "I have worked laboriously over my comedy to evaluate the
+        root of my dilemma, yet, I cannot produce material that sticks with this
+        gloomy gathering of dunces!  Surely it cannot be me! (\u2026right?)"
+      dialogue:
+      - character: 1
+        text: "(Wait!  A crack in his confidence?  We might be onto something.  Ask
+          him if anything\u2019s been distracting him.  He seems depressed, but this
+          might lead us to a hidden root.)"
+    - initialResponse: Everywhere I go, I am met with disdain.  The only amusement
+        these bumpkins seem to know is that of mockery, at mine own expense!   Were
+        we still in the confines of the glorious kingdom of England, I would not
+        be treated with such animosity!
+      dialogue: []
+    specificConvo:
+    - initialResponse: A man such as myself would never deign himself to the throws
+        of fear!  Though I face adversity in this strange land, I shan't let it consume
+        me!
+      dialogue: []
+    - initialResponse: An individual of the arts such as I is more than in touch
+        with his emotions.  I can concede that I have felt the sting of salty tears
+        on my skin in the shelter of my abode on occasion.
+      dialogue:
+      - character: 0
+        text: "Wow, that is surprisingly\u2026 mature?"
+      - character: 3
+        text: 'Of course, for I may be the most humble consciousness in existence. '
+      - character: 0
+        text: "Welp.  That didn\u2019t last long."
+    - initialResponse: "My jokes just do not land as they did while I was still in
+        the good graces of the King.  My material hasn\u2019t changed, but the reaction
+        has!  Have I lost my charm? No, it can\u2019t be!  Oh, what a predicament
+        I find myself facing!"
+      dialogue:
+      - character: 1
+        text: "(I was right!  This imbecile just needs to believe in himself, when
+          telling jokes, that is.  I don\u2019t think it\u2019s possible for us to
+          inflate his ego much more.  Of course he won\u2019t admit that!  This is
+          indubitably a hidden root.)"
+      - character: 1
+        text: '(Oh god, now he has me talking like an idiot too.  Quickly, mark down
+          his issues with vigilance and joy in my pages so we can exile him from
+          our store posthaste!) '
+    - initialResponse: Everyone in this godforsaken land!  Not a single one with
+        a funny bone in their body.  Why reduce myself to such a dour fate?
+      dialogue: []
+    - initialResponse: A gentleman, like myself, would never forfeit the dignity
+        in which I have toiled so hard to earn over such miniscule matters as the
+        ones I find myself embroiled in here.
+      dialogue: []
+    - initialResponse: "I must make an admission: I haven\u2019t been for some time. 
+        I place the blame solely on my inhabitance!  I have exchanged castles for
+        a glorified village and royalty for bleak peasantry.  Who among us would
+        not feel the same were they placed in my shoes! "
+      dialogue:
+      - character: 1
+        text: "(Great, a public root!  At least we have something to go off of. 
+          Let\u2019s keep looking for any hidden roots.  Why not ask him if anything
+          is distracting him next?)"
+    - initialResponse: The only thing that has surprised me is the abomination you
+        call food here in the colonies!  It is, without a doubt, the most vile thing
+        to enter my figure.  Oh, where I still in England, I would not feel the pangs
+        of famine that I do now!  This must be my divine punishment!
+      dialogue:
+      - character: 0
+        text: You fancy yourself a renaissance man then?
+      - character: 3
+        text: Who, me? Of course!  Could you not tell from my fine silks, or simply
+          through the way in which words flow through mine own orifice?
+      - character: 0
+        text: "\u2026okay, no surprises here."
+    - initialResponse: I find solace in the fact that I retain my wit and charm despite
+        the gloom in which I face in this wretched town.
+      dialogue:
+      - character: 0
+        text: "Yeah sure\u2026 that\u2019s what we\u2019ll call it\u2026"
+  genericQuestionSpriteOrder: 01000000020000000300000000000000
+  specificQuestionSpriteOrder: 0300000002000000010000000000000000000000030000000300000000000000
+  spriteVariants:
+  - {fileID: 1405223881, guid: 5e33c3646ec884f4abf17cba578c7706, type: 3}
+  - {fileID: 473057870, guid: 5e33c3646ec884f4abf17cba578c7706, type: 3}
+  - {fileID: -1763043345, guid: 5e33c3646ec884f4abf17cba578c7706, type: 3}
+  - {fileID: -1330048882, guid: 5e33c3646ec884f4abf17cba578c7706, type: 3}
+  potionPossibilities:
+  - {fileID: 11400000, guid: 21683931f3f47d143af09903d6bc6b64, type: 2}
+  - {fileID: 11400000, guid: 6a1dcd4ff4e6d2a45bd33ed01c155eef, type: 2}
+  introConversation:
+  - character: 1
+    text: "Great work Vivian!  It seems like you\u2019ve got a hang of this so I\u2019ll
+      let you handle the next customer.  Great timing, it seems like we have one
+      now."
+  - character: 3
+    text: "Salutations and good morrow humble servant.  \u2018Tis your lucky day
+      for you are in the presence of Sir Pippin Pobblestone!"
+  - character: 0
+    text: "Um\u2026 good morning.  What can I help you with today?"
+  - character: 3
+    text: "It would behoove you to remember the sir after my name.  I am a man of
+      many titles!  My full name is Sir Pippin Pobblestone III of Windsor, Artisan
+      of Amusement, Jester of Kings, Specialist in all things Silly\u2026"
+  - character: 1
+    text: "(This guy doesn\u2019t stop talking about himself, huh?  Well, this might
+      be a good time for me to tell you about public and hidden roots.  Public roots
+      are the problems that a customer will ask to have addressed.  Hidden roots
+      are problems that customers don\u2019t know that they need addressed or, in
+      this guy\u2019s case, too prideful to ask for help on.)"
+  - character: 1
+    text: "( Solving a customer\u2019s hidden roots will help take care of the paranoia
+      that\u2019s spread throughout town, so try to address them whenever possible.) "
+  - character: 3
+    text: "\u2026 and Architect of the modern comedy landscape.  Got all that?"
+  - character: 0
+    text: "Wow, I\u2019m so\u2026 impressed.  What\u2019s a guy like you doing here?"
+  - character: 3
+    text: 'Mine is a tale of tragedy.  I used to serve the King, King William III. 
+      I was his most favored court jester.  I lived a lavish life entertaining nobility
+      and royalty, and they treated me as one of their own.  I was the envy of man! 
+      But, in the absence of caution, I flew too close to the sun.  I made a joke,
+      more of an innuendo, involving the Queen. '
+  - character: 3
+    text: ' I saw it not as a mockery, but as a compliment of her form.  The King,
+      outraged at my verbal betrayal, exiled me to the royal colonies.  And that,
+      my dear desk jockey, is why I have lowered my position to a place such as this!'
+  - character: 1
+    text: "(Embarrassing!  Anyways, let\u2019s start off by asking him how he\u2019s
+      feeling and what he\u2019s done to fix his problems.  That might tell us what
+      has and hasn\u2019t worked for him and give us information leading to any hidden
+      roots he might have)"
