@@ -9,7 +9,8 @@ public enum Character
 {
     Vivian,
     Grimoire,
-    John_Johnson
+    John_Johnson,
+    Pippin_Pobblestone
 }
 
 [System.Serializable]
@@ -138,6 +139,13 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void NextDay()
+    {
+        if(currentDay < 5)
+        {
+            currentDay++;
+        }
+    }
     public float Suspicion
     {
         get
@@ -262,11 +270,11 @@ public class GameManager : MonoBehaviour
         SwitchToPotionScene(level, currentCharacterDiscoveredInfo);
     }
 
-    public void NextDay()
+    public void ProgressDay()
     {
-        currentDay++;
-
         currentCustomerIndex = 0;
+
+
 
         //currentCharacter = characters[currentDay, currentCustomerIndex].GetComponent<NPC>();
 
