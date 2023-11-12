@@ -15,7 +15,7 @@ public class QuestionManager : MonoBehaviour
     public Text name;
     public Text patience;
     public Button introButton;
-    public Button nextButton;
+    public GameObject nextButton;
 
     public List<Button> genericQuestions;
     public List<Button> emotionQuestions;
@@ -118,7 +118,7 @@ public class QuestionManager : MonoBehaviour
 
             convo = currentCharacter.introConversation;
 
-            nextButton.gameObject.SetActive(false);
+            nextButton.SetActive(false);
 
             UpdatePatience();
 
