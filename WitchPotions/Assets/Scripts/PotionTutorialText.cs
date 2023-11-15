@@ -49,7 +49,7 @@ public class PotionTutorialText : MonoBehaviour
 
             }
         }
-        //either there is no convo to display (showing intro text, or none exists, etc.) or we reached the end of it
+        //either there is no convo to display or we reached the end of it
         else
         {
 
