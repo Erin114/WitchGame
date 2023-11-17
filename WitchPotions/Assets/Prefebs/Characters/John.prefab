@@ -101,7 +101,7 @@ MonoBehaviour:
   ID: 2
   maxPatience: 500
   patience: 500
-  hasBeenDiscovered: 000000
+  hasBeenDiscovered: 00
   characterInfo:
     ID: 0
     name: John Johnson
