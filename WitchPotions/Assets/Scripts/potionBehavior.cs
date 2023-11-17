@@ -69,6 +69,14 @@ public class PotionBehavior : MonoBehaviour
     public GameObject[] stars;
     float moneyMadeOnFInish = 0;
 
+    // point animation queue
+    Queue<int> pointQueue = new Queue<int>();
+    Vector3 currentPositionVector;
+    Vector3 nextPoint;
+    [SerializeField] int animationSpeed = 10;
+    int frameInAnimation = 1;
+    bool moving = false;
+
 
     Dictionary<string, int> emotionValues = new Dictionary<string, int>()
     {
@@ -122,11 +130,30 @@ public class PotionBehavior : MonoBehaviour
 
         //load in the current level
         LoadLevelObject(GameManager.Instance.currentLevel, GameManager.Instance.currentCharacterDiscoveredInfo);
+        
+    }
 
+    private void FixedUpdate()
+    {
+        if (pointQueue.Count > 0 && moving == false)
+        {
+            moving = true;
+            currentPositionVector = transform.localPosition;
+            nextPoint = nodes[pointQueue.Dequeue()];
+            frameInAnimation = 1;
+        }
+        if (moving == true)
+        {
+            float ratio = frameInAnimation / animationSpeed;
+            transform.localPosition = Vector3.Lerp(currentPositionVector, nextPoint, ratio);
+            frameInAnimation++;
+            Debug.Log("frame!" + frameInAnimation);
+            if (frameInAnimation > animationSpeed) moving = false;
+        }
     }
 
     //Loading levels to add 
-   public void LoadLevelObject(Level_SO level, bool[] discovered)
+    public void LoadLevelObject(Level_SO level, bool[] discovered)
     {
         Transform parent = gameObject.transform.parent;
         int length = level.Special_Nodes_List.emotionIndex.Length;
@@ -305,19 +332,24 @@ public class PotionBehavior : MonoBehaviour
             //creates a path, sets the current node position to the end point of the path, and then sets localposition to that end point
             int[] path = Pathing(emotionValues[ingredient.Ingredients_Vector.emotion[0]], currentNodePosition, ingredient.Ingredients_Vector.value[0]);
             currentNodePosition = path[path.Length - 1];
-            transform.localPosition = nodes[currentNodePosition];
+            foreach (int p in path) pointQueue.Enqueue(p);
+            //transform.localPosition = nodes[currentNodePosition];
+
             if (VoidUpdate(path) == true) 
             { 
                 Reset();
                 Debug.Log("void in middle of path!");
                 return;
             }
+            
             //repeat if two different modes to ingredient
             if (ingredient.Ingredients_Vector.emotion.Length > 1)
             {
+                
                 path = Pathing(emotionValues[ingredient.Ingredients_Vector.emotion[1]], currentNodePosition, ingredient.Ingredients_Vector.value[1]);
                 currentNodePosition = path[path.Length - 1];
-                transform.localPosition = nodes[path[path.Length - 1]];
+                //transform.localPosition = nodes[path[path.Length - 1]];
+                foreach (int p in path) pointQueue.Enqueue(p);
                 if (VoidUpdate(path) == true)
                 {
                     Reset();
@@ -325,13 +357,15 @@ public class PotionBehavior : MonoBehaviour
                     return;
                 }
             }
+            
         }
         cost += ingredient.ingredients_Price;
         poison += ingredient.ingredients_Poison;
         poisonText.text = poison.ToString();
         costText.text = cost.ToString();
 
-        SpecialNodeUpdate();
+       
+        //SpecialNodeUpdate();
         previewNodes = nodes;
       
 
@@ -385,39 +419,7 @@ public class PotionBehavior : MonoBehaviour
     }
 
     // moves toward a given endpoint by a certain distance
-    void MoveToward((Vector3, float) inputs) {
-
-        (Vector3 node, float distance) = inputs;
-        Vector3 v;
-        Vector3 vSpace;
-        Vector3 finalNode;
-        float distBest;
-        if (node == transform.localPosition) return;
-        float distleft = Vector3.Distance(node, transform.localPosition);
-        if (distleft >= distance)
-        {
-            v = (node - transform.localPosition).normalized * distance;
-            vSpace = v + transform.localPosition;
-            //set final as destination node with distance 
-            finalNode = node;
-            distBest = Vector3.Distance(node, vSpace);
-        }
-        else
-        {
-            transform.localPosition = node;
-            return;
-        }
-
-        //calcualtes the closest node (that is NOT the current node) and locks the point's position to it
-        foreach (Vector3 point in nodes)
-        {
-            float temp = Vector3.Distance(vSpace, point);
-
-            if (distBest > temp && point != transform.localPosition) { distBest = temp; finalNode = point; }
-        }
-        transform.localPosition = finalNode;
-    }
-
+    
     Vector3 CreatePathEndpoint(Vector3 node, float distance)
     {
         Vector3 v = (node - transform.localPosition).normalized * distance;
