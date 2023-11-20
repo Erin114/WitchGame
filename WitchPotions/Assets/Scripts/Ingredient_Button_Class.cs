@@ -27,10 +27,9 @@ public class Ingredient_Button_Class : MonoBehaviour
     public void SendIngredient()
     {
         PotionBehaviorManager.AddIngredient(ingredient);
-        PotionBehaviorManager.HoverOverIngredeint(ingredient);
-
+        PotionBehaviorManager.HoverEnd();
     }
- 
+
     public void HoverStart()
     {
         menu.SetUpPopUp(ingredient, this.gameObject);

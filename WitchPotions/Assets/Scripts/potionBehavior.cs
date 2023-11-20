@@ -77,6 +77,9 @@ public class PotionBehavior : MonoBehaviour
     int frameInAnimation = 1;
     bool moving = false;
 
+    //Line rederer fix 
+    Ingredients_SO current_Hover_ingredients_SO;
+
 
     Dictionary<string, int> emotionValues = new Dictionary<string, int>()
     {
@@ -148,7 +151,11 @@ public class PotionBehavior : MonoBehaviour
             transform.localPosition = Vector3.Lerp(currentPositionVector, nextPoint, ratio);
             frameInAnimation++;
             Debug.Log("frame!" + frameInAnimation);
-            if (frameInAnimation > animationSpeed) moving = false;
+            if (frameInAnimation > animationSpeed)
+            { 
+                moving = false;
+                HoverOverIngredeint(current_Hover_ingredients_SO);
+            }
         }
     }
 
@@ -363,12 +370,11 @@ public class PotionBehavior : MonoBehaviour
         poison += ingredient.ingredients_Poison;
         poisonText.text = poison.ToString();
         costText.text = cost.ToString();
+        current_Hover_ingredients_SO = ingredient;
 
-       
         //SpecialNodeUpdate();
         previewNodes = nodes;
-      
-
+    
     }
 
     //Undo move button! (TODO, undo charger use)
@@ -571,7 +577,7 @@ public class PotionBehavior : MonoBehaviour
         //instead of moving using transform 
         List<Vector2> pointsV2 = new List<Vector2>();
         //Vector2[] pointsV2 = new Vector2[ingredient.ingredients_Value.Length + 1];
-        pointsV2.Add(transform.localPosition);
+        pointsV2.Add(nodes[currentNodePosition]);
 
         //In case of move towards center, force preview and ignore pathing
         if (ingredient.ingredients_Emotion[0] == "Center")
