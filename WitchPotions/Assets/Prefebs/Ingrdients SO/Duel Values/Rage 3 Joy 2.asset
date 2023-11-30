@@ -15,7 +15,7 @@ MonoBehaviour:
   ingredients_Name: Blissbloom
   ingredients_Price: 4
   ingredients_Poison: 3
-  ingredients_Sprite: {fileID: 21300000, guid: dea3ea6eeadb3d8488806bab2dfe173e, type: 3}
+  ingredients_Sprite: {fileID: 21300000, guid: 1acabb9722c2e1a45b81a6e4c757101e, type: 3}
   ingredients_Emotion:
   - Rage
   - Joy

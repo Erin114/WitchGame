@@ -15,7 +15,7 @@ MonoBehaviour:
   ingredients_Name: Venomrose
   ingredients_Price: 4
   ingredients_Poison: 3
-  ingredients_Sprite: {fileID: 21300000, guid: c796b05d929d443428fc7aab5bcc98cf, type: 3}
+  ingredients_Sprite: {fileID: 21300000, guid: 48fcc1339ae19f146ba12741ee5f17dd, type: 3}
   ingredients_Emotion:
   - Rage
   - Grief

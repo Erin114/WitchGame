@@ -15,7 +15,7 @@ MonoBehaviour:
   ingredients_Name: Raventwist
   ingredients_Price: 2
   ingredients_Poison: 3
-  ingredients_Sprite: {fileID: 21300000, guid: d1df496f1b352bd45bcfad1b1b25badf, type: 3}
+  ingredients_Sprite: {fileID: 21300000, guid: 075fb50f39fec7f4e9541b1f9333b162, type: 3}
   ingredients_Emotion:
   - Admiration
   - Joy

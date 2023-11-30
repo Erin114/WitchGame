@@ -15,7 +15,7 @@ MonoBehaviour:
   ingredients_Name: Cursed Ivy
   ingredients_Price: 4
   ingredients_Poison: 3
-  ingredients_Sprite: {fileID: 21300000, guid: d1df496f1b352bd45bcfad1b1b25badf, type: 3}
+  ingredients_Sprite: {fileID: 21300000, guid: 4493caf08bfddea408c68bd7d7554f61, type: 3}
   ingredients_Emotion:
   - Admiration
   - Amazement

@@ -15,7 +15,7 @@ MonoBehaviour:
   ingredients_Name: 'Lamentroot '
   ingredients_Price: 2
   ingredients_Poison: 3
-  ingredients_Sprite: {fileID: 21300000, guid: 830295c569d2f95468b6d95f22bca622, type: 3}
+  ingredients_Sprite: {fileID: 21300000, guid: adc4fddecd1e14e4da73dd1bcf565ffd, type: 3}
   ingredients_Emotion:
   - Terror
   - Amazement
