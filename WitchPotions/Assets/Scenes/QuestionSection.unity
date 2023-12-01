@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5078,6 +5078,8 @@ MonoBehaviour:
   convoStarted: 0
   firstDayBookIntroConversation:
   - character: 1
+    text: Hello Vivian, im down here. Its me, your book!
+  - character: 1
     text: "Vivian, you\u2019ve got your first customer, get ready!  Oh, I hope you\u2019re
       as excited as I was for my first customer!"
   - character: 1
@@ -9866,7 +9868,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -487, y: 0}
+  m_AnchoredPosition: {x: -579, y: 0}
   m_SizeDelta: {x: 300, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1053460014
@@ -14751,7 +14753,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 3aca9f3e9ac8afe4a943af77f1656bee, type: 3}
-    m_FontSize: 27
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -14788,8 +14790,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -323}
-  m_SizeDelta: {x: 700, y: 147.3545}
+  m_AnchoredPosition: {x: 128.84647, y: -323}
+  m_SizeDelta: {x: 1243.0721, y: 147.3545}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1634771208
 GameObject:
