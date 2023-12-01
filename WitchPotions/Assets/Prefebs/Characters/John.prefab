@@ -116,7 +116,7 @@ MonoBehaviour:
           him an emotion specific question now.)"
       - character: 1
         text: "( These questions cost more patience since you\u2019re prying into
-          thier emotions, but they\u2019ll give you a good answer on if they\u2019re
+          their emotions, but they\u2019ll give you a good answer on if they\u2019re
           having trouble with this emotion or not.  Why don\u2019t you ask him if
           anything\u2019s been distracting him.) "
     - initialResponse: Well my horse, Bessy, has fallen ill. Can't tell why, she
