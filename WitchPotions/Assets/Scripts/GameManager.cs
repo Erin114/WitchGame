@@ -11,7 +11,8 @@ public enum Character
     Grimoire,
     John_Johnson,
     Pippin_Pobblestone,
-    Mabel
+    Mabel,
+    Agnes
 }
 
 [System.Serializable]

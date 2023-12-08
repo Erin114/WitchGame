@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 5329478684438430015}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.896, y: 3.5242, z: 0}
-  m_LocalScale: {x: 0.36704305, y: 0.36704305, z: 0.36704305}
+  m_LocalScale: {x: 0.33460012, y: 0.33460012, z: 0.33460012}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -249,7 +249,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a468d387df2c4ce4db8375c9ebff854a, type: 2}
   introConversation:
   - character: 0
-    text: Hello sir, welcome to [APOTHECARY NAME]!
+    text: Hello sir, welcome to Viv's Tinctures and Brews!
   - character: 2
     text: "Howdy lil\u2019 missy.  Are you new around town?"
   - character: 0

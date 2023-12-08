@@ -180,8 +180,8 @@ MonoBehaviour:
       initialResponse: He tries to keep a positive outlook on life.  His job is boring
         but it gets him by.  And despite it all he still loves Agnes
       dialogue: []
-  genericQuestionSpriteOrder: 01000000020000000300000000000000
-  specificQuestionSpriteOrder: 0300000002000000010000000000000000000000030000000300000000000000
+  genericQuestionSpriteOrder: 03000000000000000300000003000000
+  specificQuestionSpriteOrder: 0000000002000000030000000200000001000000020000000000000003000000
   spriteVariants:
   - {fileID: 1930434368, guid: d2cbc6d74060c0944b2d624b867297f3, type: 3}
   - {fileID: -1383002168, guid: d2cbc6d74060c0944b2d624b867297f3, type: 3}
