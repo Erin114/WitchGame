@@ -1509,7 +1509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   suspicion: 100
-  money: 0
+  money: 10
   currentState: 0
   currentCharacter: {fileID: 0}
   currentCharacterDiscoveredInfo: 

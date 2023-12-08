@@ -188,7 +188,7 @@ public class GameManager : MonoBehaviour
             //}
             //else
             //{
-                suspicion = value;
+                money = value;
             //}
         }
     }

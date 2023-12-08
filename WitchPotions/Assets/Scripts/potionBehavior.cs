@@ -42,6 +42,9 @@ public class PotionBehavior : MonoBehaviour
     public GameObject visablePoint;
     public GameObject backGround;
 
+    //for updating money
+    public TMP_Text moneyBalanceText;
+
     //positions of each emotional extreme
   
     //relevant potion statistics
@@ -101,7 +104,7 @@ public class PotionBehavior : MonoBehaviour
     {
         center = gameObject.transform.localPosition;
 
-        
+        moneyBalanceText.text = "Money: " + GameManager.Instance.Money;
 
         //potion position init, resolve how many rings will be in use and what the base ring units will be
       
@@ -707,6 +710,11 @@ public class PotionBehavior : MonoBehaviour
                 }
             }
             sendData();
+
+            //subtract and add to the game's over all money balance
+            GameManager.Instance.Money = GameManager.Instance.Money - cost; //money spent making the potion
+            GameManager.Instance.Money = GameManager.Instance.Money + moneyMadeOnFInish; //money earned from the potion
+
         }
         else { Debug.Log("nuh uh, you're not ready yet!"); }
     }
