@@ -187,7 +187,7 @@ MonoBehaviour:
       - character: 1
         text: "(You can ask him more questions if you want, but I think we found
           our answer.  When you\u2019re done, take a look at the potions we can make
-          and click on the Potion of Vigilance and then head to the cauldron!)"
+          and click on the Potion of Vitality and then head to the cauldron!)"
     - question: Are you avoiding anything?
       initialResponse: Miss, I don't have time to be 'voiding nothing!
       dialogue:
