@@ -52,6 +52,11 @@ public class QuestionManager : MonoBehaviour
 
     public GameObject doorArrow;
 
+    public Image charIcon;
+    private Sprite charIconReferenceHolder;
+    public Sprite VivianIcon;
+    public Sprite GrimoireIcon;
+
     //Question Manager handles one character at a time
     //Press door for character to spawn and walk up to the desk
     //Character says intro text
@@ -117,6 +122,7 @@ public class QuestionManager : MonoBehaviour
             //t.text = "Hello, welcome to [APOTHECARY NAME]!";
 
             convo = currentCharacter.introConversation;
+            charIconReferenceHolder = charIcon.sprite = currentCharacter.iconFaces[0];
 
             nextButton.SetActive(false);
 
@@ -154,6 +160,7 @@ public class QuestionManager : MonoBehaviour
         list = GameObject.Find("TempManager").GetComponent<JSONManager>().list;
         //t.text = list.characters[currentChar].intro;
         t.text = currentCharacter.characterInfo.intro;
+        charIconReferenceHolder = charIcon.sprite = currentCharacter.iconFaces[0];
         introButton.gameObject.SetActive(false);
 
         //show all generic questions and emotion specific questions
@@ -173,12 +180,14 @@ public class QuestionManager : MonoBehaviour
     public void AskGenericQuestion(int index)
     {
         t.text = currentCharacter.GenericResponse(index);
+        charIconReferenceHolder = charIcon.sprite = currentCharacter.GetNPCiconsGeneric(index);
 
         genericQuestions[index].gameObject.SetActive(false);
 
         convo = currentCharacter.characterInfo.genericConvo[index].dialogue;
         convoIndex = 0;
-
+        charIcon.gameObject.SetActive(true);
+        name.gameObject.SetActive(true);
         UpdatePatience();
     }
 
@@ -186,12 +195,15 @@ public class QuestionManager : MonoBehaviour
     public void AskEmotionQuestion(int index)
     {
         t.text = currentCharacter.SpecificResponse(index);
+        charIconReferenceHolder = charIcon.sprite = currentCharacter.GetNPCiconsSpesific(index);
+
 
         emotionQuestions[index].gameObject.SetActive(false);
 
         convo = currentCharacter.characterInfo.specificConvo[index].dialogue;
         convoIndex = 0;
-
+        charIcon.gameObject.SetActive(true);
+        name.gameObject.SetActive(true);
         //reveal emotional info
 
         //loop through all the emotional info, seeing if the indices match
@@ -369,7 +381,7 @@ public class QuestionManager : MonoBehaviour
         if (convo != null && convoIndex < convo.Length - 1)
         {
             //start the conversation with vivian's first response
-            if(!convoStarted)
+            if (!convoStarted)
             {
                 convoStarted = true;
                 convoIndex = 0;
@@ -385,7 +397,21 @@ public class QuestionManager : MonoBehaviour
                 name.text = convo[convoIndex].character.ToString().Replace('_', ' ');
 
             }
+            //Update the icon depending on speaker
+            switch (name.text)
+            {
+                case "Vivian":
+                    charIcon.sprite = VivianIcon;
+                    break;
+                case "Grimoire":
+                    charIcon.sprite = GrimoireIcon;
+                    break;
+                default:
+                    charIcon.sprite = charIconReferenceHolder;
+                    break;
+            }
         }
+        
         //either there is no convo to display (showing intro text, or none exists, etc.) or we reached the end of it
         else
         {
@@ -414,6 +440,9 @@ public class QuestionManager : MonoBehaviour
                 convo = null;
 
             }
+            charIcon.gameObject.SetActive(false);
+            name.gameObject.SetActive(false);
+
         }
     }
 

@@ -226,3 +226,8 @@ MonoBehaviour:
       husband will probably fall for it too
   - character: 5
     text: I want to do the exact same thing to her husband.  What have you got?
+  iconFaces:
+  - {fileID: 65146381, guid: 6a22f29fd4228ed45b70bc51bcbb86e3, type: 3}
+  - {fileID: -2070928932, guid: 6a22f29fd4228ed45b70bc51bcbb86e3, type: 3}
+  - {fileID: -681730495, guid: 6a22f29fd4228ed45b70bc51bcbb86e3, type: 3}
+  - {fileID: -320254615, guid: 6a22f29fd4228ed45b70bc51bcbb86e3, type: 3}

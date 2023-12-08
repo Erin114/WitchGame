@@ -238,3 +238,8 @@ MonoBehaviour:
     text: "(This woman is awfully giddy at the thought of antagonizing her \u201Cfriend\u201D. 
       Weird.  It might be worth asking her about joy to see if there are any charges
       there)"
+  iconFaces:
+  - {fileID: 1930434368, guid: 9317ae6636537d240a33519927a95a8c, type: 3}
+  - {fileID: -1383002168, guid: 9317ae6636537d240a33519927a95a8c, type: 3}
+  - {fileID: -1879655580, guid: 9317ae6636537d240a33519927a95a8c, type: 3}
+  - {fileID: -1453543752, guid: 9317ae6636537d240a33519927a95a8c, type: 3}

@@ -282,3 +282,8 @@ MonoBehaviour:
       state.  "
   - character: 1
     text: Go ahead, ask him how he feels!
+  iconFaces:
+  - {fileID: 1573773935, guid: 2d2a44b5e3c02b14783dc1686fda8580, type: 3}
+  - {fileID: 1028143441, guid: 2d2a44b5e3c02b14783dc1686fda8580, type: 3}
+  - {fileID: -1063602500, guid: 2d2a44b5e3c02b14783dc1686fda8580, type: 3}
+  - {fileID: 390769421, guid: 2d2a44b5e3c02b14783dc1686fda8580, type: 3}

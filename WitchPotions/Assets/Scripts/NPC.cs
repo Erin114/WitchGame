@@ -30,6 +30,8 @@ public class NPC : MonoBehaviour
 
     public Dialogue[] introConversation;
 
+    public Sprite [] iconFaces;
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -127,6 +129,19 @@ public class NPC : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().sprite = spriteVariants[order[index]];
         }
+    }
+    public Sprite GetNPCiconsGeneric ( int index)
+    {
+        return iconFaces[genericQuestionSpriteOrder[index]];
+    }
+    public Sprite GetNPCiconsSpesific(int index)
+    {
+        return iconFaces[specificQuestionSpriteOrder[index]];
+    }
+
+    public void getCurrentImage()
+    {
+
     }
 
     //reset NPC info
