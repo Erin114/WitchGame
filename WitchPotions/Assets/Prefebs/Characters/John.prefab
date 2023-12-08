@@ -108,7 +108,8 @@ MonoBehaviour:
     emotion: this is irrelevant
     intro: Howdy Miss, been better
     genericConvo:
-    - initialResponse: I've been feeling pretty worn out these days
+    - question: How do you feel?
+      initialResponse: I've been feeling pretty worn out these days
       dialogue:
       - character: 1
         text: "(This is a great starting point!  We know that he\u2019s been feeling
@@ -119,7 +120,8 @@ MonoBehaviour:
           their emotions, but they\u2019ll give you a good answer on if they\u2019re
           having trouble with this emotion or not.  Why don\u2019t you ask him if
           anything\u2019s been distracting him.) "
-    - initialResponse: Well my horse, Bessy, has fallen ill. Can't tell why, she
+    - question: Has anything strange happened to you lately?
+      initialResponse: Well my horse, Bessy, has fallen ill. Can't tell why, she
         was sturdy as an oak up until a few days ago...
       dialogue:
       - character: 0
@@ -127,7 +129,8 @@ MonoBehaviour:
       - character: 2
         text: "Ms. Bessy? Of course!  I\u2019d bet anything she\u2019ll be back on
           her hooves in no time."
-    - initialResponse: Well I tried carrying the plow myself but I'm nowhere near
+    - question: Have you tried anything to fix your problem?
+      initialResponse: Well I tried carrying the plow myself but I'm nowhere near
         as strong as Bessy
       dialogue:
       - character: 0
@@ -135,7 +138,8 @@ MonoBehaviour:
       - character: 2
         text: "Nah, I don\u2019t need no other horses in my life, just Ms. Bessy. 
           She don\u2019t play well with others anyways.  Gets too jealous."
-    - initialResponse: I've been working all day and night to try and tend to my
+    - question: What problems are you dealing with right now?
+      initialResponse: I've been working all day and night to try and tend to my
         fields but my horse is ill
       dialogue:
       - character: 0
@@ -144,7 +148,8 @@ MonoBehaviour:
         text: Nope.  Just me and Ms. Bessy.  My Pa has been too old to even carry
           a hoe for some time now.
     specificConvo:
-    - initialResponse: Only thing John Johnson is afraid of is not being able to
+    - question: Are you afraid of anything?
+      initialResponse: Only thing John Johnson is afraid of is not being able to
         get these crops harvested before the winter comes, ya hear?
       dialogue:
       - character: 0
@@ -159,7 +164,8 @@ MonoBehaviour:
         text: "(Seems like he doesn\u2019t have any issues with fear so we can mark
           that down as a no.  Unfortunately, we don\u2019t have any potions to help
           with delusions, a big spider WOULD be scary.)"
-    - initialResponse: De-what? What in the devil does that mean?
+    - question: Are you feeling depressed?
+      initialResponse: De-what? What in the devil does that mean?
       dialogue:
       - character: 0
         text: You know, like really sad?
@@ -168,7 +174,8 @@ MonoBehaviour:
       - character: 1
         text: "(Seems like he doesn\u2019t have any issues with grief so we can mark
           that down as a no.)"
-    - initialResponse: "I\u2019ve been so distracted with the field that I haven\u2019t
+    - question: Has something been distracting you?
+      initialResponse: "I\u2019ve been so distracted with the field that I haven\u2019t
         been able to focus on anything else.  I just feel so tired lately.  I need
         a little something to get me going again."
       dialogue:
@@ -181,7 +188,8 @@ MonoBehaviour:
         text: "(You can ask him more questions if you want, but I think we found
           our answer.  When you\u2019re done, take a look at the potions we can make
           and click on the Potion of Vigilance and then head to the cauldron!)"
-    - initialResponse: Miss, I don't have time to be 'voiding nothing!
+    - question: Are you avoiding anything?
+      initialResponse: Miss, I don't have time to be 'voiding nothing!
       dialogue:
       - character: 0
         text: Gee, I wish I could work as hard as you Mr. Johnson
@@ -192,7 +200,8 @@ MonoBehaviour:
           mark that down as a no.  It sounds to me that he\u2019s pretty worn out. 
           Why don\u2019t you ask him if anything\u2019s been distracting him if you
           haven\u2019t already.)"
-    - initialResponse: I ain't been angered since I knocked over my sister's stick
+    - question: Have you had any outbursts of anger recently?
+      initialResponse: I ain't been angered since I knocked over my sister's stick
         and hoop as a kid. My daddy put the fear of god in me that day and I ain't
         done no such thing since!
       dialogue:
@@ -204,18 +213,21 @@ MonoBehaviour:
       - character: 1
         text: "(Seems like he doesn\u2019t have any issues with rage so we can mark
           that down as a no.)"
-    - initialResponse: I love my work, just got too much of it on my plate ya hear?
+    - question: Are you happy?
+      initialResponse: I love my work, just got too much of it on my plate ya hear?
       dialogue:
       - character: 1
         text: "(Seems like he doesn\u2019t have any issues with joy so we can mark
           that down as a no.)"
-    - initialResponse: Well my one field of wheat grew taller than I expected! But
+    - question: Has anything surprised you?
+      initialResponse: Well my one field of wheat grew taller than I expected! But
         besides that, not much...
       dialogue:
       - character: 1
         text: "(Seems like he doesn\u2019t have any issues with amazement so we can
           mark that down as a no.)"
-    - initialResponse: Well I appreciate my horse Ms. Bessy a whole heck of a lot
+    - question: Have you felt appreciative of anything?
+      initialResponse: Well I appreciate my horse Ms. Bessy a whole heck of a lot
         more now!
       dialogue:
       - character: 0

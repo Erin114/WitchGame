@@ -99,8 +99,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: 
   ID: 2
-  maxPatience: 500
-  patience: 500
+  maxPatience: 100
+  patience: 100
   hasBeenDiscovered: 00
   characterInfo:
     ID: 0
@@ -108,17 +108,20 @@ MonoBehaviour:
     emotion: this is irrelevant
     intro: Howdy Miss, been better
     genericConvo:
-    - initialResponse: In my darkest hours, I feel not but a superior dread that
+    - question: How do you feel?
+      initialResponse: In my darkest hours, I feel not but a superior dread that
         I cannot vanquish on my own!  Mistress Vivian, please relieve me of the burden
         in which I carry!  The melancholy which plagues me has made off with my wisecracks
         like a thief in the night!  Oh, how my morale has been trampled upon by the
         cloven hooves of these New English animals!
       dialogue: []
-    - initialResponse: "Why, of course!  That\u2019s what brings me to this ramshackle
+    - question: Has anything strange happened to you lately?
+      initialResponse: "Why, of course!  That\u2019s what brings me to this ramshackle
         establishment!  Tell me, the common folk here, have their ears never been
         graced by humor? These fools must be listless in their pursuit of happiness."
       dialogue: []
-    - initialResponse: "I have worked laboriously over my comedy to evaluate the
+    - question: Have you tried anything to fix your problem?
+      initialResponse: "I have worked laboriously over my comedy to evaluate the
         root of my dilemma, yet, I cannot produce material that sticks with this
         gloomy gathering of dunces!  Surely it cannot be me! (\u2026right?)"
       dialogue:
@@ -126,17 +129,20 @@ MonoBehaviour:
         text: "(Wait!  A crack in his confidence?  We might be onto something.  Ask
           him if anything\u2019s been distracting him.  He seems depressed, but this
           might lead us to a hidden root.)"
-    - initialResponse: Everywhere I go, I am met with disdain.  The only amusement
+    - question: What problems are you dealing with right now?
+      initialResponse: Everywhere I go, I am met with disdain.  The only amusement
         these bumpkins seem to know is that of mockery, at mine own expense!   Were
         we still in the confines of the glorious kingdom of England, I would not
         be treated with such animosity!
       dialogue: []
     specificConvo:
-    - initialResponse: A man such as myself would never deign himself to the throws
+    - question: Are you afraid of anything?
+      initialResponse: A man such as myself would never deign himself to the throws
         of fear!  Though I face adversity in this strange land, I shan't let it consume
         me!
       dialogue: []
-    - initialResponse: An individual of the arts such as I is more than in touch
+    - question: Have you felt sad at all?
+      initialResponse: An individual of the arts such as I is more than in touch
         with his emotions.  I can concede that I have felt the sting of salty tears
         on my skin in the shelter of my abode on occasion.
       dialogue:
@@ -146,7 +152,8 @@ MonoBehaviour:
         text: 'Of course, for I may be the most humble consciousness in existence. '
       - character: 0
         text: "Welp.  That didn\u2019t last long."
-    - initialResponse: "My jokes just do not land as they did while I was still in
+    - question: Has something been distracting you?
+      initialResponse: "My jokes just do not land as they did while I was still in
         the good graces of the King.  My material hasn\u2019t changed, but the reaction
         has!  Have I lost my charm? No, it can\u2019t be!  Oh, what a predicament
         I find myself facing!"
@@ -160,14 +167,17 @@ MonoBehaviour:
         text: '(Oh god, now he has me talking like an idiot too.  Quickly, mark down
           his issues with vigilance and joy in my pages so we can exile him from
           our store posthaste!) '
-    - initialResponse: Everyone in this godforsaken land!  Not a single one with
+    - question: Are you avoiding anything?
+      initialResponse: Everyone in this godforsaken land!  Not a single one with
         a funny bone in their body.  Why reduce myself to such a dour fate?
       dialogue: []
-    - initialResponse: A gentleman, like myself, would never forfeit the dignity
+    - question: Have you had any outbursts of anger recently?
+      initialResponse: A gentleman, like myself, would never forfeit the dignity
         in which I have toiled so hard to earn over such miniscule matters as the
         ones I find myself embroiled in here.
       dialogue: []
-    - initialResponse: "I must make an admission: I haven\u2019t been for some time. 
+    - question: Are you happy?
+      initialResponse: "I must make an admission: I haven\u2019t been for some time. 
         I place the blame solely on my inhabitance!  I have exchanged castles for
         a glorified village and royalty for bleak peasantry.  Who among us would
         not feel the same were they placed in my shoes! "
@@ -176,7 +186,8 @@ MonoBehaviour:
         text: "(Great, a public root!  At least we have something to go off of. 
           Let\u2019s keep looking for any hidden roots.  Why not ask him if anything
           is distracting him next?)"
-    - initialResponse: The only thing that has surprised me is the abomination you
+    - question: Has anything surprised you?
+      initialResponse: The only thing that has surprised me is the abomination you
         call food here in the colonies!  It is, without a doubt, the most vile thing
         to enter my figure.  Oh, were I still in England, I would not feel the pangs
         of famine that I do now!  This must be my divine punishment!
@@ -188,7 +199,8 @@ MonoBehaviour:
           through the way in which words flow through mine own orifice?
       - character: 0
         text: "\u2026okay, no surprises here."
-    - initialResponse: I find solace in the fact that I retain my wit and charm despite
+    - question: Have you felt appreciative of anything?
+      initialResponse: I find solace in the fact that I retain my wit and charm despite
         the gloom in which I face in this wretched town.
       dialogue:
       - character: 0

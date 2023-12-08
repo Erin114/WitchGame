@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2222,15 +2222,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2231557231619748128, guid: 1190d7a02646a8648ac5b0851c9dce74, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2231557231619748128, guid: 1190d7a02646a8648ac5b0851c9dce74, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2231557231619748128, guid: 1190d7a02646a8648ac5b0851c9dce74, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2317442184177388523, guid: 1190d7a02646a8648ac5b0851c9dce74, type: 3}
       propertyPath: m_Pivot.x
@@ -2320,41 +2320,45 @@ PrefabInstance:
       propertyPath: m_Name
       value: Options
       objectReference: {fileID: 0}
-    - target: {fileID: 5444007126978704736, guid: 1190d7a02646a8648ac5b0851c9dce74, type: 3}
-      propertyPath: m_AnchorMax.x
+    - target: {fileID: 3742538656224435749, guid: 1190d7a02646a8648ac5b0851c9dce74, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5444007126978704736, guid: 1190d7a02646a8648ac5b0851c9dce74, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444007126978704736, guid: 1190d7a02646a8648ac5b0851c9dce74, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5444007126978704736, guid: 1190d7a02646a8648ac5b0851c9dce74, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7127466832975297844, guid: 1190d7a02646a8648ac5b0851c9dce74, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7127466832975297844, guid: 1190d7a02646a8648ac5b0851c9dce74, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7127466832975297844, guid: 1190d7a02646a8648ac5b0851c9dce74, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8842718124281997288, guid: 1190d7a02646a8648ac5b0851c9dce74, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8842718124281997288, guid: 1190d7a02646a8648ac5b0851c9dce74, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8842718124281997288, guid: 1190d7a02646a8648ac5b0851c9dce74, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9682,7 +9686,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 3aca9f3e9ac8afe4a943af77f1656bee, type: 3}
     m_FontSize: 27
-    m_FontStyle: 0
+    m_FontStyle: 3
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 71

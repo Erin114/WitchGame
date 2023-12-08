@@ -10,7 +10,8 @@ public enum Character
     Vivian,
     Grimoire,
     John_Johnson,
-    Pippin_Pobblestone
+    Pippin_Pobblestone,
+    Mabel
 }
 
 [System.Serializable]
@@ -34,8 +35,10 @@ public class CharacterList
 
 [System.Serializable]
 //class that is used for asking questions. When a question button is pressed, it checks against a character's conversation objects
+//A.K.A genericConvo and specificConvo
 public class Conversation
 {
+    public string question;
     public string initialResponse;
     public Dialogue[] dialogue;
 }
@@ -110,25 +113,25 @@ public class GameManager : MonoBehaviour
         int[] terror = {1,2,3,4,5,6,7,8,9,10};
         emotionalIndexes.Add(terror);
 
-        int[] grief = {121,122,123,124,126,127,128,129,130};
+        int[] grief = {181,182,183,184,186,187,188,189,190};
         emotionalIndexes.Add(grief);
 
-        int[] Vigilance = {61,62,63,64,65,66,67,68,69,70};
+        int[] Vigilance = {91,92,93,94,95,96,97,98,99,100};
         emotionalIndexes.Add(Vigilance);
 
-        int[] Loathing = {101,102,103,104,105,106,107,108,109,110};
+        int[] Loathing = {151,152,153,154,155,156,157,158,159,160};
         emotionalIndexes.Add(Loathing);
 
-        int[] Rage = {81,82,83,84,85,86,87,88,89,90};
+        int[] Rage = {121,122,123,124,125,126,127,128,129,130};
         emotionalIndexes.Add(Rage);
 
-        int[] Joy = {41,42,43,44,45,46,47,48,49,50};
+        int[] Joy = { 61, 62, 63, 64, 65, 66, 67, 68, 69, 70};
         emotionalIndexes.Add(Joy);
 
-        int[] Amazement = {141,142,143,144,145,146,147,148,149,150};
+        int[] Amazement = {211,212,213,214,215,216,217,218,219,220};
         emotionalIndexes.Add(Amazement);
 
-        int[] Admiration = {21,22,23,24,25,26,27,28,29,30};
+        int[] Admiration = {31,32,33,34,35,36,37,38,39,40};
         emotionalIndexes.Add(Admiration);
 
     }

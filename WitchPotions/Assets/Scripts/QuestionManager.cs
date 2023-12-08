@@ -122,6 +122,17 @@ public class QuestionManager : MonoBehaviour
 
             UpdatePatience();
 
+            //update the generic and specific questions
+            for(int g = 0; g < genericQuestions.Count; g++)
+            {
+                genericQuestions[g].gameObject.GetComponentInChildren<Text>().text = currentCharacter.GetComponent<NPC>().characterInfo.genericConvo[g].question;
+            }
+
+            for (int s = 0; s < emotionQuestions.Count; s++)
+            {               
+                emotionQuestions[s].gameObject.GetComponentInChildren<Text>().text = currentCharacter.GetComponent<NPC>().characterInfo.specificConvo[s].question;
+            }
+
             //enable the conversation box
             conversationBox.SetActive(true);
             GoThroughConversation();
