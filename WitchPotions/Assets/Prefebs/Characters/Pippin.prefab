@@ -226,7 +226,7 @@ MonoBehaviour:
   - character: 0
     text: "Um\u2026 good morning.  What can I help you with today?"
   - character: 3
-    text: "It would behoove you to remember the sir after my name.  I am a man of
+    text: "It would behoove you to remember the sir before my name.  I am a man of
       many titles!  My full name is Sir Pippin Pobblestone III of Windsor, Artisan
       of Amusement, Jester of Kings, Specialist in all things Silly\u2026"
   - character: 1
