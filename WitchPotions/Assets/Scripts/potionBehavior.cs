@@ -58,7 +58,6 @@ public class PotionBehavior : MonoBehaviour
 
     //UI elements:
     public TextMeshProUGUI poisonText;
-    public TextMeshProUGUI costText;
 
 
     //Grid Values:
@@ -71,6 +70,7 @@ public class PotionBehavior : MonoBehaviour
     int star1Posion = 50;
     public GameObject[] stars;
     float moneyMadeOnFInish = 0;
+    int numberOfMissedChargers = 0;
 
     // point animation queue
     Queue<int> pointQueue = new Queue<int>();
@@ -107,7 +107,7 @@ public class PotionBehavior : MonoBehaviour
     {
         center = gameObject.transform.localPosition;
 
-        moneyBalanceText.text = "Money: " + GameManager.Instance.Money;
+        moneyBalanceText.text =  GameManager.Instance.Money.ToString();
         startmoney = GameManager.Instance.Money;
 
          //potion position init, resolve how many rings will be in use and what the base ring units will be
@@ -169,7 +169,10 @@ public class PotionBehavior : MonoBehaviour
     //Loading levels to add 
     public void LoadLevelObject(Level_SO level, bool[] discovered)
     {
+        numberOfMissedChargers = 0;
+        //Keeping reference of all discovered chargers;
         Transform parent = levelObjectsPerent.transform.parent;
+
         int length = level.Special_Nodes_List.emotionIndex.Length;
         if (instantiatedPrefabs != null || instantiatedPrefabs.Length > 0)
         {
@@ -195,7 +198,6 @@ public class PotionBehavior : MonoBehaviour
                     case Level_SO.NodeTypes.charger:
                         specials.Add((level.Special_Nodes_List.emotionIndex[i], level.Special_Nodes_List.type[i]));
                         instantiatedPrefabs[i] = Instantiate(chargerPrefab, parent);
-                        instantiatedPrefabs[i].transform.SetParent ( levelObjectsPerent.transform);
                         instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[i]];
                         currentIndex = i;
                         chargesCount++;
@@ -210,15 +212,12 @@ public class PotionBehavior : MonoBehaviour
                                 specials.Add((level.Special_Nodes_List.emotionIndex[currentIndex], level.Special_Nodes_List.type[currentIndex]));
                                 voids.Add(level.Special_Nodes_List.emotionIndex[currentIndex]);
                                 instantiatedPrefabs[i] = Instantiate(voidPrefab, parent);
-                                instantiatedPrefabs[i].transform.SetParent(levelObjectsPerent.transform);
-
                                 instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[currentIndex]];
                             }
                             else
                             {
                                 specials.Add((level.Special_Nodes_List.emotionIndex[currentIndex], level.Special_Nodes_List.type[currentIndex]));
                                 instantiatedPrefabs[i] = Instantiate(bipolarPrefab, parent);
-                                instantiatedPrefabs[i].transform.SetParent(levelObjectsPerent.transform);
                                 instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[currentIndex]];
                             }
                             currentIndex++;
@@ -226,7 +225,10 @@ public class PotionBehavior : MonoBehaviour
                         }
                         break;
                 }
-                
+            }
+            else
+            {
+                numberOfMissedChargers++;
             }
         }
         endpointIndex = level.Endpoint_Index;
@@ -237,6 +239,7 @@ public class PotionBehavior : MonoBehaviour
         cost = 0;
         moneyMadeOnFInish = level.coin_Reward;
         Debug.Log(discovered.Length + " discovered indices");
+        this.gameObject.transform.SetAsLastSibling();
 
     }
 
@@ -389,7 +392,6 @@ public class PotionBehavior : MonoBehaviour
         GameManager.Instance.Money -= ingredient.ingredients_Price;
 
         poisonText.text = poison.ToString();
-        costText.text = cost.ToString();
         moneyBalanceText.text = GameManager.Instance.Money.ToString();
         current_Hover_ingredients_SO = ingredient;
         
@@ -403,6 +405,7 @@ public class PotionBehavior : MonoBehaviour
     {
         if (nodeStartHistory.Count >= 2)
         {
+            currentNodePosition = nodeStartHistory.Peek();
             transform.localPosition = nodes[nodeStartHistory.Pop()];
             Ingredients_SO tempIng = ingredientHistory.Pop();
             poison -= tempIng.ingredients_Poison;
@@ -417,15 +420,15 @@ public class PotionBehavior : MonoBehaviour
                 poison -= tempIng.ingredients_Poison;
                 cost -= tempIng.ingredients_Price;
                 GameManager.Instance.Money += tempIng.ingredients_Price;
-                nodeStartHistory.Pop();
+                currentNodePosition = nodeStartHistory.Pop();
                 ingredientHistory.Pop();
             }
             
             transform.localPosition = nodes[0];
+            
         }
         poisonText.text = poison.ToString();
-        costText.text = cost.ToString();
-        moneyBalanceText.text = "Money: " + GameManager.Instance.Money;
+        moneyBalanceText.text =  GameManager.Instance.Money.ToString();
     }
 
     //Reset all move button! 
@@ -442,10 +445,7 @@ public class PotionBehavior : MonoBehaviour
         if (GameManager.Instance != null)
         { LoadLevelObject(GameManager.Instance.currentLevel, GameManager.Instance.currentCharacterDiscoveredInfo); }
         poisonText.text = poison.ToString();
-        costText.text = cost.ToString();
-        poisonText.text = poison.ToString();
-        costText.text = cost.ToString();
-        moneyBalanceText.text = "Money: " + GameManager.Instance.Money;
+        moneyBalanceText.text = GameManager.Instance.Money.ToString();
 
     }
 
@@ -698,6 +698,7 @@ public class PotionBehavior : MonoBehaviour
     //TODO by Elad
     public void  FinishBrew() 
     {
+
         int starcount = 0;
         float moneyEarned = moneyMadeOnFInish;
         foreach (var item in stars)
@@ -708,11 +709,11 @@ public class PotionBehavior : MonoBehaviour
         {
             if (UIPanel)
             {
-                if(chargersHit == chargesCount && poison <star2Posion)
+                if(chargersHit == chargesCount && poison <star2Posion && numberOfMissedChargers<1)
                 {
                     starcount = 3;
                 }
-                else if (chargersHit == chargesCount-1 && poison < star2Posion || chargersHit == chargesCount && poison < star1Posion && poison > star2Posion)
+                else if ((chargersHit == chargesCount-1 && poison < star2Posion || chargersHit == chargesCount && poison < star1Posion && poison > star2Posion)&&numberOfMissedChargers < 2)
                 {
                     starcount = 2;
                     moneyEarned = moneyEarned * 0.75f;
@@ -734,7 +735,6 @@ public class PotionBehavior : MonoBehaviour
             sendData();
 
             //subtract and add to the game's over all money balance
-            GameManager.Instance.Money = GameManager.Instance.Money - cost; //money spent making the potion
             GameManager.Instance.Money = GameManager.Instance.Money + moneyMadeOnFInish; //money earned from the potion
 
         }
