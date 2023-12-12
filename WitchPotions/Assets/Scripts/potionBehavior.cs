@@ -83,6 +83,9 @@ public class PotionBehavior : MonoBehaviour
     //Line rederer fix 
     Ingredients_SO current_Hover_ingredients_SO;
 
+    //Outof moeny pop up
+    public GameObject outOfMoney;
+    public GameObject levelObjectsPerent;
 
     Dictionary<string, int> emotionValues = new Dictionary<string, int>()
     {
@@ -97,7 +100,7 @@ public class PotionBehavior : MonoBehaviour
         {"Amazement", 220 },
 
     };
-
+    float startmoney;
     [SerializeField] GameObject UIPanel;
     [SerializeField] TextMeshProUGUI UIText;
     private void Start()
@@ -105,9 +108,10 @@ public class PotionBehavior : MonoBehaviour
         center = gameObject.transform.localPosition;
 
         moneyBalanceText.text = "Money: " + GameManager.Instance.Money;
+        startmoney = GameManager.Instance.Money;
 
-        //potion position init, resolve how many rings will be in use and what the base ring units will be
-      
+         //potion position init, resolve how many rings will be in use and what the base ring units will be
+
         Vector3[] nodetemplate = new Vector3[rings];
         unit = 200f / rings;
         for (int i = 1; i <= rings; i++)
@@ -165,7 +169,7 @@ public class PotionBehavior : MonoBehaviour
     //Loading levels to add 
     public void LoadLevelObject(Level_SO level, bool[] discovered)
     {
-        Transform parent = gameObject.transform.parent;
+        Transform parent = levelObjectsPerent.transform.parent;
         int length = level.Special_Nodes_List.emotionIndex.Length;
         if (instantiatedPrefabs != null || instantiatedPrefabs.Length > 0)
         {
@@ -191,6 +195,7 @@ public class PotionBehavior : MonoBehaviour
                     case Level_SO.NodeTypes.charger:
                         specials.Add((level.Special_Nodes_List.emotionIndex[i], level.Special_Nodes_List.type[i]));
                         instantiatedPrefabs[i] = Instantiate(chargerPrefab, parent);
+                        instantiatedPrefabs[i].transform.SetParent ( levelObjectsPerent.transform);
                         instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[i]];
                         currentIndex = i;
                         chargesCount++;
@@ -205,12 +210,15 @@ public class PotionBehavior : MonoBehaviour
                                 specials.Add((level.Special_Nodes_List.emotionIndex[currentIndex], level.Special_Nodes_List.type[currentIndex]));
                                 voids.Add(level.Special_Nodes_List.emotionIndex[currentIndex]);
                                 instantiatedPrefabs[i] = Instantiate(voidPrefab, parent);
+                                instantiatedPrefabs[i].transform.SetParent(levelObjectsPerent.transform);
+
                                 instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[currentIndex]];
                             }
                             else
                             {
                                 specials.Add((level.Special_Nodes_List.emotionIndex[currentIndex], level.Special_Nodes_List.type[currentIndex]));
                                 instantiatedPrefabs[i] = Instantiate(bipolarPrefab, parent);
+                                instantiatedPrefabs[i].transform.SetParent(levelObjectsPerent.transform);
                                 instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[currentIndex]];
                             }
                             currentIndex++;
@@ -315,6 +323,13 @@ public class PotionBehavior : MonoBehaviour
      */
     public void AddIngredient(Ingredients_SO ingredient) 
     {
+        //if player is missing money
+        if(GameManager.Instance.Money - ingredient.ingredients_Price < 0)
+        {
+            outOfMoney.SetActive(true);
+            return;
+        }
+
         nodeStartHistory.Push(currentNodePosition);
         ingredientHistory.Push(ingredient);
 
@@ -371,10 +386,13 @@ public class PotionBehavior : MonoBehaviour
         }
         cost += ingredient.ingredients_Price;
         poison += ingredient.ingredients_Poison;
+        GameManager.Instance.Money -= ingredient.ingredients_Price;
+
         poisonText.text = poison.ToString();
         costText.text = cost.ToString();
+        moneyBalanceText.text = GameManager.Instance.Money.ToString();
         current_Hover_ingredients_SO = ingredient;
-
+        
         //SpecialNodeUpdate();
         previewNodes = nodes;
     
@@ -389,7 +407,7 @@ public class PotionBehavior : MonoBehaviour
             Ingredients_SO tempIng = ingredientHistory.Pop();
             poison -= tempIng.ingredients_Poison;
             cost -= tempIng.ingredients_Price;
-
+            GameManager.Instance.Money += tempIng.ingredients_Price;
         }
         else
         {
@@ -398,6 +416,7 @@ public class PotionBehavior : MonoBehaviour
                 Ingredients_SO tempIng = ingredientHistory.Peek();
                 poison -= tempIng.ingredients_Poison;
                 cost -= tempIng.ingredients_Price;
+                GameManager.Instance.Money += tempIng.ingredients_Price;
                 nodeStartHistory.Pop();
                 ingredientHistory.Pop();
             }
@@ -406,7 +425,7 @@ public class PotionBehavior : MonoBehaviour
         }
         poisonText.text = poison.ToString();
         costText.text = cost.ToString();
-
+        moneyBalanceText.text = "Money: " + GameManager.Instance.Money;
     }
 
     //Reset all move button! 
@@ -417,6 +436,7 @@ public class PotionBehavior : MonoBehaviour
         transform.localPosition = nodes[0];
         poison = 0;
         cost = 0;
+        GameManager.Instance.Money = startmoney;
         currentNodePosition = 0;
         //CHECK IF THERE IS A LEVEL BEFORE
         if (GameManager.Instance != null)
@@ -425,10 +445,12 @@ public class PotionBehavior : MonoBehaviour
         costText.text = cost.ToString();
         poisonText.text = poison.ToString();
         costText.text = cost.ToString();
+        moneyBalanceText.text = "Money: " + GameManager.Instance.Money;
+
     }
 
     // moves toward a given endpoint by a certain distance
-    
+
     Vector3 CreatePathEndpoint(Vector3 node, float distance)
     {
         Vector3 v = (node - transform.localPosition).normalized * distance;

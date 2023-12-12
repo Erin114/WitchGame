@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
     private float suspicion = 100;
 
     [SerializeField]
-    private float money = 0;
+    private float money = 20;
 
     public GameStates currentState;
 
