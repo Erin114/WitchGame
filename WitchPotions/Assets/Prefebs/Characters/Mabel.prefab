@@ -100,7 +100,7 @@ MonoBehaviour:
   charName: 
   ID: 2
   maxPatience: 500
-  patience: 500
+  patience: 150
   hasBeenDiscovered: 00
   characterInfo:
     ID: 0

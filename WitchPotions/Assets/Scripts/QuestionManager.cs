@@ -159,12 +159,13 @@ public class QuestionManager : MonoBehaviour
     {
         list = GameObject.Find("TempManager").GetComponent<JSONManager>().list;
         //t.text = list.characters[currentChar].intro;
+    
         t.text = currentCharacter.characterInfo.intro;
         charIconReferenceHolder = charIcon.sprite = currentCharacter.iconFaces[0];
         introButton.gameObject.SetActive(false);
-
+      
         //show all generic questions and emotion specific questions
-        for(int i = 0; i < genericQuestions.Count; i++)
+        for (int i = 0; i < genericQuestions.Count; i++)
         {
             genericQuestions[i].interactable = true;
         }
@@ -380,6 +381,8 @@ public class QuestionManager : MonoBehaviour
         //if there is a convo to display, and we arent at the end
         if (convo != null && convoIndex < convo.Length - 1)
         {
+            charIcon.gameObject.SetActive(true);
+            name.gameObject.SetActive(true);
             //start the conversation with vivian's first response
             if (!convoStarted)
             {

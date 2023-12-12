@@ -100,8 +100,8 @@ MonoBehaviour:
   charName: 
   ID: 2
   maxPatience: 100
-  patience: 100
-  hasBeenDiscovered: 00
+  patience: 150
+  hasBeenDiscovered: 
   characterInfo:
     ID: 0
     name: Pippin Pobblestone

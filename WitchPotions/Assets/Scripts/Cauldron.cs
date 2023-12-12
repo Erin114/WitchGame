@@ -78,6 +78,7 @@ public class Cauldron : MonoBehaviour
                         GameObject.Find("Book").GetComponent<BookUI>().RevealEmotionalInfo(level);
 
                         //update the 'confirm potion' UI
+                        
                         GameObject.Find("ConfirmPotion").GetComponent<EmotionInfoUI>().UpdateText(GameObject.Find("TempManager").GetComponent<QuestionManager>().amountOfDiscovered,
                                                                                                   GameObject.Find("TempManager").GetComponent<QuestionManager>().currentCharacter.hasBeenDiscovered.Length,
                                                                                                   potion.gameObject.GetComponent<Potion>().potionName);

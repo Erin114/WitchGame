@@ -91,7 +91,7 @@ public class NPC : MonoBehaviour
     {
         if (characterInfo.genericConvo.Length > index)
         {
-            patience -= 25f;
+            patience -= 10f;
 
             ChangeSprite(spriteVariants, genericQuestionSpriteOrder, index);
 
@@ -110,7 +110,7 @@ public class NPC : MonoBehaviour
     {
         if (characterInfo.specificConvo.Length > index)
         {
-            patience -= 50f;
+            patience -= 20f;
 
             ChangeSprite(spriteVariants, specificQuestionSpriteOrder, index);
 
