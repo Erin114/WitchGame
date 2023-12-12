@@ -577,7 +577,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Continue
+  m_Text: Brew
 --- !u!222 &55543012
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14213,7 +14213,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Click here to progress through conversation
+  m_Text: Click on the door for the next customer!
 --- !u!222 &1634036199
 CanvasRenderer:
   m_ObjectHideFlags: 0
