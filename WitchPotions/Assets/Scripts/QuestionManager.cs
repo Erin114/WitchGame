@@ -343,6 +343,8 @@ public class QuestionManager : MonoBehaviour
         patienceDecrementText.GetComponent<TMP_Text>().text = "-" + value;
         patienceDecrementText.GetComponent<Animator>().SetTrigger("Play");
 
+        patience.text = currentCharacter.patience + "/" + currentCharacter.maxPatience;
+
         //patience.text = "Patience: " + currentCharacter.Patience.ToString();
         if (currentCharacter.Patience >0)
         {

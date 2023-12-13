@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: 
   ID: 2
-  maxPatience: 500
+  maxPatience: 150
   patience: 150
   hasBeenDiscovered: 00
   characterInfo:
