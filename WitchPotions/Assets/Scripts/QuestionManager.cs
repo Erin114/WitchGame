@@ -217,6 +217,12 @@ public class QuestionManager : MonoBehaviour
                 {
                     if (currentCharacter.GetComponent<NPC>().potionPossibilities[i].emotionIndices[p] == GameManager.Instance.emotionalIndexes[index][a])
                     {
+                        //increase amount discovered
+                        if(!currentCharacter.GetComponent<NPC>().hasBeenDiscovered[p])
+                        {
+                            amountOfDiscovered++;
+                        }
+
                         //set the proper "discovered" bool on the NPC script
                         currentCharacter.GetComponent<NPC>().hasBeenDiscovered[p] = true;
                         emotionInfoTextPopUp.GetComponent<TMP_Text>().text = "New " + currentCharacter.GetComponent<NPC>().potionPossibilities[i].nodeType[p] + " discovered!";
@@ -225,7 +231,7 @@ public class QuestionManager : MonoBehaviour
                                                                                         //currentCharacter.GetComponent<NPC>().potionPossibilities[i].nodeType[p]);
                         GameObject.Find("BookImage").GetComponent<Book>().discoveredIndexes.Add(currentCharacter.GetComponent<NPC>().potionPossibilities[i].emotionIndices[p]);
                         GameObject.Find("BookImage").GetComponent<Book>().discoveredNodes.Add(currentCharacter.GetComponent<NPC>().potionPossibilities[i].nodeType[p]);
-                        amountOfDiscovered++;
+                        
                     }
                 }
             }
