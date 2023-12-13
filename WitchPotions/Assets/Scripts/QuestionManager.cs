@@ -42,6 +42,8 @@ public class QuestionManager : MonoBehaviour
     public Sprite [] allFace;
     public int annoyedQuestionsCount = 0;
 
+    public GameObject patienceDecrementText;
+
     //variables to progress through a conversation
     public Dialogue[] convo; //array of dialogue = conversation
     int convoIndex = 0;
@@ -126,7 +128,7 @@ public class QuestionManager : MonoBehaviour
 
             nextButton.SetActive(false);
 
-            UpdatePatience();
+            UpdatePatience(0);
 
             //update the generic and specific questions
             for(int g = 0; g < genericQuestions.Count; g++)
@@ -151,7 +153,7 @@ public class QuestionManager : MonoBehaviour
 
         currentCharacter = character;
         annoyedQuestionsCount = 0;
-        UpdatePatience();
+        UpdatePatience(0);
 
     }
 
@@ -189,7 +191,7 @@ public class QuestionManager : MonoBehaviour
         convoIndex = 0;
         charIcon.gameObject.SetActive(true);
         name.gameObject.SetActive(true);
-        UpdatePatience();
+        UpdatePatience(10);
     }
 
     //called by buttons to ask emotion-specific questions
@@ -237,8 +239,8 @@ public class QuestionManager : MonoBehaviour
             }
         }
 
-
-        UpdatePatience();
+        //hard-coded patience value for UI
+        UpdatePatience(20);
     }
 
     /*public void AnswerOne()
@@ -328,12 +330,19 @@ public class QuestionManager : MonoBehaviour
             emotionQuestions[i].gameObject.SetActive(true);
         }
 
-        UpdatePatience();
+        //UpdatePatience();
 
     }
 
-    void UpdatePatience()
+    void UpdatePatience(float value)
     {
+
+        //play animations
+        bar.GetComponent<Animator>().SetTrigger("Update");
+
+        patienceDecrementText.GetComponent<TMP_Text>().text = "-" + value;
+        patienceDecrementText.GetComponent<Animator>().SetTrigger("Play");
+
         //patience.text = "Patience: " + currentCharacter.Patience.ToString();
         if (currentCharacter.Patience >0)
         {
