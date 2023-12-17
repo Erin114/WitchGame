@@ -338,12 +338,17 @@ public class QuestionManager : MonoBehaviour
     {
 
         //play animations
-        bar.GetComponent<Animator>().SetTrigger("Update");
+        if (value != 0)
+        {
+            bar.GetComponent<Animator>().SetTrigger("Update");
 
-        patienceDecrementText.GetComponent<TMP_Text>().text = "-" + value;
-        patienceDecrementText.GetComponent<Animator>().SetTrigger("Play");
+            patienceDecrementText.GetComponent<TMP_Text>().text = "-" + value;
+            patienceDecrementText.GetComponent<Animator>().SetTrigger("Play");
+        }
 
         patience.text = currentCharacter.patience + "/" + currentCharacter.maxPatience;
+
+        float currentPatienceRatio = (currentCharacter.patience / currentCharacter.maxPatience);
 
         //patience.text = "Patience: " + currentCharacter.Patience.ToString();
         if (currentCharacter.Patience >0)
@@ -354,16 +359,17 @@ public class QuestionManager : MonoBehaviour
         {
             bar.value = 0;
             annoyedQuestionsCount++;
+            currentPatienceRatio = -1;
         }
-        if (currentCharacter.Patience >75)
+        if (currentPatienceRatio > 0.75)
         {
             face.sprite = allFace[0];
         }
-        else if (currentCharacter.Patience > 50)
+        else if (currentPatienceRatio > 0.50)
         {
             face.sprite = allFace[1];
         }
-        else if (currentCharacter.Patience > 25)
+        else if (currentPatienceRatio > 0.25)
         {
             face.sprite = allFace[2];
         }
