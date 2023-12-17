@@ -734,7 +734,7 @@ public class PotionBehavior : MonoBehaviour
                 }
                 UIPanel.SetActive(true);
               
-                UIText.text = ("Chargers Hit:" + chargersHit + "<br>" + "Poison:" + poison + "<br>" + "Money Spent:" + cost + "<br>" + "Money Earned:" + moneyEarned);
+                UIText.text = ("Charges Hit:" + chargersHit + "<br>" + "Poison:" + poison + "<br>" + "Money Spent:" + cost + "<br>" + "Money Earned:" + moneyEarned);
                 for (int i = 0; i < starcount; i++)
                 {
                     stars[i].SetActive(true);
