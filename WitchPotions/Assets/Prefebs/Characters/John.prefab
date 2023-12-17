@@ -116,10 +116,9 @@ MonoBehaviour:
           tired lately, so maybe his problem lies in his vigilance.  Let\u2019s ask
           him an emotion specific question now.)"
       - character: 1
-        text: "( These questions cost more patience since you\u2019re prying into
-          their emotions, but they\u2019ll give you a good answer on if they\u2019re
-          having trouble with this emotion or not.  Why don\u2019t you ask him if
-          anything\u2019s been distracting him.) "
+        text: "(These questions will give you a good answer on if they\u2019re having
+          trouble with this emotion or not.  Why don\u2019t you ask him if anything\u2019s
+          been distracting him.)"
     - question: Has anything strange happened to you lately?
       initialResponse: Well my horse, Bessy, has fallen ill. Can't tell why, she
         was sturdy as an oak up until a few days ago...
@@ -273,13 +272,12 @@ MonoBehaviour:
       start by asking him some questions to see what\u2019s wrong with him.  Emotionally,
       that is.  Mentally, I don\u2019t want to know)"
   - character: 1
-    text: 'Each customer has a level of patience that you can see here.  This will
-      let you know how many questions you can ask them before they get upset. '
+    text: "(Let\u2019s start off by asking him some generic questions to get an understanding
+      of what might be going on with him.  This type of question gives vague information
+      about the customer\u2019s emotional state that will give us an idea of what
+      specific questions to ask him later.)"
   - character: 1
-    text: " Let\u2019s start off by asking him some generic questions to get an understanding
-      of what might be going on with him.  These type of questions take the least
-      amount of patience, but give vague information about the customer\u2019s emotional
-      state.  "
+    text: (Go ahead, ask him how he feels!)
   - character: 1
     text: Go ahead, ask him how he feels!
   iconFaces:
