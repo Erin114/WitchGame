@@ -116,8 +116,9 @@ MonoBehaviour:
           tired lately, so maybe his problem lies in his vigilance.  Let\u2019s ask
           him an emotion specific question now.)"
       - character: 1
-        text: "(These questions will give you a good answer on if they\u2019re having
-          trouble with this emotion or not.  Why don\u2019t you ask him if anything\u2019s
+        text: "(These questions will give you a good answer on if a customer is having
+          trouble with that emotion or not, but they cost more patience since you\u2019re
+          prying into their emotions.  Why don\u2019t you ask him if anything\u2019s
           been distracting him.)"
     - question: Has anything strange happened to you lately?
       initialResponse: Well my horse, Bessy, has fallen ill. Can't tell why, she
@@ -180,9 +181,7 @@ MonoBehaviour:
       dialogue:
       - character: 1
         text: "(I think you\u2019ve found the emotion at the root of his problems. 
-          Great work Vivian!  Make sure to make a note of this in my pages.  Clicking
-          once on an emotion will indicate that they are having problems with that
-          emotion, checking twice will indicate that they aren\u2019t.)"
+          Great work Vivian!  Make sure to make a note of this in my pages.)"
       - character: 1
         text: "(You can ask him more questions if you want, but I think we found
           our answer.  When you\u2019re done, take a look at the potions we can make
@@ -270,7 +269,9 @@ MonoBehaviour:
   - character: 1
     text: "(See, I told you.  The man\u2019s head must be filled with cobwebs.  Let\u2019s
       start by asking him some questions to see what\u2019s wrong with him.  Emotionally,
-      that is.  Mentally, I don\u2019t want to know)"
+      that is.  Each customer has a level of patience that you can see up top.  This
+      will let you know how many questions you can ask before they get upset and
+      won't answer any more.)"
   - character: 1
     text: "(Let\u2019s start off by asking him some generic questions to get an understanding
       of what might be going on with him.  This type of question gives vague information
@@ -278,8 +279,6 @@ MonoBehaviour:
       specific questions to ask him later.)"
   - character: 1
     text: (Go ahead, ask him how he feels!)
-  - character: 1
-    text: Go ahead, ask him how he feels!
   exitConversation:
   - character: 0
     text: Enjoy
