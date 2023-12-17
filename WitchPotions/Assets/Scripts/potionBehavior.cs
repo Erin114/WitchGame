@@ -490,8 +490,12 @@ public class PotionBehavior : MonoBehaviour
                         Debug.Log("oops! you hit a void :(");
                         break;
                     case Level_SO.NodeTypes.charger:
-                        chargersHit++;
-                        GameObject.Destroy(instantiatedPrefabs[i]);
+                        if (instantiatedPrefabs[i] != default)
+                        {
+                            chargersHit++;
+                            GameObject.Destroy(instantiatedPrefabs[i]);
+                            instantiatedPrefabs[i] = default;
+                        }
                         break;
                     case Level_SO.NodeTypes.bipolar:
                         for (int j = 0; j < specials.Count; j++)
