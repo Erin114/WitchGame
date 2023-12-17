@@ -24,7 +24,8 @@ public class ChangeScenes : MonoBehaviour
 
     public void GoToQuestionScene()
     {
-        GameManager.Instance.currentCustomerIndex++;
+        //GameManager.Instance.currentCustomerIndex++;
+        GameManager.Instance.servedPotion = true;
         UnityEngine.SceneManagement.SceneManager.LoadScene("QuestionSection");
 
     }

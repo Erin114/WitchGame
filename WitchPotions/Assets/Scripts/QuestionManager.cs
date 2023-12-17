@@ -69,8 +69,6 @@ public class QuestionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentDay = GameManager.Instance.currentDay;
-        currentChar = GameManager.Instance.currentCustomerIndex;
 
         //convo = 
 
@@ -100,8 +98,19 @@ public class QuestionManager : MonoBehaviour
         //name.text = "Name: " + currentCharacter.charName;
         //ChangeCharacter(characters[currentChar]);
 
+        //if we just served a customer a potion, spawn them in and set up the outro/goodbye conversation
+        if(GameManager.Instance.servedPotion)
+        {
+            SpawnInCharacterForOutro();
+            GameManager.Instance.currentCustomerIndex++; //update the current customer index
+        }
+
+        //get the current customer from Game manager
+        currentDay = GameManager.Instance.currentDay;
+        currentChar = GameManager.Instance.currentCustomerIndex;
+
         //if its the first day, set up the tutorial arrows/objects
-        if(currentDay == 0 && currentChar == 0)
+        if (currentDay == 0 && currentChar == 0)
         {
             //if its day 1, set up the starting conversation
             convo = firstDayBookIntroConversation;
@@ -111,7 +120,7 @@ public class QuestionManager : MonoBehaviour
 
     public void SpawnInCurrentCharacter()
     {
-        if(currentChar < GameManager.Instance.dayOneCharacters.Length)
+        if(currentChar < GameManager.Instance.dayOneCharacters.Length && convo == null)
         {
             //TODO: support more than just one day
             GameObject prefab = GameManager.Instance.dayOneCharacters[currentChar];
@@ -144,6 +153,26 @@ public class QuestionManager : MonoBehaviour
             //enable the conversation box
             conversationBox.SetActive(true);
             GoThroughConversation();
+        }
+    }
+
+    //spawns in the character object and sets up the outro/goodbye dialogue
+    public void SpawnInCharacterForOutro()
+    {
+        currentChar = GameManager.Instance.currentCustomerIndex;
+
+        if (currentChar < GameManager.Instance.dayOneCharacters.Length)
+        {
+            //TODO: support more than just one day
+            GameObject prefab = GameManager.Instance.dayOneCharacters[currentChar];
+            GameObject character = Instantiate(prefab, spawnLocation.transform.position, Quaternion.identity);
+
+            currentCharacter = character.GetComponent<NPC>();
+
+            convo = currentCharacter.exitConversation;
+            charIconReferenceHolder = currentCharacter.iconFaces[0];
+
+            //GameManager.Instance.servedPotion = false;
         }
     }
 
@@ -441,7 +470,7 @@ public class QuestionManager : MonoBehaviour
         //either there is no convo to display (showing intro text, or none exists, etc.) or we reached the end of it
         else
         {
-            if(currentCharacter != null)
+            if(currentCharacter != null && !GameManager.Instance.servedPotion)
             {
                 ShowScrollBar();
                 name.text = currentCharacter.characterInfo.name;
@@ -464,6 +493,13 @@ public class QuestionManager : MonoBehaviour
                 }
 
                 convo = null;
+                
+                //if this code runs, despawn the current character
+                if(GameManager.Instance.servedPotion)
+                {
+                    Destroy(currentCharacter.gameObject);
+                    GameManager.Instance.servedPotion = false;
+                }
 
             }
             charIcon.gameObject.SetActive(false);

@@ -280,6 +280,13 @@ MonoBehaviour:
     text: (Go ahead, ask him how he feels!)
   - character: 1
     text: Go ahead, ask him how he feels!
+  exitConversation:
+  - character: 0
+    text: Enjoy
+  - character: 2
+    text: Thank you missy
+  - character: 1
+    text: You have another customer, get the door!
   iconFaces:
   - {fileID: 1573773935, guid: 2d2a44b5e3c02b14783dc1686fda8580, type: 3}
   - {fileID: 1028143441, guid: 2d2a44b5e3c02b14783dc1686fda8580, type: 3}

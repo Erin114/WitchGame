@@ -257,6 +257,13 @@ MonoBehaviour:
       feeling and what he\u2019s done to fix his problems.  That might tell us what
       has and hasn\u2019t worked for him and give us information leading to any hidden
       roots he might have)"
+  exitConversation:
+  - character: 0
+    text: Enjoy
+  - character: 3
+    text: Why thank you!
+  - character: 1
+    text: You have another customer, get the door!
   iconFaces:
   - {fileID: 1405223881, guid: 27ec10e7c369e7749989fa9ed9fd531b, type: 3}
   - {fileID: 473057870, guid: 27ec10e7c369e7749989fa9ed9fd531b, type: 3}
