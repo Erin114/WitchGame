@@ -387,6 +387,7 @@ public class PotionBehavior : MonoBehaviour
             }
             
         }
+
         cost += ingredient.ingredients_Price;
         poison += ingredient.ingredients_Poison;
         GameManager.Instance.Money -= ingredient.ingredients_Price;
