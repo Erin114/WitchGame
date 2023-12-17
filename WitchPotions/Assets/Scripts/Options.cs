@@ -21,14 +21,13 @@ public class Options : MonoBehaviour
         savedSFX = PlayerPrefs.GetFloat("SFX");
         volume.value = savedVolume;
         SFX.value = savedSFX;
-
     }
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-        { transform.GetChild(0).gameObject.SetActive(!transform.GetChild(0).gameObject.activeSelf); }
+        { tongle(); }
     }
 
     public void SetSFX(float val)
@@ -41,6 +40,10 @@ public class Options : MonoBehaviour
         mix.SetFloat("music", val * -80f);
         PlayerPrefs.SetFloat("Volume", val);
 
+    }
+    public void tongle ()
+    {
+        transform.GetChild(0).gameObject.SetActive(!transform.GetChild(0).gameObject.activeSelf);
     }
     public void Quit()
     {
