@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2297,26 +2297,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1918519051}
     m_Modifications:
-    - target: {fileID: 2231557231619748128, guid: 1190d7a02646a8648ac5b0851c9dce74, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2231557231619748128, guid: 1190d7a02646a8648ac5b0851c9dce74, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2231557231619748128, guid: 1190d7a02646a8648ac5b0851c9dce74, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2231557231619748128, guid: 1190d7a02646a8648ac5b0851c9dce74, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.275
-      objectReference: {fileID: 0}
-    - target: {fileID: 2239340062311058504, guid: 1190d7a02646a8648ac5b0851c9dce74, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2317442184177388523, guid: 1190d7a02646a8648ac5b0851c9dce74, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2404,50 +2384,6 @@ PrefabInstance:
     - target: {fileID: 3742538656224435749, guid: 1190d7a02646a8648ac5b0851c9dce74, type: 3}
       propertyPath: m_Name
       value: Options
-      objectReference: {fileID: 0}
-    - target: {fileID: 3742538656224435749, guid: 1190d7a02646a8648ac5b0851c9dce74, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5444007126978704736, guid: 1190d7a02646a8648ac5b0851c9dce74, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5444007126978704736, guid: 1190d7a02646a8648ac5b0851c9dce74, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5444007126978704736, guid: 1190d7a02646a8648ac5b0851c9dce74, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5444007126978704736, guid: 1190d7a02646a8648ac5b0851c9dce74, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.2625
-      objectReference: {fileID: 0}
-    - target: {fileID: 7127466832975297844, guid: 1190d7a02646a8648ac5b0851c9dce74, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7127466832975297844, guid: 1190d7a02646a8648ac5b0851c9dce74, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7127466832975297844, guid: 1190d7a02646a8648ac5b0851c9dce74, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8842718124281997288, guid: 1190d7a02646a8648ac5b0851c9dce74, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8842718124281997288, guid: 1190d7a02646a8648ac5b0851c9dce74, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8842718124281997288, guid: 1190d7a02646a8648ac5b0851c9dce74, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5340,7 +5276,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ec83a6a43ea014844a4c59944037aaf6, type: 3}
   - {fileID: 21300000, guid: a6504a45bbde9bd48970eb41653e42e3, type: 3}
   annoyedQuestionsCount: 0
-  patienceDecrementText: {fileID: 1278973792}
+  patienceDecrementText: {fileID: 0}
   convo: []
   convoStarted: 0
   firstDayBookIntroConversation:
