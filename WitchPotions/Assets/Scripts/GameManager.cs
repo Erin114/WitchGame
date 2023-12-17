@@ -51,6 +51,7 @@ public struct Dialogue
     public string text;
 }
 
+//irrelevant
 public enum GameStates
 {
     BeforeCustomer, //in the scene, before a character walks through the door
@@ -75,6 +76,8 @@ public class GameManager : MonoBehaviour
     public NPC currentCharacter;
     [SerializeField]
     public bool[] currentCharacterDiscoveredInfo;
+
+    public bool servedPotion = false;
 
     PotionBehavior potBehavior;
 

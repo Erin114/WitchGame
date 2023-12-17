@@ -29,6 +29,7 @@ public class NPC : MonoBehaviour
     public List<Level_SO> potionPossibilities;
 
     public Dialogue[] introConversation;
+    public Dialogue[] exitConversation;
 
     public Sprite [] iconFaces;
 
