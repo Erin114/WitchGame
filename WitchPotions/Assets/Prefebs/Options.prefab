@@ -761,6 +761,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mix: {fileID: 24100000, guid: dd3baa9aba901f745a8104b3db999187, type: 2}
+  volume: {fileID: 81117796167140622}
+  SFX: {fileID: 8643447850290060527}
 --- !u!1 &4137746088706804786
 GameObject:
   m_ObjectHideFlags: 0

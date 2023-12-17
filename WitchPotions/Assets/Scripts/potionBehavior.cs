@@ -143,6 +143,7 @@ public class PotionBehavior : MonoBehaviour
         
     }
 
+    // animating movement of the position pointer sprite using a queue of destinations
     private void FixedUpdate()
     {
         if (pointQueue.Count > 0 && moving == false)
@@ -184,6 +185,7 @@ public class PotionBehavior : MonoBehaviour
         }
         instantiatedPrefabs = new GameObject[length];
         int currentIndex = 0;
+        //load discovered nodes
         for (int i = 0; i < length; i++)
         {
             if (discovered[i])
@@ -244,7 +246,7 @@ public class PotionBehavior : MonoBehaviour
     }
 
     /// <summary>
-    /// Load level used for debug, open all chargers autmomethicly 
+    /// Load level used for debug, open all chargers autmomatically
     /// </summary>
     /// <param name="level"></param>
     public void LoadLevelObject(Level_SO level)
@@ -387,6 +389,8 @@ public class PotionBehavior : MonoBehaviour
             }
             
         }
+        //edit moneys and poison
+
         cost += ingredient.ingredients_Price;
         poison += ingredient.ingredients_Poison;
         GameManager.Instance.Money -= ingredient.ingredients_Price;
@@ -395,7 +399,7 @@ public class PotionBehavior : MonoBehaviour
         moneyBalanceText.text = GameManager.Instance.Money.ToString();
         current_Hover_ingredients_SO = ingredient;
         
-        //SpecialNodeUpdate();
+        SpecialNodeUpdate();
         previewNodes = nodes;
     
     }
@@ -477,17 +481,21 @@ public class PotionBehavior : MonoBehaviour
         if (specials.Count == 0) return;
         for (int i = 0; i < specials.Count; i++)
         {
-            if (nodes[specials[i].nodeIndex] == transform.localPosition)
+            if (specials[i].nodeIndex == currentNodePosition)
             {
+               
                 switch(specials[i].type)
                 {
                     case Level_SO.NodeTypes.voidNode:
                         Debug.Log("oops! you hit a void :(");
-                        Reset();
                         break;
                     case Level_SO.NodeTypes.charger:
-                        chargersHit++;
-                        GameObject.Destroy(instantiatedPrefabs[i]);
+                        if (instantiatedPrefabs[i] != default)
+                        {
+                            chargersHit++;
+                            GameObject.Destroy(instantiatedPrefabs[i]);
+                            instantiatedPrefabs[i] = default;
+                        }
                         break;
                     case Level_SO.NodeTypes.bipolar:
                         for (int j = 0; j < specials.Count; j++)
