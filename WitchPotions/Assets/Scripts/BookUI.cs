@@ -69,7 +69,7 @@ public class BookUI : MonoBehaviour
 
                             break;
 
-                        case Level_SO.NodeTypes.charger:
+                        case Level_SO.NodeTypes.charge:
                             emotions[i].toggleState = ToggleStates.Yes;
                             emotions[i].UpdateGraphics();
                             Debug.Log("rara");
@@ -102,7 +102,7 @@ public class BookUI : MonoBehaviour
                     for(int k = 0; k < GameManager.Instance.emotionalIndexes[i].Length; k++)
                     {
                         //if the indicee is the same, and its a charger then reveal the charger
-                        if(GameManager.Instance.emotionalIndexes[i][k] == level.emotionIndices[a] && level.nodeType[a] == Level_SO.NodeTypes.charger)
+                        if(GameManager.Instance.emotionalIndexes[i][k] == level.emotionIndices[a] && level.nodeType[a] == Level_SO.NodeTypes.charge)
                         {
                             //if we havent already counted this charger
                             if(!m.currentCharacter.hasBeenDiscovered[a])
