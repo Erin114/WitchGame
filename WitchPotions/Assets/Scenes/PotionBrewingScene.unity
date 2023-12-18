@@ -7061,12 +7061,12 @@ MonoBehaviour:
       Endpoints required to brew a potion will be in here.  In the middle of the
       cauldron is your pointer.
   - character: 1
-    text: " We\u2019ll put ingredients into the brew in order to move the pointer
+    text: "We\u2019ll put ingredients into the brew in order to move the pointer
       closer to the endpoint. "
   - character: 1
     text: "The ingredients used for brewing are found here.  Each ingredient has
       emotional values attached to it that will shift the pointer towards that emotion. 
-      I think we\u2019re going to need one of these, [INGREDIENT NAME], for the potion. 
+      I think we\u2019re going to need one of these, Dreamshade, for the potion. 
       Go ahead, throw it in the brew!"
   - character: 1
     text: "We\u2019ll have to be careful with what ingredients we pick.  Each ingredient
