@@ -38,7 +38,11 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+<<<<<<< Updated upstream
   m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+=======
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+>>>>>>> Stashed changes
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4792,6 +4796,87 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ec83a6a43ea014844a4c59944037aaf6, type: 3}
   - {fileID: 21300000, guid: a6504a45bbde9bd48970eb41653e42e3, type: 3}
   annoyedQuestionsCount: 0
+<<<<<<< Updated upstream
+=======
+  patienceDecrementText: {fileID: 1278973792}
+  convo: []
+  convoStarted: 0
+  firstDayBookIntroConversation:
+  - character: 1
+    text: Hey, Vivian, over here!
+  - character: 0
+    text: Mom? Where are you?
+  - character: 1
+    text: "On the desk Vivian, I think I\u2019m\u2026 a book?"
+  - character: 0
+    text: "What do you mean you\u2019re a book? This a new magic trick of yours?"
+  - character: 1
+    text: Nope, I-
+  - character: 0
+    text: 'Well how did you turn into a book then? '
+  - character: 1
+    text: "It\u2019s a long story, just don\u2019t worry, I\u2019ll figure it out. 
+      We\u2019ve got to open up the shop for today-"
+  - character: 0
+    text: "The shop???  How do you expect us to be open today?  I\u2019ve never even
+      made a potion before!  There\u2019s got to be a way to turn you back, maybe
+      there\u2019s something in the pages here\u2026"
+  - character: 1
+    text: Hey, watch it! Stop flipping my pages.  That hurts, cut it out!
+  - character: 1
+    text: "Just calm down, you\u2019ve got this.  You\u2019ve seen me make potions
+      millions of times before, I\u2019m sure you\u2019ve picked up on it at least
+      a little bit.  I\u2019ll try to guide you as much as I can, although, a talking
+      book might draw some suspicion..."
+  - character: 0
+    text: "No, no, no, I\u2019m not ready to run the whole shop by myself!  We should
+      just stay closed for the day."
+  - character: 1
+    text: "I wish we could but it\u2019s not an option.  Being new to town is going
+      to draw a lot of attention.  We must make a good first impression!  "
+  - character: 0
+    text: "We\u2019re not going to make any money if I can\u2019t make any potions
+      right!"
+  - character: 1
+    text: "Well we don\u2019t have much of a choice.  If someone looks inside from
+      one of those windows what are they going to think?  We\u2019ve got strange
+      ingredients laying around and brews on the shelf of colors these people have
+      never seen before!  "
+  - character: 1
+    text: "If we aren\u2019t selling, the townsfolk are sure to report us to the
+      inquisitors.  We barely escaped last time, Vivian."
+  - character: 0
+    text: "\u2026"
+  - character: 0
+    text: "I guess you\u2019re right\u2026"
+  - character: 1
+    text: "See, you\u2019ve got this!"
+  - character: 1
+    text: Oh, it looks like someone is at the door now!  Click on the door whenever
+      you are ready for the next customer!
+  - character: 1
+    text: If you remove this the last line of text above this will be cut off.  Do
+      not remove unless bug is fixed.
+  conclusionConversation:
+  - character: 0
+    text: Test
+  - character: 0
+    text: Conclusion
+  - character: 0
+    text: Text
+  - character: 1
+    text: Please work
+  doorArrow: {fileID: 1592688585}
+  charIcon: {fileID: 176477607}
+  VivianIcon: {fileID: 1261207599, guid: 25c05849126dad842b86a618398925f9, type: 3}
+  VivianIconOptions:
+  - {fileID: 1261207599, guid: 25c05849126dad842b86a618398925f9, type: 3}
+  - {fileID: -1253202486, guid: 25c05849126dad842b86a618398925f9, type: 3}
+  - {fileID: 1741178866, guid: 25c05849126dad842b86a618398925f9, type: 3}
+  - {fileID: 542849005, guid: 25c05849126dad842b86a618398925f9, type: 3}
+  - {fileID: 107116331, guid: 25c05849126dad842b86a618398925f9, type: 3}
+  GrimoireIcon: {fileID: 21300000, guid: b81c9e8e5d39c6242bb2b46f3bc839ca, type: 3}
+>>>>>>> Stashed changes
 --- !u!1 &496042185
 GameObject:
   m_ObjectHideFlags: 0
