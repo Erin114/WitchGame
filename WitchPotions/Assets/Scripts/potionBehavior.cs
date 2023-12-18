@@ -154,6 +154,7 @@ public class PotionBehavior : MonoBehaviour
             if (frameInAnimation > animationSpeed)
             { 
                 moving = false;
+                SpecialNodeUpdate();
                 HoverOverIngredeint(current_Hover_ingredients_SO);
             }
         }
@@ -371,7 +372,7 @@ public class PotionBehavior : MonoBehaviour
         poisonText.text = poison.ToString();
         costText.text = cost.ToString();
         current_Hover_ingredients_SO = ingredient;
-
+        
         //SpecialNodeUpdate();
         previewNodes = nodes;
     
@@ -380,6 +381,7 @@ public class PotionBehavior : MonoBehaviour
     //Undo move button! (TODO, undo charger use)
     public void Undo()
     {
+        Vector3 lastLocation = transform.position;   
         if (nodeStartHistory.Count >= 2)
         {
             transform.localPosition = nodes[nodeStartHistory.Pop()];
@@ -462,7 +464,7 @@ public class PotionBehavior : MonoBehaviour
                         break;
                     case Level_SO.NodeTypes.charger:
                         chargersHit++;
-                        GameObject.Destroy(instantiatedPrefabs[i]);
+                        instantiatedPrefabs[i].gameObject.SetActive(false);
                         break;
                     case Level_SO.NodeTypes.bipolar:
                         for (int j = 0; j < specials.Count; j++)
@@ -700,7 +702,7 @@ public class PotionBehavior : MonoBehaviour
                 }
                 UIPanel.SetActive(true);
               
-                UIText.text = ("Chargers Hit:" + chargersHit + "<br>" + "Poison:" + poison + "<br>" + "Money Spent:" + cost + "<br>" + "Money Earned:" + moneyEarned);
+                UIText.text = ("Charges Hit:" + chargersHit + "<br>" + "Poison:" + poison + "<br>" + "Money Spent:" + cost + "<br>" + "Money Earned:" + moneyEarned);
                 for (int i = 0; i < starcount; i++)
                 {
                     stars[i].SetActive(true);
