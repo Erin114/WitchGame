@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   emotionIndices: be000000
   nodeType: 02000000
-  endpoint_Index: 189
+  endpoint_Index: 167
   coin_Reward: 20
   tags: 
   potionName: Sleep Potion

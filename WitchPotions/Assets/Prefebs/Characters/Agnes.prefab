@@ -228,7 +228,7 @@ MonoBehaviour:
   - character: 0
     text: Best of luck, enjoy
   - character: 5
-    text: This better work
+    text: Sure, whatever. This better work.
   - character: 1
     text: You have another customer, get the door!
   iconFaces:
@@ -238,5 +238,18 @@ MonoBehaviour:
   - {fileID: -320254615, guid: 6a22f29fd4228ed45b70bc51bcbb86e3, type: 3}
   vivianSprites: {fileID: 11400000, guid: d6f4a303e31cff34581ec3e1d3631771, type: 2}
   CharSprites: {fileID: 11400000, guid: 2a0cf18ce78b796439f1e566b9aa1ade, type: 2}
-  genericQuestionSprites: []
-  specificQuestionSprites: []
+  genericQuestionSprites:
+  - SpriteIndex: 00000000
+  - SpriteIndex: 00000000
+  - SpriteIndex: 01000000
+  - SpriteIndex: 01000000
+  specificQuestionSprites:
+  - SpriteIndex: 00000000
+  - SpriteIndex: 01000000
+  - SpriteIndex: 02000000
+  - SpriteIndex: 01000000
+  - SpriteIndex: 00000000
+  - SpriteIndex: 0000000003000000010000000000000003000000
+  - SpriteIndex: 00000000
+  - SpriteIndex: 00000000
+  spriteOrderForIntro: 000000000000000002000000000000000200000001000000010000000100000002000000010000000100000001000000000000000300000000000000030000000200000001000000

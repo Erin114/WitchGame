@@ -9,7 +9,7 @@ public class Level_SO : ScriptableObject
     {
         voidNode,
         bipolar,
-        charger
+        charge
     }
 
     //indices for emotions and endpoints are 0 = center, 1-10 is fear,

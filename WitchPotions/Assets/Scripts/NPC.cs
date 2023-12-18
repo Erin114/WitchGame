@@ -42,6 +42,7 @@ public class NPC : MonoBehaviour
     }
     public List<serializableClass> genericQuestionSprites = new List<serializableClass>();
     public List<serializableClass> specificQuestionSprites = new List<serializableClass>();
+    public List<int> spriteOrderForIntro;
 
     // Start is called before the first frame update
     protected virtual void Start()

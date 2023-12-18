@@ -133,7 +133,8 @@ public class PotionBehavior : MonoBehaviour
 
         //load in the current level
         LoadLevelObject(GameManager.Instance.currentLevel, GameManager.Instance.currentCharacterDiscoveredInfo);
-
+        poisonText.text = poison.ToString();
+        costText.text = cost.ToString();
     }
 
     private void FixedUpdate()
@@ -186,7 +187,7 @@ public class PotionBehavior : MonoBehaviour
                     // instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[i]];
 
                     // break;
-                    case Level_SO.NodeTypes.charger:
+                    case Level_SO.NodeTypes.charge:
                         specials.Add((level.Special_Nodes_List.emotionIndex[i], level.Special_Nodes_List.type[i]));
                         instantiatedPrefabs[i] = Instantiate(chargerPrefab, parent);
                         instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[i]];
@@ -261,7 +262,7 @@ public class PotionBehavior : MonoBehaviour
                 // instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[i]];
 
                 // break;
-                case Level_SO.NodeTypes.charger:
+                case Level_SO.NodeTypes.charge:
                     specials.Add((level.Special_Nodes_List.emotionIndex[i], level.Special_Nodes_List.type[i]));
                     instantiatedPrefabs[i] = Instantiate(chargerPrefab, parent);
                     instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[i]];
@@ -420,7 +421,7 @@ public class PotionBehavior : MonoBehaviour
         if (specials.Count == 0) return;
         for (int i = 0; i < specials.Count; i++)
         {
-            if (nodes[specials[i].nodeIndex] == lastLocation && Level_SO.NodeTypes.charger == specials[i].type && !instantiatedPrefabs[i].gameObject.activeSelf)
+            if (nodes[specials[i].nodeIndex] == lastLocation && Level_SO.NodeTypes.charge == specials[i].type && !instantiatedPrefabs[i].gameObject.activeSelf)
             {
 
                 chargersHit--;
@@ -490,7 +491,7 @@ public class PotionBehavior : MonoBehaviour
                         Debug.Log("oops! you hit a void :(");
                         Reset();
                         break;
-                    case Level_SO.NodeTypes.charger:
+                    case Level_SO.NodeTypes.charge:
                         chargersHit++;
                         instantiatedPrefabs[i].gameObject.SetActive(false);
                         break;
@@ -730,7 +731,7 @@ public class PotionBehavior : MonoBehaviour
                 }
                 UIPanel.SetActive(true);
 
-                UIText.text = ("Charges Hit:" + chargersHit + "<br>" + "Poison:" + poison + "<br>" + "Money Spent:" + cost + "<br>" + "Money Earned:" + moneyEarned);
+                UIText.text = ("Charges Hit: " + chargersHit + "<br>" + "Poison: " + poison + "<br>" + "Money Spent: " + cost + "<br>" + "Money Earned: " + moneyEarned);
                 for (int i = 0; i < starcount; i++)
                 {
                     stars[i].SetActive(true);

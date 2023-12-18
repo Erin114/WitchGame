@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 25c05849126dad842b86a618398925f9
+guid: a34ed470659a15e45acf5bb52cc3fadf
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,128 +108,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Viv_All_0
-      rect:
-        serializedVersion: 2
-        x: 176
-        y: 73
-        width: 1157
-        height: 1068
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7b864f5874f9cd2468d2fba3df65de9a
-      internalID: 1261207599
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Viv_All_1
-      rect:
-        serializedVersion: 2
-        x: 1389
-        y: 77
-        width: 1157
-        height: 1062
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 61b91709f536cfa498a71497eb81db57
-      internalID: -1253202486
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Viv_All_2
-      rect:
-        serializedVersion: 2
-        x: 2607
-        y: 62
-        width: 1157
-        height: 1077
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 3, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b7336b18cbb3f634a8df830db37c5586
-      internalID: 1741178866
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Viv_All_3
-      rect:
-        serializedVersion: 2
-        x: 3813
-        y: 65
-        width: 1157
-        height: 1079
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 515d02267e49b5a4dbe28bcda0bb1a22
-      internalID: 542849005
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Viv_All_4
-      rect:
-        serializedVersion: 2
-        x: 5032
-        y: 65
-        width: 1157
-        height: 1076
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a5d2c6b6be2089d46ba41fa4c53a7b0d
-      internalID: 107116331
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: f202dc9138f39cd4dafa54b60c0ff037
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Viv_All_0: 1261207599
-      Viv_All_1: -1253202486
-      Viv_All_2: 1741178866
-      Viv_All_3: 542849005
-      Viv_All_4: 107116331
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

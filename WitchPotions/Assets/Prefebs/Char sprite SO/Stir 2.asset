@@ -15,7 +15,7 @@ MonoBehaviour:
   FullSprites:
   - {fileID: 65146381, guid: bdf0313607854614b8274755cc912137, type: 3}
   - {fileID: -2070928932, guid: bdf0313607854614b8274755cc912137, type: 3}
-  - {fileID: -681730495, guid: 6a22f29fd4228ed45b70bc51bcbb86e3, type: 3}
+  - {fileID: -681730495, guid: bdf0313607854614b8274755cc912137, type: 3}
   - {fileID: -320254615, guid: bdf0313607854614b8274755cc912137, type: 3}
   IconSprites:
   - {fileID: 65146381, guid: 6a22f29fd4228ed45b70bc51bcbb86e3, type: 3}

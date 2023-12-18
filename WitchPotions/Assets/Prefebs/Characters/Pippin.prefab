@@ -257,9 +257,9 @@ MonoBehaviour:
       roots he might have)"
   exitConversation:
   - character: 0
-    text: Enjoy
+    text: Enjoy your brew!
   - character: 3
-    text: Why thank you!
+    text: Why, thank you!
   - character: 1
     text: You have another customer, get the door!
   iconFaces:
@@ -283,3 +283,4 @@ MonoBehaviour:
   - SpriteIndex: 0200000000000000
   - SpriteIndex: 00000000010000000100000000000000
   - SpriteIndex: 0000000002000000
+  spriteOrderForIntro: 000000000000000000000000020000000100000000000000000000000100000001000000020000000100000000000000

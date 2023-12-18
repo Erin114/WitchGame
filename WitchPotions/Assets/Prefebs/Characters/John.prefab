@@ -279,7 +279,7 @@ MonoBehaviour:
     text: (Go ahead, ask him how he feels!)
   exitConversation:
   - character: 0
-    text: Enjoy
+    text: Thank you, Missy. I'll send Ms. Bessy your regards!
   - character: 2
     text: Thank you missy
   - character: 1
@@ -305,3 +305,4 @@ MonoBehaviour:
   - SpriteIndex: 0000000000000000
   - SpriteIndex: 030000000000000000000000
   - SpriteIndex: 03000000040000000300000000000000
+  spriteOrderForIntro: 0400000004000000000000000300000000000000000000000100000000000000000000000000000001000000

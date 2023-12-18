@@ -250,7 +250,7 @@ MonoBehaviour:
   - character: 0
     text: Here you go, enjoy
   - character: 4
-    text: Thank you dear
+    text: Thank you, dear. I will definitely becoming back, you were so helpful!
   - character: 1
     text: You have another customer, get the door!
   iconFaces:
@@ -274,3 +274,4 @@ MonoBehaviour:
   - SpriteIndex: 01000000
   - SpriteIndex: 02000000
   - SpriteIndex: 02000000
+  spriteOrderForIntro: 0000000000000000000000000000000004000000020000000100000003000000010000000300000000000000

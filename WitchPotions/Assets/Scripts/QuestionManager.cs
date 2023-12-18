@@ -66,6 +66,7 @@ public class QuestionManager : MonoBehaviour
     private int currentQuestionIndex;
     private bool isCurrentQuestionGeneric;
     private bool spacialConvo = true;
+    private bool isIntro = false;
 
     //Question Manager handles one character at a time
     //Press door for character to spawn and walk up to the desk
@@ -122,6 +123,8 @@ public class QuestionManager : MonoBehaviour
         {
             //if its day 1, set up the starting conversation
             convo = firstDayBookIntroConversation;
+            spacialConvo = true;
+            isIntro = true;
         }
 
     }
@@ -143,7 +146,7 @@ public class QuestionManager : MonoBehaviour
             convo = currentCharacter.introConversation;
             spacialConvo = true;
             charIconReferenceHolder = charIcon.sprite = currentCharacter.iconFaces[0];
-
+            isIntro = true;
             nextButton.SetActive(false);
 
             UpdatePatience(0);
@@ -533,8 +536,14 @@ public class QuestionManager : MonoBehaviour
             }
             else if (spacialConvo)
             {
+
                 if (convoStarted)
                     convoIndex++;
+
+                int imageIndexindex = 0;
+                if(isIntro&&currentCharacter!=null)
+                imageIndexindex = currentCharacter.spriteOrderForIntro[convoIndex];
+            
                 if (name.text == "Grimoire")
                 {
                     charIcon.sprite = GrimoireIcon;
@@ -542,12 +551,12 @@ public class QuestionManager : MonoBehaviour
                 }
                 else if (name.text == "Vivian")
                 {
-                    charIcon.sprite = currentCharacter.vivianSprites.IconSprites[0];
+                    charIcon.sprite = currentCharacter.vivianSprites.IconSprites[imageIndexindex];
                 }
                 else
                 {
-                    charIcon.sprite = currentCharacter.CharSprites.IconSprites[0];
-                    currentCharacter.gameObject.GetComponent<SpriteRenderer>().sprite = currentCharacter.CharSprites.FullSprites[0];
+                    charIcon.sprite = currentCharacter.CharSprites.IconSprites[imageIndexindex];
+                    currentCharacter.gameObject.GetComponent<SpriteRenderer>().sprite = currentCharacter.CharSprites.FullSprites[imageIndexindex];
                 }
             }
             else
@@ -577,6 +586,7 @@ public class QuestionManager : MonoBehaviour
                 convoIndex = 0;
                 convo = null;
                 convoStarted = false;
+                isIntro = false;
             }
             else
             {
