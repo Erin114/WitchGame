@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2028,16 +2028,14 @@ MonoBehaviour:
   bipolarPrefab: {fileID: 4636563715448737716, guid: 6627049186a31774484faef6418fb937, type: 3}
   visablePoint: {fileID: 1916772718230522287, guid: 4288a7cf50ae75647924e75452af648c, type: 3}
   backGround: {fileID: 1963352092}
-  moneyBalanceText: {fileID: 1141215451}
   endpointIndex: 0
   poisonText: {fileID: 352932259}
+  costText: {fileID: 1141215451}
   stars:
   - {fileID: 1303294314}
   - {fileID: 2092766999}
   - {fileID: 1603116660}
   animationSpeed: 6
-  outOfMoney: {fileID: 2059122054}
-  levelObjectsPerent: {fileID: 990284688}
   UIPanel: {fileID: 1248849615}
   UIText: {fileID: 1367038171}
   lineRenderer: {fileID: 1959912091}
@@ -7151,7 +7149,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1693707198
 GameObject:
@@ -7833,7 +7831,7 @@ RectTransform:
   - {fileID: 1029792949}
   - {fileID: 2059122055}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

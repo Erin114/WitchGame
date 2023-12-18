@@ -381,24 +381,28 @@ public class PotionBehavior : MonoBehaviour
     //Undo move button! (TODO, undo charger use)
     public void Undo()
     {
-        Vector3 lastLocation = transform.position;
+        Vector3 lastLocation = transform.localPosition;
         if (nodeStartHistory.Count >= 2)
         {
+            currentNodePosition = nodeStartHistory.Peek();
             transform.localPosition = nodes[nodeStartHistory.Pop()];
             Ingredients_SO tempIng = ingredientHistory.Pop();
             poison -= tempIng.ingredients_Poison;
             cost -= tempIng.ingredients_Price;
+            lineRenderer.gameObject.SetActive(false);
 
         }
         else
         {
             if (nodeStartHistory.Count == 1)
             {
+                currentNodePosition = nodeStartHistory.Peek();
                 Ingredients_SO tempIng = ingredientHistory.Peek();
                 poison -= tempIng.ingredients_Poison;
                 cost -= tempIng.ingredients_Price;
                 nodeStartHistory.Pop();
                 ingredientHistory.Pop();
+                lineRenderer.gameObject.SetActive(false);
             }
 
             transform.localPosition = nodes[0];
@@ -406,6 +410,16 @@ public class PotionBehavior : MonoBehaviour
         poisonText.text = poison.ToString();
         costText.text = cost.ToString();
 
+        if (specials.Count == 0) return;
+        for (int i = 0; i < specials.Count; i++)
+        {
+            if (nodes[specials[i].nodeIndex] == lastLocation && Level_SO.NodeTypes.charger == specials[i].type && !instantiatedPrefabs[i].gameObject.activeSelf)
+            {
+
+                chargersHit--;
+                instantiatedPrefabs[i].gameObject.SetActive(true);
+            }
+        }
     }
 
     //Reset all move button! 
