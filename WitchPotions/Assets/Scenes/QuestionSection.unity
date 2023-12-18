@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5281,21 +5281,35 @@ MonoBehaviour:
   convoStarted: 0
   firstDayBookIntroConversation:
   - character: 1
-    text: Hello Vivian, I'm down here. Its me, your book!
+    text: Hey, Vivian, over here!
   - character: 1
-    text: "Vivian, you\u2019ve got your first customer, get ready!  Oh, I hope you\u2019re
-      as excited as I was for my first customer!"
+    text: "On the desk Vivian, I think I\u2019m\u2026 a book?"
   - character: 1
-    text: Answer the door!
+    text: "It\u2019s a long story, just don\u2019t worry, I\u2019ll figure it out. 
+      We\u2019ve got to open up the shop for today-"
+  - character: 1
+    text: "Just calm down, you\u2019ve got this.  You\u2019ve seen me make potions
+      millions of times before, I\u2019m sure you\u2019ve picked up on it at least
+      a little bit.  I\u2019ll try to guide you as much as I can, although a talking
+      book might draw some suspicion\u2026"
+  - character: 1
+    text: "Keep an eye out for anyone acting strange, we can\u2019t afford to get
+      kicked out of another town!"
+  - character: 1
+    text: Oh, it looks like someone is at the door now!  Click on the door whenever
+      you are ready for the next customer!
   conclusionConversation:
-  - character: 0
-    text: Test
-  - character: 0
-    text: Conclusion
-  - character: 0
-    text: Text
   - character: 1
-    text: Please work
+    text: "Seems like that\u2019s the last one for the day.  Time to close up shop!"
+  - character: 1
+    text: "You did a great job today!  I didn\u2019t think you\u2019d have to take
+      over the family store so soon but you\u2019ve made me so proud!  I\u2019m sure
+      it helps when you\u2019re learning from the best, huh?"
+  - character: 1
+    text: "I hate to say it, but I think you\u2019re going to have to take over for
+      me for a while.  I\u2019ve been scrolling through all of my pages trying to
+      find a spell or something to change me back, but I haven\u2019t found anything
+      yet. Just buy us some more time, alright?"
   doorArrow: {fileID: 1592688585}
   charIcon: {fileID: 176477607}
   VivianIcon: {fileID: 1261207599, guid: 25c05849126dad842b86a618398925f9, type: 3}
@@ -9828,7 +9842,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 146.1}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1614, y: 309.03}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1030550818
@@ -10365,7 +10379,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1266497331615204200, guid: a4aefae4e50d0224c9a53e44efcdc04f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1266497331615204200, guid: a4aefae4e50d0224c9a53e44efcdc04f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
