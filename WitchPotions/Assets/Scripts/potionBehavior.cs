@@ -224,6 +224,7 @@ public class PotionBehavior : MonoBehaviour
         endpoint.transform.localPosition = nodes[level.Endpoint_Index];
         poison = 0;
         transform.localPosition = center;
+        transform.SetAsLastSibling();
         cost = 0;
         moneyMadeOnFInish = level.coin_Reward;
         Debug.Log(discovered.Length + " discovered indices");

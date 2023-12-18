@@ -172,10 +172,6 @@ MonoBehaviour:
       initialResponse: "I\u2019m sure she feels appreciative of all the people that
         put up with all her bellyaching day in and day out!"
       dialogue: []
-  genericQuestionSpriteOrder: 03000000010000000000000001000000
-  specificQuestionSpriteOrder: 0000000003000000010000000300000002000000010000000300000002000000
-  vivianGenericQuestionSpriteOrder: 00000000000000000000000000000000
-  vivianSpecificQuestionSpriteOrder: 0000000000000000000000000000000000000000000000000000000000000000
   spriteVariants:
   - {fileID: 65146381, guid: bdf0313607854614b8274755cc912137, type: 3}
   - {fileID: -2070928932, guid: bdf0313607854614b8274755cc912137, type: 3}
@@ -240,3 +236,7 @@ MonoBehaviour:
   - {fileID: -2070928932, guid: 6a22f29fd4228ed45b70bc51bcbb86e3, type: 3}
   - {fileID: -681730495, guid: 6a22f29fd4228ed45b70bc51bcbb86e3, type: 3}
   - {fileID: -320254615, guid: 6a22f29fd4228ed45b70bc51bcbb86e3, type: 3}
+  vivianSprites: {fileID: 11400000, guid: d6f4a303e31cff34581ec3e1d3631771, type: 2}
+  CharSprites: {fileID: 11400000, guid: 2a0cf18ce78b796439f1e566b9aa1ade, type: 2}
+  genericQuestionSprites: []
+  specificQuestionSprites: []

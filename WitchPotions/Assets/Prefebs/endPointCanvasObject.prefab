@@ -243,5 +243,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1496df07cd9487c47a860a2a3b4bb590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glow1: {fileID: 0}
-  glow2: {fileID: 0}
+  glow1: {fileID: 3073986969947459818}
+  glow2: {fileID: 1551308830610536987}

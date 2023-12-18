@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Stir 2
   m_EditorClassIdentifier: 
   FullSprites:
-  - {fileID: 1573773935, guid: d617fb98a8562554f8695756e489b068, type: 3}
-  - {fileID: 1028143441, guid: d617fb98a8562554f8695756e489b068, type: 3}
-  - {fileID: -1063602500, guid: d617fb98a8562554f8695756e489b068, type: 3}
-  - {fileID: 390769421, guid: d617fb98a8562554f8695756e489b068, type: 3}
+  - {fileID: 65146381, guid: bdf0313607854614b8274755cc912137, type: 3}
+  - {fileID: -2070928932, guid: bdf0313607854614b8274755cc912137, type: 3}
+  - {fileID: -681730495, guid: 6a22f29fd4228ed45b70bc51bcbb86e3, type: 3}
+  - {fileID: -320254615, guid: bdf0313607854614b8274755cc912137, type: 3}
   IconSprites:
-  - {fileID: 1573773935, guid: 2d2a44b5e3c02b14783dc1686fda8580, type: 3}
-  - {fileID: 1028143441, guid: 2d2a44b5e3c02b14783dc1686fda8580, type: 3}
-  - {fileID: -1063602500, guid: 2d2a44b5e3c02b14783dc1686fda8580, type: 3}
-  - {fileID: 390769421, guid: 2d2a44b5e3c02b14783dc1686fda8580, type: 3}
+  - {fileID: 65146381, guid: 6a22f29fd4228ed45b70bc51bcbb86e3, type: 3}
+  - {fileID: -2070928932, guid: 6a22f29fd4228ed45b70bc51bcbb86e3, type: 3}
+  - {fileID: -681730495, guid: 6a22f29fd4228ed45b70bc51bcbb86e3, type: 3}
+  - {fileID: -320254615, guid: 6a22f29fd4228ed45b70bc51bcbb86e3, type: 3}
