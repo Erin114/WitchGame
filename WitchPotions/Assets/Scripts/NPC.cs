@@ -35,6 +35,17 @@ public class NPC : MonoBehaviour
     public Dialogue[] exitConversation;
 
     public Sprite [] iconFaces;
+    public CharcterSpriteSO vivianSprites;
+    public CharcterSpriteSO CharSprites;
+
+    [System.Serializable]
+    public class serializableClass
+    {
+        public List<int> SpriteIndex;
+        public Character Speaker;
+    }
+    public List<serializableClass> genericQuestionSprites = new List<serializableClass>();
+    public List<serializableClass> specificQuestionSprites = new List<serializableClass>();
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -97,8 +108,6 @@ public class NPC : MonoBehaviour
         {
             patience -= 10f;
 
-            ChangeSprite(spriteVariants, genericQuestionSpriteOrder, index);
-
             return characterInfo.genericConvo[index].initialResponse;
         }
         else
@@ -116,7 +125,6 @@ public class NPC : MonoBehaviour
         {
             patience -= 20f;
 
-            ChangeSprite(spriteVariants, specificQuestionSpriteOrder, index);
 
             return characterInfo.specificConvo[index].initialResponse;
         }
@@ -127,13 +135,8 @@ public class NPC : MonoBehaviour
         }
     }
 
-    public void ChangeSprite(List<Sprite> sprites, List<int> order, int index)
-    {
-        if(index < order.Count)
-        {
-            GetComponent<SpriteRenderer>().sprite = spriteVariants[order[index]];
-        }
-    }
+
+
     public Sprite GetNPCiconsGeneric ( int index)
     {
         return iconFaces[genericQuestionSpriteOrder[index]];
@@ -143,11 +146,21 @@ public class NPC : MonoBehaviour
         return iconFaces[specificQuestionSpriteOrder[index]];
     }
 
-    public void getCurrentImage()
+    public Sprite NewGetNPCiconsGeneric(int dilougeIndex, int currentIndex, Character character)
     {
+        int index = genericQuestionSprites[dilougeIndex].SpriteIndex[currentIndex];
+
+        if (genericQuestionSprites[dilougeIndex].Speaker.ToString() == this.charName)
+        { return iconFaces[index]; }
+        else
+        { return iconFaces[index]; }
+
 
     }
-
+    public Sprite NewGetNPCiconsSpesific(int dilougeIndex)
+    {
+        return iconFaces[specificQuestionSpriteOrder[dilougeIndex]];
+    }
     //reset NPC info
     public void Reset()
     {

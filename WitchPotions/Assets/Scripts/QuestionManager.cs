@@ -63,6 +63,8 @@ public class QuestionManager : MonoBehaviour
     public Sprite [] VivianIconOptions;
 
     public Sprite GrimoireIcon;
+    private int currentQuestionIndex;
+    private bool isCurrentQuestionGeneric;
 
     //Question Manager handles one character at a time
     //Press door for character to spawn and walk up to the desk
@@ -228,12 +230,17 @@ public class QuestionManager : MonoBehaviour
     public void AskGenericQuestion(int index)
     {
         t.text = currentCharacter.GenericResponse(index);
-        charIconReferenceHolder = charIcon.sprite = currentCharacter.GetNPCiconsGeneric(index);
-        VivianIcon = VivianIconOptions[currentCharacter.vivianGenericQuestionSpriteOrder[index]];
+      
         genericQuestions[index].gameObject.SetActive(false);
 
+        isCurrentQuestionGeneric = true;
         convo = currentCharacter.characterInfo.genericConvo[index].dialogue;
         convoIndex = 0;
+        currentQuestionIndex = index;
+        int imageIndexindex = currentCharacter.genericQuestionSprites[currentQuestionIndex].SpriteIndex[0];
+        charIcon.sprite = currentCharacter.CharSprites.IconSprites[imageIndexindex];
+        VivianIcon = currentCharacter.vivianSprites.IconSprites[imageIndexindex];
+        currentCharacter.gameObject.GetComponent<SpriteRenderer>().sprite = currentCharacter.CharSprites.FullSprites[imageIndexindex];
         charIcon.gameObject.SetActive(true);
         name.gameObject.SetActive(true);
         UpdatePatience(10);
@@ -243,13 +250,18 @@ public class QuestionManager : MonoBehaviour
     public void AskEmotionQuestion(int index)
     {
         t.text = currentCharacter.SpecificResponse(index);
-        charIconReferenceHolder = charIcon.sprite = currentCharacter.GetNPCiconsSpesific(index);
-        VivianIcon = VivianIconOptions[currentCharacter.vivianSpecificQuestionSpriteOrder[index]];
+    
 
         emotionQuestions[index].gameObject.SetActive(false);
-
+        
+        currentQuestionIndex = index;
+        isCurrentQuestionGeneric = true;
         convo = currentCharacter.characterInfo.specificConvo[index].dialogue;
         convoIndex = 0;
+        int imageIndexindex = currentCharacter.specificQuestionSprites[currentQuestionIndex].SpriteIndex[0];
+        charIcon.sprite = currentCharacter.CharSprites.IconSprites[imageIndexindex];
+        VivianIcon = currentCharacter.vivianSprites.IconSprites[imageIndexindex];
+        currentCharacter.gameObject.GetComponent<SpriteRenderer>().sprite = currentCharacter.CharSprites.FullSprites[imageIndexindex];
         charIcon.gameObject.SetActive(true);
         name.gameObject.SetActive(true);
         //reveal emotional info
@@ -468,19 +480,46 @@ public class QuestionManager : MonoBehaviour
                 name.text = convo[convoIndex].character.ToString().Replace('_', ' ');
 
             }
-            //Update the icon depending on speaker
-            switch (name.text)
+
+            //Start of new icon and image switch code
+            if (isCurrentQuestionGeneric)
             {
-                case "Vivian":
-                    charIcon.sprite = VivianIcon;
-                    break;
-                case "Grimoire":
+                int imageIndexindex = currentCharacter.genericQuestionSprites[currentQuestionIndex].SpriteIndex[convoIndex];
+
+                if (currentCharacter.name ==   "Grimoire")
+                {
                     charIcon.sprite = GrimoireIcon;
-                    break;
-                default:
-                    charIcon.sprite = charIconReferenceHolder;
-                    break;
+
+                }
+                else if (currentCharacter.name == "Vivian")
+                {
+                    charIcon.sprite = currentCharacter.vivianSprites.IconSprites[imageIndexindex];
+                }
+                else
+                {
+                    charIcon.sprite = currentCharacter.CharSprites.IconSprites[imageIndexindex];
+                    currentCharacter.gameObject.GetComponent<SpriteRenderer>().sprite = currentCharacter.CharSprites.FullSprites[imageIndexindex];
+                }
+            }else
+            {
+                int imageIndexindex = currentCharacter.specificQuestionSprites[currentQuestionIndex].SpriteIndex[convoIndex];
+
+                if (currentCharacter.name == "Grimoire")
+                {
+                    charIcon.sprite = GrimoireIcon;
+
+                }
+                else if (currentCharacter.name == "Vivian")
+                {
+                    charIcon.sprite = currentCharacter.vivianSprites.IconSprites[imageIndexindex];
+                }
+                else
+                {
+                    charIcon.sprite = currentCharacter.CharSprites.IconSprites[imageIndexindex];
+                    currentCharacter.gameObject.GetComponent<SpriteRenderer>().sprite = currentCharacter.CharSprites.FullSprites[imageIndexindex];
+                }
             }
+        
         }
         
         //either there is no convo to display (showing intro text, or none exists, etc.) or we reached the end of it
