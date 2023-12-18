@@ -16,16 +16,18 @@ public class Cauldron : MonoBehaviour
     public GameObject arrow;
     public GameObject wrongPotionPopUp;
 
+    NPC c;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        c = GameObject.Find("TempManager").GetComponent<QuestionManager>().currentCharacter;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0) && GameObject.Find("TempManager").GetComponent<QuestionManager>().currentCharacter != null)
+        if(Input.GetMouseButtonDown(0) && GameObject.Find("TempManager").GetComponent<QuestionManager>().currentCharacter != null && !GameManager.Instance.servedPotion)
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
@@ -154,7 +156,11 @@ public class Cauldron : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        GetComponent<SpriteRenderer>().material = outline;
+        if (GameObject.Find("TempManager").GetComponent<QuestionManager>().currentCharacter != null)
+        {
+            GetComponent<SpriteRenderer>().material = outline;
+        }
+            
     }
     private void OnMouseExit()
     {

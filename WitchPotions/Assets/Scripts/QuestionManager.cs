@@ -52,6 +52,9 @@ public class QuestionManager : MonoBehaviour
     public Dialogue[] firstDayBookIntroConversation;
     bool isFirstInteraction;
 
+    public Dialogue[] conclusionConversation;
+    bool startedConclusionConvo = false;
+
     public GameObject doorArrow;
 
     public Image charIcon;
@@ -153,6 +156,17 @@ public class QuestionManager : MonoBehaviour
             //enable the conversation box
             conversationBox.SetActive(true);
             GoThroughConversation();
+        }
+
+        //if we reached the end of the day 1 characters, and there is currently no conversation happening
+        //set up the conclusion conversation
+        else if(currentChar >= GameManager.Instance.dayOneCharacters.Length && convo == null)
+        {
+            convo = conclusionConversation;
+            conversationBox.SetActive(true);
+            nextButton.SetActive(false);
+            t.text = "...";
+            startedConclusionConvo = true;
         }
     }
 

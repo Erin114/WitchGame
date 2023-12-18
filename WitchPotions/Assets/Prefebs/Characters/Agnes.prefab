@@ -231,6 +231,8 @@ MonoBehaviour:
     text: Best of luck, enjoy
   - character: 5
     text: This better work
+  - character: 1
+    text: You have another customer, get the door!
   iconFaces:
   - {fileID: 65146381, guid: 6a22f29fd4228ed45b70bc51bcbb86e3, type: 3}
   - {fileID: -2070928932, guid: 6a22f29fd4228ed45b70bc51bcbb86e3, type: 3}

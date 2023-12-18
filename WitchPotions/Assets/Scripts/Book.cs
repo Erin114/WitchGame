@@ -45,9 +45,12 @@ public class Book : MonoBehaviour
     }
 
     private void OnMouseEnter()
-    {
-        GetComponent<SpriteOutline>().enabled = true;
-        GetComponent<SpriteRenderer>().material = outline;
+    {       
+        if(m.currentCharacter != null)
+        {
+            GetComponent<SpriteOutline>().enabled = true;
+            GetComponent<SpriteRenderer>().material = outline;
+        }
     }
     private void OnMouseExit()
     {
