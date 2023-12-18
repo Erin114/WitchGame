@@ -12,7 +12,8 @@ public enum Character
     John_Johnson,
     Pippin_Pobblestone,
     Mabel,
-    Agnes
+    Agnes,
+    Inquisitor
 }
 
 [System.Serializable]
