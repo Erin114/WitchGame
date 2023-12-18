@@ -42,11 +42,8 @@ public class PotionBehavior : MonoBehaviour
     public GameObject visablePoint;
     public GameObject backGround;
 
-    //for updating money
-    public TMP_Text moneyBalanceText;
-
     //positions of each emotional extreme
-  
+
     //relevant potion statistics
     int poison = 0;
     int cost = 0;
@@ -58,6 +55,7 @@ public class PotionBehavior : MonoBehaviour
 
     //UI elements:
     public TextMeshProUGUI poisonText;
+    public TextMeshProUGUI costText;
 
 
     //Grid Values:
@@ -70,7 +68,6 @@ public class PotionBehavior : MonoBehaviour
     int star1Posion = 50;
     public GameObject[] stars;
     float moneyMadeOnFInish = 0;
-    int numberOfMissedChargers = 0;
 
     // point animation queue
     Queue<int> pointQueue = new Queue<int>();
@@ -83,9 +80,6 @@ public class PotionBehavior : MonoBehaviour
     //Line rederer fix 
     Ingredients_SO current_Hover_ingredients_SO;
 
-    //Outof moeny pop up
-    public GameObject outOfMoney;
-    public GameObject levelObjectsPerent;
 
     Dictionary<string, int> emotionValues = new Dictionary<string, int>()
     {
@@ -100,23 +94,22 @@ public class PotionBehavior : MonoBehaviour
         {"Amazement", 220 },
 
     };
-    float startmoney;
+
     [SerializeField] GameObject UIPanel;
     [SerializeField] TextMeshProUGUI UIText;
     private void Start()
     {
         center = gameObject.transform.localPosition;
 
-        moneyBalanceText.text =  GameManager.Instance.Money.ToString();
-        startmoney = GameManager.Instance.Money;
 
-         //potion position init, resolve how many rings will be in use and what the base ring units will be
+
+        //potion position init, resolve how many rings will be in use and what the base ring units will be
 
         Vector3[] nodetemplate = new Vector3[rings];
         unit = 200f / rings;
         for (int i = 1; i <= rings; i++)
         {
-            nodetemplate[i-1] = center + new Vector3(i * unit, 0, 0);
+            nodetemplate[i - 1] = center + new Vector3(i * unit, 0, 0);
         }
 
         //indices for emotions and endpoints are 0 = center, 1-10 is fear,
@@ -131,7 +124,7 @@ public class PotionBehavior : MonoBehaviour
             {
                 Vector3 newNode;
                 newNode = Quaternion.Euler(0, 0, (i * theta)) * nodetemplate[j];
-                GameObject point =  Instantiate(visablePoint, backGround.transform);
+                GameObject point = Instantiate(visablePoint, backGround.transform);
                 point.transform.localPosition = newNode;
                 nodes.Add(newNode);
             }
@@ -140,7 +133,7 @@ public class PotionBehavior : MonoBehaviour
 
         //load in the current level
         LoadLevelObject(GameManager.Instance.currentLevel, GameManager.Instance.currentCharacterDiscoveredInfo);
-        
+
     }
 
     private void FixedUpdate()
@@ -159,8 +152,9 @@ public class PotionBehavior : MonoBehaviour
             frameInAnimation++;
             Debug.Log("frame!" + frameInAnimation);
             if (frameInAnimation > animationSpeed)
-            { 
+            {
                 moving = false;
+                SpecialNodeUpdate();
                 HoverOverIngredeint(current_Hover_ingredients_SO);
             }
         }
@@ -169,10 +163,7 @@ public class PotionBehavior : MonoBehaviour
     //Loading levels to add 
     public void LoadLevelObject(Level_SO level, bool[] discovered)
     {
-        numberOfMissedChargers = 0;
-        //Keeping reference of all discovered chargers;
-        Transform parent = levelObjectsPerent.transform.parent;
-
+        Transform parent = gameObject.transform.parent;
         int length = level.Special_Nodes_List.emotionIndex.Length;
         if (instantiatedPrefabs != null || instantiatedPrefabs.Length > 0)
         {
@@ -190,11 +181,11 @@ public class PotionBehavior : MonoBehaviour
             {
                 switch (level.Special_Nodes_List.type[i])
                 {
-                   // case Level_SO.NodeTypes.voidNode:
-                     //   instantiatedPrefabs[i] = Instantiate(voidPrefab,parent);
-                       // instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[i]];
-                        
-                       // break;
+                    // case Level_SO.NodeTypes.voidNode:
+                    //   instantiatedPrefabs[i] = Instantiate(voidPrefab,parent);
+                    // instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[i]];
+
+                    // break;
                     case Level_SO.NodeTypes.charger:
                         specials.Add((level.Special_Nodes_List.emotionIndex[i], level.Special_Nodes_List.type[i]));
                         instantiatedPrefabs[i] = Instantiate(chargerPrefab, parent);
@@ -225,10 +216,7 @@ public class PotionBehavior : MonoBehaviour
                         }
                         break;
                 }
-            }
-            else
-            {
-                numberOfMissedChargers++;
+
             }
         }
         endpointIndex = level.Endpoint_Index;
@@ -239,7 +227,6 @@ public class PotionBehavior : MonoBehaviour
         cost = 0;
         moneyMadeOnFInish = level.coin_Reward;
         Debug.Log(discovered.Length + " discovered indices");
-        this.gameObject.transform.SetAsLastSibling();
 
     }
 
@@ -249,7 +236,7 @@ public class PotionBehavior : MonoBehaviour
     /// <param name="level"></param>
     public void LoadLevelObject(Level_SO level)
     {
-        
+
         Transform parent = gameObject.transform.parent;
         int length = level.Special_Nodes_List.emotionIndex.Length;
         if (instantiatedPrefabs != null || instantiatedPrefabs.Length > 0)
@@ -265,43 +252,43 @@ public class PotionBehavior : MonoBehaviour
         moneyMadeOnFInish = level.coin_Reward;
         for (int i = 0; i < length; i++)
         {
-            
-                switch (level.Special_Nodes_List.type[i])
-                {
-                    // case Level_SO.NodeTypes.voidNode:
-                    //   instantiatedPrefabs[i] = Instantiate(voidPrefab,parent);
-                    // instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[i]];
 
-                    // break;
-                    case Level_SO.NodeTypes.charger:
-                        specials.Add((level.Special_Nodes_List.emotionIndex[i], level.Special_Nodes_List.type[i]));
-                        instantiatedPrefabs[i] = Instantiate(chargerPrefab, parent);
-                        instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[i]];
-                        currentIndex = i;
-                        chargesCount++;
+            switch (level.Special_Nodes_List.type[i])
+            {
+                // case Level_SO.NodeTypes.voidNode:
+                //   instantiatedPrefabs[i] = Instantiate(voidPrefab,parent);
+                // instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[i]];
+
+                // break;
+                case Level_SO.NodeTypes.charger:
+                    specials.Add((level.Special_Nodes_List.emotionIndex[i], level.Special_Nodes_List.type[i]));
+                    instantiatedPrefabs[i] = Instantiate(chargerPrefab, parent);
+                    instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[i]];
+                    currentIndex = i;
+                    chargesCount++;
                     break;
-                    default:
-                        if (currentIndex == i - 1) currentIndex = i;
-                        Level_SO.NodeTypes typing = level.Special_Nodes_List.type[currentIndex];
-                        while (currentIndex < level.emotionIndices.Length && typing == level.Special_Nodes_List.type[currentIndex])
+                default:
+                    if (currentIndex == i - 1) currentIndex = i;
+                    Level_SO.NodeTypes typing = level.Special_Nodes_List.type[currentIndex];
+                    while (currentIndex < level.emotionIndices.Length && typing == level.Special_Nodes_List.type[currentIndex])
+                    {
+                        if (typing == Level_SO.NodeTypes.voidNode)
                         {
-                            if (typing == Level_SO.NodeTypes.voidNode)
-                            {
-                                specials.Add((level.Special_Nodes_List.emotionIndex[currentIndex], level.Special_Nodes_List.type[currentIndex]));
-                                instantiatedPrefabs[i] = Instantiate(voidPrefab, parent);
-                                instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[currentIndex]];
-                            }
-                            else
-                            {
-                                specials.Add((level.Special_Nodes_List.emotionIndex[currentIndex], level.Special_Nodes_List.type[currentIndex]));
-                                instantiatedPrefabs[i] = Instantiate(bipolarPrefab, parent);
-                                instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[currentIndex]];
-                            }
-                            currentIndex++;
-                            i++;
+                            specials.Add((level.Special_Nodes_List.emotionIndex[currentIndex], level.Special_Nodes_List.type[currentIndex]));
+                            instantiatedPrefabs[i] = Instantiate(voidPrefab, parent);
+                            instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[currentIndex]];
                         }
-                   
-                        break;              
+                        else
+                        {
+                            specials.Add((level.Special_Nodes_List.emotionIndex[currentIndex], level.Special_Nodes_List.type[currentIndex]));
+                            instantiatedPrefabs[i] = Instantiate(bipolarPrefab, parent);
+                            instantiatedPrefabs[i].transform.localPosition = nodes[level.Special_Nodes_List.emotionIndex[currentIndex]];
+                        }
+                        currentIndex++;
+                        i++;
+                    }
+
+                    break;
 
             }
         }
@@ -324,15 +311,8 @@ public class PotionBehavior : MonoBehaviour
      * int poison
      * String name
      */
-    public void AddIngredient(Ingredients_SO ingredient) 
+    public void AddIngredient(Ingredients_SO ingredient)
     {
-        //if player is missing money
-        if(GameManager.Instance.Money - ingredient.ingredients_Price < 0)
-        {
-            outOfMoney.SetActive(true);
-            return;
-        }
-
         nodeStartHistory.Push(currentNodePosition);
         ingredientHistory.Push(ingredient);
 
@@ -340,11 +320,11 @@ public class PotionBehavior : MonoBehaviour
         if (ingredient.ingredients_Emotion[0] == "Center")
         {
             //If value of movment is bigger then the current emotional value, just go to center
-            if (currentNodePosition % 10 > ingredient.ingredients_Value[0] ||  currentNodePosition%10 ==0 && currentNodePosition!=0)
+            if (currentNodePosition % 10 > ingredient.ingredients_Value[0] || currentNodePosition % 10 == 0 && currentNodePosition != 0)
             {
                 currentNodePosition = currentNodePosition - ingredient.ingredients_Value[0];
                 transform.localPosition = nodes[currentNodePosition];
-                
+
             }
             //If it's not bigger just move toward centers on the same axis
             else
@@ -363,17 +343,17 @@ public class PotionBehavior : MonoBehaviour
             foreach (int p in path) pointQueue.Enqueue(p);
             //transform.localPosition = nodes[currentNodePosition];
 
-            if (VoidUpdate(path) == true) 
-            { 
+            if (VoidUpdate(path) == true)
+            {
                 Reset();
                 Debug.Log("void in middle of path!");
                 return;
             }
-            
+
             //repeat if two different modes to ingredient
             if (ingredient.Ingredients_Vector.emotion.Length > 1)
             {
-                
+
                 path = Pathing(emotionValues[ingredient.Ingredients_Vector.emotion[1]], currentNodePosition, ingredient.Ingredients_Vector.value[1]);
                 currentNodePosition = path[path.Length - 1];
                 //transform.localPosition = nodes[path[path.Length - 1]];
@@ -385,33 +365,30 @@ public class PotionBehavior : MonoBehaviour
                     return;
                 }
             }
-            
-        }
 
+        }
         cost += ingredient.ingredients_Price;
         poison += ingredient.ingredients_Poison;
-        GameManager.Instance.Money -= ingredient.ingredients_Price;
-
         poisonText.text = poison.ToString();
-        moneyBalanceText.text = GameManager.Instance.Money.ToString();
+        costText.text = cost.ToString();
         current_Hover_ingredients_SO = ingredient;
-        
+
         //SpecialNodeUpdate();
         previewNodes = nodes;
-    
+
     }
 
     //Undo move button! (TODO, undo charger use)
     public void Undo()
     {
+        Vector3 lastLocation = transform.position;
         if (nodeStartHistory.Count >= 2)
         {
-            currentNodePosition = nodeStartHistory.Peek();
             transform.localPosition = nodes[nodeStartHistory.Pop()];
             Ingredients_SO tempIng = ingredientHistory.Pop();
             poison -= tempIng.ingredients_Poison;
             cost -= tempIng.ingredients_Price;
-            GameManager.Instance.Money += tempIng.ingredients_Price;
+
         }
         else
         {
@@ -420,16 +397,15 @@ public class PotionBehavior : MonoBehaviour
                 Ingredients_SO tempIng = ingredientHistory.Peek();
                 poison -= tempIng.ingredients_Poison;
                 cost -= tempIng.ingredients_Price;
-                GameManager.Instance.Money += tempIng.ingredients_Price;
-                currentNodePosition = nodeStartHistory.Pop();
+                nodeStartHistory.Pop();
                 ingredientHistory.Pop();
             }
-            
+
             transform.localPosition = nodes[0];
-            
         }
         poisonText.text = poison.ToString();
-        moneyBalanceText.text =  GameManager.Instance.Money.ToString();
+        costText.text = cost.ToString();
+
     }
 
     //Reset all move button! 
@@ -440,14 +416,14 @@ public class PotionBehavior : MonoBehaviour
         transform.localPosition = nodes[0];
         poison = 0;
         cost = 0;
-        GameManager.Instance.Money = startmoney;
         currentNodePosition = 0;
         //CHECK IF THERE IS A LEVEL BEFORE
         if (GameManager.Instance != null)
         { LoadLevelObject(GameManager.Instance.currentLevel, GameManager.Instance.currentCharacterDiscoveredInfo); }
         poisonText.text = poison.ToString();
-        moneyBalanceText.text = GameManager.Instance.Money.ToString();
-
+        costText.text = cost.ToString();
+        poisonText.text = poison.ToString();
+        costText.text = cost.ToString();
     }
 
     // moves toward a given endpoint by a certain distance
@@ -464,7 +440,7 @@ public class PotionBehavior : MonoBehaviour
     //called at the end of movetoward to see if we landed on any special nodes
     bool VoidUpdate(int[] path)
     {
-        for(int i = 0; i < path.Length; i++)
+        for (int i = 0; i < path.Length; i++)
         {
             if (voids.Contains(path[i]))
             {
@@ -480,7 +456,7 @@ public class PotionBehavior : MonoBehaviour
         {
             if (nodes[specials[i].nodeIndex] == transform.localPosition)
             {
-                switch(specials[i].type)
+                switch (specials[i].type)
                 {
                     case Level_SO.NodeTypes.voidNode:
                         Debug.Log("oops! you hit a void :(");
@@ -488,7 +464,7 @@ public class PotionBehavior : MonoBehaviour
                         break;
                     case Level_SO.NodeTypes.charger:
                         chargersHit++;
-                        GameObject.Destroy(instantiatedPrefabs[i]);
+                        instantiatedPrefabs[i].gameObject.SetActive(false);
                         break;
                     case Level_SO.NodeTypes.bipolar:
                         for (int j = 0; j < specials.Count; j++)
@@ -518,18 +494,18 @@ public class PotionBehavior : MonoBehaviour
         //innermost ring case
         if (node % 10 == 1)
         {
-            neighbors = new int[6] {0, node + 10, node + 11, node + 1, node - 9, node - 10 };
-            
+            neighbors = new int[6] { 0, node + 10, node + 11, node + 1, node - 9, node - 10 };
+
         }
         //outermost ring case
         else if (node % 10 == 0 && node != 0)
         {
-            neighbors = new int[5] { node + 10, node +9, node -1, node -11, node - 10 };
+            neighbors = new int[5] { node + 10, node + 9, node - 1, node - 11, node - 10 };
 
         }
         //center case
         else if (node == 0)
-        { 
+        {
             neighbors = new int[slices];
             for (int i = 0; i < slices; i++)
             {
@@ -537,12 +513,12 @@ public class PotionBehavior : MonoBehaviour
             }
         }
         //middle rings case
-        else { neighbors = new int[8] {node + 9, node + 10, node + 11, node + 1, node - 9, node -10, node-11, node-1 }; }
+        else { neighbors = new int[8] { node + 9, node + 10, node + 11, node + 1, node - 9, node - 10, node - 11, node - 1 }; }
 
         //looping rings around when out of index
         for (int i = 0; i < neighbors.Length; i++)
         {
-            if (neighbors[i] <= 0 && i > 0 )
+            if (neighbors[i] <= 0 && i > 0)
             {
                 neighbors[i] = sliceCutsIndexs + neighbors[i];
             }
@@ -554,7 +530,7 @@ public class PotionBehavior : MonoBehaviour
 
 
     // End of path, Start of Path (usually current position), how many nodes into the path you traverse
-    int[] Pathing(int endNode,  int startNode, int nodesToTraverse)
+    int[] Pathing(int endNode, int startNode, int nodesToTraverse)
     {
 
         List<int> pathNodes = new List<int>();
@@ -586,7 +562,7 @@ public class PotionBehavior : MonoBehaviour
         {
             pathNodes.AddRange(Pathing(endNode, closestToEndpoint, nodesToTraverse - 1));
         }
-        
+
         return pathNodes.ToArray();
     }
 
@@ -596,7 +572,7 @@ public class PotionBehavior : MonoBehaviour
     {
         lineRenderer.gameObject.SetActive(true);
 
-        
+
 
 
         //Set up like the movement, only using Line renderer to save the data
@@ -632,12 +608,12 @@ public class PotionBehavior : MonoBehaviour
             //repeat if two different modes to ingredient
             if (ingredient.Ingredients_Vector.emotion.Length > 1)
             {
-                 path = PreviewPathing(emotionValues[ingredient.Ingredients_Vector.emotion[1]], pos, ingredient.Ingredients_Vector.value[1]);
-                 /*pos = path[path.Length - 1];
-                  *newLocation = nodes[path[path.Length - 1]];
-                  *pointsV2[2] = newLocation;
-                  */
-                  foreach (int p in path) pointsV2.Add(nodes[p]);
+                path = PreviewPathing(emotionValues[ingredient.Ingredients_Vector.emotion[1]], pos, ingredient.Ingredients_Vector.value[1]);
+                /*pos = path[path.Length - 1];
+                 *newLocation = nodes[path[path.Length - 1]];
+                 *pointsV2[2] = newLocation;
+                 */
+                foreach (int p in path) pointsV2.Add(nodes[p]);
             }
         }
         //make sure to not draw a line if start and end point are the same
@@ -697,9 +673,8 @@ public class PotionBehavior : MonoBehaviour
 
     //finish brewing, probably to be called by InventoryManager or another GameManager
     //TODO by Elad
-    public void  FinishBrew() 
+    public void FinishBrew()
     {
-
         int starcount = 0;
         float moneyEarned = moneyMadeOnFInish;
         foreach (var item in stars)
@@ -710,11 +685,11 @@ public class PotionBehavior : MonoBehaviour
         {
             if (UIPanel)
             {
-                if(chargersHit == chargesCount && poison <star2Posion && numberOfMissedChargers<1)
+                if (chargersHit == chargesCount && poison < star2Posion)
                 {
                     starcount = 3;
                 }
-                else if ((chargersHit == chargesCount-1 && poison < star2Posion || chargersHit == chargesCount && poison < star1Posion && poison > star2Posion)&&numberOfMissedChargers < 2)
+                else if (chargersHit == chargesCount - 1 && poison < star2Posion || chargersHit == chargesCount && poison < star1Posion && poison > star2Posion)
                 {
                     starcount = 2;
                     moneyEarned = moneyEarned * 0.75f;
@@ -726,18 +701,14 @@ public class PotionBehavior : MonoBehaviour
 
                 }
                 UIPanel.SetActive(true);
-              
-                UIText.text = ("Chargers Hit:" + chargersHit + "<br>" + "Poison:" + poison + "<br>" + "Money Spent:" + cost + "<br>" + "Money Earned:" + moneyEarned);
+
+                UIText.text = ("Charges Hit:" + chargersHit + "<br>" + "Poison:" + poison + "<br>" + "Money Spent:" + cost + "<br>" + "Money Earned:" + moneyEarned);
                 for (int i = 0; i < starcount; i++)
                 {
                     stars[i].SetActive(true);
                 }
             }
             sendData();
-
-            //subtract and add to the game's over all money balance
-            GameManager.Instance.Money = GameManager.Instance.Money + moneyMadeOnFInish; //money earned from the potion
-
         }
         else { Debug.Log("nuh uh, you're not ready yet!"); }
     }

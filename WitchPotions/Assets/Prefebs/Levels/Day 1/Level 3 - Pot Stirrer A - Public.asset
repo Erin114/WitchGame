@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69c38f2378e10704da2a6da594b293ec, type: 3}
   m_Name: Level 3 - Pot Stirrer A - Public
   m_EditorClassIdentifier: 
-  emotionIndices: 12000000
+  emotionIndices: 08000000
   nodeType: 02000000
   endpoint_Index: 96
   coin_Reward: 20
