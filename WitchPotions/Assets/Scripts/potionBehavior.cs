@@ -376,6 +376,12 @@ public class PotionBehavior : MonoBehaviour
         //SpecialNodeUpdate();
         previewNodes = nodes;
 
+        if (currentNodePosition == endpointIndex)
+        {
+            endpoint.gameObject.GetComponent<GlowScriptForEndPoint>().ToggleGlow(true);
+        }else
+            endpoint.gameObject.GetComponent<GlowScriptForEndPoint>().ToggleGlow(false);
+
     }
 
     //Undo move button! (TODO, undo charger use)
@@ -420,6 +426,13 @@ public class PotionBehavior : MonoBehaviour
                 instantiatedPrefabs[i].gameObject.SetActive(true);
             }
         }
+
+        if (currentNodePosition == endpointIndex)
+        {
+            endpoint.gameObject.GetComponent<GlowScriptForEndPoint>().ToggleGlow(true);
+        }
+        else
+            endpoint.gameObject.GetComponent<GlowScriptForEndPoint>().ToggleGlow(false);
     }
 
     //Reset all move button! 
