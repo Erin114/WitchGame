@@ -114,37 +114,44 @@ MonoBehaviour:
       dialogue: []
     - question: Has anything strange happened to him lately?
       initialResponse: "Not that I can recall from what he\u2019s told me.  His life
-        seems rather boring."
+        seems rather boring. "
       dialogue: []
     - question: What problems is he dealing with right now?
-      initialResponse: "He constantly complains about how cruel Agnes can be.  She
+      initialResponse: He constantly complains about how cruel Agnes can be.  She
         gets on him about not getting a promotion at work or how she should have
-        married his more successful brother.  He always takes the long way back home
-        after work because he\u2019s scared that he\u2019ll get yelled at first thing
-        when he walks in the door."
+        married his more successful brother.  He hides it well, but I know it makes
+        him sad.
       dialogue: []
     - question: Has he tried anything to fix his problems?
       initialResponse: "He and Agnes fight constantly.  Well, it\u2019s more like
         Agnes yells at him and he takes it.  That\u2019s the way it is with her. 
         It\u2019s easier to just let her say what she wants than fight back.  He\u2019s
-        probably scared that if he argues with her, he\u2019ll only make it worse."
+        probably afraid that if he argues with her, he\u2019ll only make it worse."
       dialogue: []
     specificConvo:
     - question: Is he afraid of anything?
-      initialResponse: "If I had to guess, he\u2019s afraid of disappointing Agnes. 
-        He puts up with a lot, but deep down he still loves her.  One time, he forgot
-        he had promised to take her to see the horse races and the whole town could
-        hear her hollering at him for days. "
+      initialResponse: "You\u2019d think he would be terrified of her with everything
+        she put him through, but deep down he still loves her.  He confided in me
+        once that his true fear is that he\u2019ll disappoint Agnes.  It\u2019s probably
+        what keeps him from fighting back."
+      dialogue:
+      - character: 1
+        text: "(That\u2019s definitely a charge!  Make sure to mark that down in
+          my pages and maybe we can help this man gives Agnes a bit of what\u2019s
+          coming to her)"
+    - question: Has he felt sad at all?
+      initialResponse: "Not any more than usual.  Only when Agnes\u2019 temper flares
+        up, but he\u2019s quick to get over it.  I\u2019ve only ever seen him sad
+        one time, and it\u2019s when he forgot to take Agnes to the horse races. 
+        The whole town could hear her hollering at him for days!"
       dialogue:
       - character: 0
         text: "If you\u2019re still looking to make them fight, I could make something
           to make him forget about any upcoming dates they have coming up."
-      - character: 1
-        text: "Oh, that\u2019s a splendid idea!"
-    - question: Has he felt sad at all?
-      initialResponse: "Not any more than usual.  Only when Agnes\u2019 temper flares
-        up, but he\u2019s quick to get over it."
-      dialogue: []
+      - character: 4
+        text: "Oh, what a splendid idea!  The only thing that would make it better
+          is if he wasn\u2019t afraid to argue back with her.  Oh that would be a
+          fight for the ages!"
     - question: Has something been distracting him?
       initialResponse: "At this point I doubt he\u2019s ever surprised by her temper. 
         He seems to expect it every night when he goes home.  It might be more of
@@ -156,21 +163,23 @@ MonoBehaviour:
       dialogue: []
     - question: Has he had any outbursts of anger recently?
       initialResponse: "No, but he needs to for my plan to work!  God bless him,
-        but I\u2019d love for Agnes to get a taste of her own medicine."
-      dialogue: []
+        I\u2019m sure he\u2019ll be terrified of her after this, but I\u2019d love
+        for Agnes to get a taste of her own medicine."
+      dialogue:
+      - character: 0
+        text: "If you don\u2019t think there\u2019s anything else we can make to
+          help, we can make him a potion of rage."
+      - character: 4
+        text: That sounds perfect!  What an intelligent young lady you are.  You
+          know, you remind me of a younger me!
+      - character: 1
+        text: "(Better hope you don\u2019t turn out like her.  Squabbling with petty
+          old women.)"
     - question: Is he happy?
       initialResponse: "He seems like he is.  Well, as happy as he can be in his
         situation.  He probably won\u2019t be for a bit after I slip him whatever
         we make for him, but at least I will be!"
-      dialogue:
-      - character: 1
-        text: "(This woman is ecstatic!  I\u2019ve never seen someone this happy
-          to stir the pot before.  I would definitely mark her down for having an
-          emotional charge in Joy)."
-      - character: 1
-        text: "(This woman is ecstatic!  I\u2019ve never seen someone this happy
-          to stir the pot before.  I would definitely mark her down for having an
-          emotional charge in Joy)."
+      dialogue: []
     - question: Has anything surprised him?
       initialResponse: "I wouldn\u2019t say so.  He lives a rather mundane life. 
         He heads down the road in the morning to his shop and comes home in the evening
@@ -194,16 +203,17 @@ MonoBehaviour:
   - character: 1
     text: "Great job handling that guy, you\u2019ve really got the hang of this! 
       It helps when you learn from the best, huh?  There\u2019s only one more thing
-      that I have left to teach you about for now and that\u2019s charges.  Emotional
-      charges are emotions that the individual is feeling separate from the potion
-      that they may need."
+      that I have left to teach you about for now and that\u2019s charges. "
   - character: 1
-    text: " In order to brew the perfect potion, we need to address these.  It\u2019ll
-      better help the customer and it usually makes them tip better.  Whenever you
-      think you\u2019ve discovered a charge, mark it down in my pages.  Click once
-      if you think you\u2019ve found one, and click twice if you think that emotion
-      isn\u2019t related to a charge.  Seems like someone\u2019s here, let's try
-      to identify any charges they might have."
+    text: "Emotional charges are emotions that the individual that\u2019s drinking
+      the potion are feeling separate from the potion that they may need.  In order
+      to brew the perfect potion, we need to address these.  It\u2019ll make the
+      potion stronger and it always makes the customer tip better.  "
+  - character: 1
+    text: "Whenever you think you\u2019ve discovered a charge, mark it down in my
+      pages.  Clicking once on an emotion will indicate that they are having problems
+      with that emotion, clicking twice will indicate that they aren\u2019t.  Seems
+      like someone\u2019s here, let's try to identify any charges they might have!"
   - character: 4
     text: "Why good afternoon, deary.  I saw that you\u2019ve just opened up shop,
       is this a pharmacy of some kind?"
@@ -222,22 +232,22 @@ MonoBehaviour:
     text: "I desperately need your help!  There\u2019s this other lady in town, Agnes,
       and she's nothing but a bully I say!  You don\u2019t want to know the things
       she says to me. Some nights, I cry myself to sleep when I remember!  I\u2019ve
-      tried to stay away from her but she lives right next to me and I have no one
-      else to talk to during the day while my husband is at work.  Just this once,
-      I want to get revenge for all the suffering she\u2019s put me through!"
+      tried to stay away from her, but she lives right next to me, and I have no
+      one else to talk to during the day while my husband is at work.  "
   - character: 4
-    text: "Her husband is a friendly guy, he always stops by my house on his way
-      home from work to say hello while I\u2019m tending to my garden.  I\u2019m
-      thinking of giving him something that will make him mad enough to start an
-      argument.  That\u2019ll annoy her to no end and I\u2019ll be able to listen
-      in from next door."
+    text: "Just this once, I want to get revenge for all the suffering she\u2019s
+      put me through!  Her husband is a friendly guy, he always stops by my house
+      on his way home from work to say hello while I\u2019m tending to my garden. 
+      I\u2019m thinking of slipping him something that will make him mad enough to
+      start an argument with her.  That\u2019ll annoy her to no end and I\u2019ll
+      be able to listen in from next door.   "
   - character: 0
     text: "Wow she sounds just awful!  Let me ask you some questions about her husband,
       I\u2019m sure there\u2019s something we can come up with to help you out."
   - character: 1
-    text: "(This woman is awfully giddy at the thought of antagonizing her \u201Cfriend\u201D. 
-      Weird.  It might be worth asking her about joy to see if there are any charges
-      there)"
+    text: "(If Mabel is this scared of this woman, I can\u2019t imagine how her husband
+      feels.  It might be worth asking her if he\u2019s afraid of anything.  There
+      could be a charge there.)"
   exitConversation:
   - character: 0
     text: Here you go, enjoy
