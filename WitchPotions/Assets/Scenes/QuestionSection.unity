@@ -5287,6 +5287,15 @@ MonoBehaviour:
       as excited as I was for my first customer!"
   - character: 1
     text: Answer the door!
+  conclusionConversation:
+  - character: 0
+    text: Test
+  - character: 0
+    text: Conclusion
+  - character: 0
+    text: Text
+  - character: 1
+    text: Please work
   doorArrow: {fileID: 1592688585}
   charIcon: {fileID: 176477607}
   VivianIcon: {fileID: 1261207599, guid: 25c05849126dad842b86a618398925f9, type: 3}
