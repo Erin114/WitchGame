@@ -278,10 +278,8 @@ MonoBehaviour:
   - character: 1
     text: (Go ahead, ask him how he feels!)
   exitConversation:
-  - character: 0
-    text: Thank you, Missy. I'll send Ms. Bessy your regards!
   - character: 2
-    text: Thank you missy
+    text: Thank you, Missy. I'll send Ms. Bessy your regards!
   - character: 1
     text: You have another customer, get the door!
   iconFaces:
