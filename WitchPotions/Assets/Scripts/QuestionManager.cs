@@ -57,6 +57,8 @@ public class QuestionManager : MonoBehaviour
     public Image charIcon;
     private Sprite charIconReferenceHolder;
     public Sprite VivianIcon;
+    public Sprite [] VivianIconOptions;
+
     public Sprite GrimoireIcon;
 
     //Question Manager handles one character at a time
@@ -213,7 +215,7 @@ public class QuestionManager : MonoBehaviour
     {
         t.text = currentCharacter.GenericResponse(index);
         charIconReferenceHolder = charIcon.sprite = currentCharacter.GetNPCiconsGeneric(index);
-
+        VivianIcon = VivianIconOptions[currentCharacter.vivianGenericQuestionSpriteOrder[index]];
         genericQuestions[index].gameObject.SetActive(false);
 
         convo = currentCharacter.characterInfo.genericConvo[index].dialogue;
@@ -228,7 +230,7 @@ public class QuestionManager : MonoBehaviour
     {
         t.text = currentCharacter.SpecificResponse(index);
         charIconReferenceHolder = charIcon.sprite = currentCharacter.GetNPCiconsSpesific(index);
-
+        VivianIcon = VivianIconOptions[currentCharacter.vivianSpecificQuestionSpriteOrder[index]];
 
         emotionQuestions[index].gameObject.SetActive(false);
 

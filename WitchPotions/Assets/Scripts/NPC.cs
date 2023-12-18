@@ -21,6 +21,9 @@ public class NPC : MonoBehaviour
     //ntch
     public List<int> genericQuestionSpriteOrder;
     public List<int> specificQuestionSpriteOrder;
+    public List<int> vivianGenericQuestionSpriteOrder;
+    public List<int> vivianSpecificQuestionSpriteOrder;
+
 
     public List<Sprite> spriteVariants;
 
