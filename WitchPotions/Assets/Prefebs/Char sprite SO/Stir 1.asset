@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f285f158b2b0a444934304e1cb7fe81, type: 3}
+  m_Name: Stir 1
+  m_EditorClassIdentifier: 
+  FullSprites:
+  - {fileID: 1573773935, guid: d617fb98a8562554f8695756e489b068, type: 3}
+  - {fileID: 1028143441, guid: d617fb98a8562554f8695756e489b068, type: 3}
+  - {fileID: -1063602500, guid: d617fb98a8562554f8695756e489b068, type: 3}
+  - {fileID: 390769421, guid: d617fb98a8562554f8695756e489b068, type: 3}
+  IconSprites:
+  - {fileID: 1573773935, guid: 2d2a44b5e3c02b14783dc1686fda8580, type: 3}
+  - {fileID: 1028143441, guid: 2d2a44b5e3c02b14783dc1686fda8580, type: 3}
+  - {fileID: -1063602500, guid: 2d2a44b5e3c02b14783dc1686fda8580, type: 3}
+  - {fileID: 390769421, guid: 2d2a44b5e3c02b14783dc1686fda8580, type: 3}

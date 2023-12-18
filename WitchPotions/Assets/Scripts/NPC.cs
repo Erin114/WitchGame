@@ -19,10 +19,7 @@ public class NPC : MonoBehaviour
     public TestCharacter characterInfo;
 
     //ntch
-    public List<int> genericQuestionSpriteOrder;
-    public List<int> specificQuestionSpriteOrder;
-    public List<int> vivianGenericQuestionSpriteOrder;
-    public List<int> vivianSpecificQuestionSpriteOrder;
+
 
 
     public List<Sprite> spriteVariants;
@@ -42,7 +39,6 @@ public class NPC : MonoBehaviour
     public class serializableClass
     {
         public List<int> SpriteIndex;
-        public Character Speaker;
     }
     public List<serializableClass> genericQuestionSprites = new List<serializableClass>();
     public List<serializableClass> specificQuestionSprites = new List<serializableClass>();
@@ -135,32 +131,6 @@ public class NPC : MonoBehaviour
         }
     }
 
-
-
-    public Sprite GetNPCiconsGeneric ( int index)
-    {
-        return iconFaces[genericQuestionSpriteOrder[index]];
-    }
-    public Sprite GetNPCiconsSpesific(int index)
-    {
-        return iconFaces[specificQuestionSpriteOrder[index]];
-    }
-
-    public Sprite NewGetNPCiconsGeneric(int dilougeIndex, int currentIndex, Character character)
-    {
-        int index = genericQuestionSprites[dilougeIndex].SpriteIndex[currentIndex];
-
-        if (genericQuestionSprites[dilougeIndex].Speaker.ToString() == this.charName)
-        { return iconFaces[index]; }
-        else
-        { return iconFaces[index]; }
-
-
-    }
-    public Sprite NewGetNPCiconsSpesific(int dilougeIndex)
-    {
-        return iconFaces[specificQuestionSpriteOrder[dilougeIndex]];
-    }
     //reset NPC info
     public void Reset()
     {

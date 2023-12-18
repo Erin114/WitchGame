@@ -236,10 +236,6 @@ MonoBehaviour:
       - character: 1
         text: "(Seems like he doesn\u2019t have any issues with admiration so we
           can mark that down as a no.)"
-  genericQuestionSpriteOrder: 01000000020000000300000000000000
-  specificQuestionSpriteOrder: 0300000002000000010000000000000000000000030000000300000000000000
-  vivianGenericQuestionSpriteOrder: 00000000000000000000000000000000
-  vivianSpecificQuestionSpriteOrder: 0200000002000000000000000400000004000000000000000000000000000000
   spriteVariants:
   - {fileID: 1573773935, guid: d617fb98a8562554f8695756e489b068, type: 3}
   - {fileID: 1028143441, guid: d617fb98a8562554f8695756e489b068, type: 3}
@@ -293,6 +289,19 @@ MonoBehaviour:
   - {fileID: 1028143441, guid: 2d2a44b5e3c02b14783dc1686fda8580, type: 3}
   - {fileID: -1063602500, guid: 2d2a44b5e3c02b14783dc1686fda8580, type: 3}
   - {fileID: 390769421, guid: 2d2a44b5e3c02b14783dc1686fda8580, type: 3}
-  nestedList:
-  - SpriteIndex: 
-    Speaker: 0
+  vivianSprites: {fileID: 11400000, guid: d6f4a303e31cff34581ec3e1d3631771, type: 2}
+  CharSprites: {fileID: 11400000, guid: a9c1f68c5917b5d48bba7f5288668c37, type: 2}
+  genericQuestionSprites:
+  - SpriteIndex: 0100000000000000
+  - SpriteIndex: 010000000300000003000000
+  - SpriteIndex: 010000000000000000000000
+  - SpriteIndex: 010000000000000000000000
+  specificQuestionSprites:
+  - SpriteIndex: 000000000200000002000000020000000200000002000000
+  - SpriteIndex: 02000000020000000300000000000000
+  - SpriteIndex: 0100000000000000
+  - SpriteIndex: 02000000040000000100000000000000
+  - SpriteIndex: 02000000040000000000000000000000
+  - SpriteIndex: 0000000000000000
+  - SpriteIndex: 030000000000000000000000
+  - SpriteIndex: 03000000040000000300000000000000

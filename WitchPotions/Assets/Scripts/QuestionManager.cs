@@ -65,6 +65,7 @@ public class QuestionManager : MonoBehaviour
     public Sprite GrimoireIcon;
     private int currentQuestionIndex;
     private bool isCurrentQuestionGeneric;
+    private bool spacialConvo = true;
 
     //Question Manager handles one character at a time
     //Press door for character to spawn and walk up to the desk
@@ -140,6 +141,7 @@ public class QuestionManager : MonoBehaviour
             //t.text = "Hello, welcome to [APOTHECARY NAME]!";
 
             convo = currentCharacter.introConversation;
+            spacialConvo = true;
             charIconReferenceHolder = charIcon.sprite = currentCharacter.iconFaces[0];
 
             nextButton.SetActive(false);
@@ -188,6 +190,7 @@ public class QuestionManager : MonoBehaviour
             currentCharacter = character.GetComponent<NPC>();
 
             convo = currentCharacter.exitConversation;
+            spacialConvo = true;
             charIconReferenceHolder = currentCharacter.iconFaces[0];
 
             //GameManager.Instance.servedPotion = false;
@@ -229,6 +232,7 @@ public class QuestionManager : MonoBehaviour
     //called by buttons to ask generic questions
     public void AskGenericQuestion(int index)
     {
+        spacialConvo = false;
         t.text = currentCharacter.GenericResponse(index);
       
         genericQuestions[index].gameObject.SetActive(false);
@@ -249,13 +253,14 @@ public class QuestionManager : MonoBehaviour
     //called by buttons to ask emotion-specific questions
     public void AskEmotionQuestion(int index)
     {
+        spacialConvo = false;
         t.text = currentCharacter.SpecificResponse(index);
     
 
         emotionQuestions[index].gameObject.SetActive(false);
         
         currentQuestionIndex = index;
-        isCurrentQuestionGeneric = true;
+        isCurrentQuestionGeneric = false;
         convo = currentCharacter.characterInfo.specificConvo[index].dialogue;
         convoIndex = 0;
         int imageIndexindex = currentCharacter.specificQuestionSprites[currentQuestionIndex].SpriteIndex[0];
@@ -474,7 +479,6 @@ public class QuestionManager : MonoBehaviour
             //continue the conversation till the end
             else
             {
-                convoIndex++;
                 t.text = convo[convoIndex].text;
 
                 name.text = convo[convoIndex].character.ToString().Replace('_', ' ');
@@ -482,16 +486,20 @@ public class QuestionManager : MonoBehaviour
             }
 
             //Start of new icon and image switch code
-            if (isCurrentQuestionGeneric)
-            {
+            if (isCurrentQuestionGeneric && currentCharacter!=null)
+            {  
+                if (convoStarted)
+                    convoIndex++;
                 int imageIndexindex = currentCharacter.genericQuestionSprites[currentQuestionIndex].SpriteIndex[convoIndex];
+             
 
-                if (currentCharacter.name ==   "Grimoire")
+
+                if (name.text ==   "Grimoire")
                 {
                     charIcon.sprite = GrimoireIcon;
 
                 }
-                else if (currentCharacter.name == "Vivian")
+                else if (name.text == "Vivian")
                 {
                     charIcon.sprite = currentCharacter.vivianSprites.IconSprites[imageIndexindex];
                 }
@@ -500,16 +508,20 @@ public class QuestionManager : MonoBehaviour
                     charIcon.sprite = currentCharacter.CharSprites.IconSprites[imageIndexindex];
                     currentCharacter.gameObject.GetComponent<SpriteRenderer>().sprite = currentCharacter.CharSprites.FullSprites[imageIndexindex];
                 }
-            }else
-            {
+            }else if (currentCharacter != null  && !spacialConvo)
+            { 
+                if (convoStarted)
+                    convoIndex++;
                 int imageIndexindex = currentCharacter.specificQuestionSprites[currentQuestionIndex].SpriteIndex[convoIndex];
 
-                if (currentCharacter.name == "Grimoire")
+               
+
+                if (name.text == "Grimoire")
                 {
                     charIcon.sprite = GrimoireIcon;
 
                 }
-                else if (currentCharacter.name == "Vivian")
+                else if (name.text == "Vivian")
                 {
                     charIcon.sprite = currentCharacter.vivianSprites.IconSprites[imageIndexindex];
                 }
@@ -517,6 +529,39 @@ public class QuestionManager : MonoBehaviour
                 {
                     charIcon.sprite = currentCharacter.CharSprites.IconSprites[imageIndexindex];
                     currentCharacter.gameObject.GetComponent<SpriteRenderer>().sprite = currentCharacter.CharSprites.FullSprites[imageIndexindex];
+                }
+            }
+            else if (spacialConvo)
+            {
+                if (convoStarted)
+                    convoIndex++;
+                if (name.text == "Grimoire")
+                {
+                    charIcon.sprite = GrimoireIcon;
+
+                }
+                else if (name.text == "Vivian")
+                {
+                    charIcon.sprite = currentCharacter.vivianSprites.IconSprites[0];
+                }
+                else
+                {
+                    charIcon.sprite = currentCharacter.CharSprites.IconSprites[0];
+                    currentCharacter.gameObject.GetComponent<SpriteRenderer>().sprite = currentCharacter.CharSprites.FullSprites[0];
+                }
+            }
+            else
+            {
+                if (convoStarted)
+                    convoIndex++;
+                if (name.text == "Grimoire")
+                {
+                    charIcon.sprite = GrimoireIcon;
+
+                }
+                else if (name.text == "Vivian")
+                {
+                    charIcon.sprite = currentCharacter.vivianSprites.IconSprites[0];
                 }
             }
         

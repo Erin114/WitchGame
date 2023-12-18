@@ -205,10 +205,6 @@ MonoBehaviour:
       dialogue:
       - character: 0
         text: "Yeah sure\u2026 that\u2019s what we\u2019ll call it\u2026"
-  genericQuestionSpriteOrder: 01000000020000000300000000000000
-  specificQuestionSpriteOrder: 0300000002000000010000000000000000000000030000000300000000000000
-  vivianGenericQuestionSpriteOrder: 00000000000000000000000000000000
-  vivianSpecificQuestionSpriteOrder: 0000000000000000000000000000000000000000000000000000000000000000
   spriteVariants:
   - {fileID: 1405223881, guid: 5e33c3646ec884f4abf17cba578c7706, type: 3}
   - {fileID: 473057870, guid: 5e33c3646ec884f4abf17cba578c7706, type: 3}
@@ -271,3 +267,19 @@ MonoBehaviour:
   - {fileID: 473057870, guid: 27ec10e7c369e7749989fa9ed9fd531b, type: 3}
   - {fileID: -1763043345, guid: 27ec10e7c369e7749989fa9ed9fd531b, type: 3}
   - {fileID: -1330048882, guid: 27ec10e7c369e7749989fa9ed9fd531b, type: 3}
+  vivianSprites: {fileID: 11400000, guid: d6f4a303e31cff34581ec3e1d3631771, type: 2}
+  CharSprites: {fileID: 11400000, guid: 02a48bec87979554d93a0cb6c532241b, type: 2}
+  genericQuestionSprites:
+  - SpriteIndex: 00000000
+  - SpriteIndex: 00000000
+  - SpriteIndex: 00000000
+  - SpriteIndex: 0300000000000000
+  specificQuestionSprites:
+  - SpriteIndex: 01000000
+  - SpriteIndex: 00000000020000000100000000000000
+  - SpriteIndex: 0300000000000000
+  - SpriteIndex: 00000000
+  - SpriteIndex: 01000000
+  - SpriteIndex: 0200000000000000
+  - SpriteIndex: 00000000010000000100000000000000
+  - SpriteIndex: 0000000002000000

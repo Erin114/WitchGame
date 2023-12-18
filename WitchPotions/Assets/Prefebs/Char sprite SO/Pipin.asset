@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f285f158b2b0a444934304e1cb7fe81, type: 3}
+  m_Name: Pipin
+  m_EditorClassIdentifier: 
+  FullSprites:
+  - {fileID: 1405223881, guid: 5e33c3646ec884f4abf17cba578c7706, type: 3}
+  - {fileID: 473057870, guid: 5e33c3646ec884f4abf17cba578c7706, type: 3}
+  - {fileID: -1763043345, guid: 5e33c3646ec884f4abf17cba578c7706, type: 3}
+  - {fileID: -1330048882, guid: 5e33c3646ec884f4abf17cba578c7706, type: 3}
+  IconSprites:
+  - {fileID: 1405223881, guid: 27ec10e7c369e7749989fa9ed9fd531b, type: 3}
+  - {fileID: 473057870, guid: 27ec10e7c369e7749989fa9ed9fd531b, type: 3}
+  - {fileID: -1763043345, guid: 27ec10e7c369e7749989fa9ed9fd531b, type: 3}
+  - {fileID: -1330048882, guid: 27ec10e7c369e7749989fa9ed9fd531b, type: 3}
